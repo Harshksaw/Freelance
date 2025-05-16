@@ -11,6 +11,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* padding-left: 30px; */
+  /* padding-right: 30px; */
 }
 
 body {
@@ -737,4 +739,275 @@ ul {
   color: #555;
   font-weight: 500;
   cursor: pointer;
+}
+
+/* Product Hero Section */
+.product-hero {
+  padding: 40px 0;
+}
+
+.product-hero-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.product-image-container {
+  position: relative;
+  flex: 1;
+  min-width: 400px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  display: block;
+}
+
+.product-info-container {
+  flex: 1;
+}
+
+.product-header {
+  margin-bottom: 24px;
+}
+
+.product-header h5 {
+  font-size: 33px;
+  font-family: 'UniSansBook';
+  font-weight: 400;
+  color: #333;
+  margin-bottom: -8px;
+}
+
+.product-header h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.product-description h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+.product-description p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.product-description strong {
+  font-weight: 600;
+  color: #000;
+}
+/* Core product feature styles */
+.product-features {
+  font-family: 'Poppins', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* Feature icons section - top of page */
+.feature-icons-section {
+  padding: 40px 0 20px;
+}
+
+.feature-icons-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.feature-icon-item {
+  flex: 1;
+  text-align: center;
+}
+
+.feature-icon-item h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.feature-icon-item p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Main feature panel */
+.feature-panel {
+  background-color: #222;
+  color: white;
+  border-radius: 12px;
+  padding: 60px 40px;
+  margin: 30px 0;
+  position: relative; /* Important for image positioning */
+  overflow: visible; /* Allow image to overflow */
+}
+
+.feature-content {
+  display: flex;
+  align-items: center;
+}
+
+.feature-text {
+  flex: 1;
+  max-width: 60%; /* Control text width */
+  padding-right: 40px;
+}
+
+.feature-text h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.feature-text p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.feature-text strong {
+  font-weight: 600;
+}
+
+/* Improved drill image positioning */
+.feature-image-container {
+  flex: 1;
+  position: relative;
+}
+
+.drill-image-wrapper {
+  position: absolute;
+  right: -10px; /* Extend beyond container */
+  top: -150px; /* Pull image up */
+  width: 600px; /* Control image width */
+  height: auto;
+}
+
+.drill-image {
+  width: 120%;
+  height: 120%;
+  /* height: auto; */
+  display: block;
+}
+
+.feature-label {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.function-label {
+  top: 30px;
+  right: 20px;
+}
+
+.handle-label {
+  bottom: 60px;
+  right: 20px;
+}
+
+/* Additional feature section */
+.additional-feature {
+  padding: 30px 0 60px;
+  margin-top: 80px; /* Space for overflowing image */
+}
+
+.additional-feature h2 {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Responsive design */
+@media (max-width: 1100px) {
+  .drill-image-wrapper {
+      right: -40px;
+      top: -80px;
+      width: 420px;
+  }
+}
+
+@media (max-width: 991px) {
+  .feature-icons-grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+  }
+  
+  .feature-icon-item {
+      max-width: 320px;
+  }
+  
+  .feature-content {
+      flex-direction: column;
+  }
+  
+  .feature-text {
+      max-width: 100%;
+      padding-right: 0;
+      text-align: center;
+  }
+  
+  .drill-image-wrapper {
+      position: relative;
+      right: auto;
+      top: auto;
+      width: 100%;
+      max-width: 350px;
+      margin: 30px auto 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .feature-panel {
+      padding: 40px 20px;
+  }
+  
+  .feature-text h2 {
+      font-size: 26px;
+  }
+  
+  .feature-text p {
+      font-size: 15px;
+  }
+  
+  .feature-icons-section {
+      padding: 30px 0 10px;
+  }
+  
+  .feature-icon-item h3 {
+      font-size: 16px;
+  }
+  
+  .feature-icon-item p {
+      font-size: 13px;
+  }
+  
+  .additional-feature {
+      margin-top: 40px;
+  }
+  
+  .additional-feature h2 {
+      font-size: 26px;
+  }
 }

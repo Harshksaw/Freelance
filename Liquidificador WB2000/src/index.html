@@ -1,822 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Furadeira de Impacto WF 700FE W2</title>
+    <title>WAP - Robot W90</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <style>
-      :root {
-        --color-primary: #ff6500;
-        --color-primary-dark: #dd5500;
-        --color-secondary: #333333;
-        --color-gray-light: #f5f5f5;
-        --color-zinc: #71717a;
-      }
-      
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      
-      html, body {
-        font-family: 'Poppins', sans-serif;
-        width: 100%;
-        height: 100%;
-      }
-      
-      .font-uni_sans {
-        font-family: 'Poppins', sans-serif;
-      }
-      
-      .bg-orange-primary {
-        background-color: var(--color-primary);
-      }
-      
-      .bg-orange-secondary {
-        background-color: var(--color-primary-dark);
-      }
-      
-      .bg-zinc-primary {
-        background-color: var(--color-secondary);
-      }
-      
-      .bg-gray-light-primary {
-        background-color: var(--color-gray-light);
-      }
-      
-      .text-zinc-primary {
-        color: var(--color-zinc);
-      }
-      
-      .text-orange-primary {
-        color: var(--color-primary);
-      }
-      
-      .w-\[min\(1200px\2c _90\%\)\] {
-        width: min(1200px, 90%);
-      }
-      
-      .w-\[min\(1200px\2c _80\%\)\] {
-        width: min(1200px, 80%);
-      }
-      
-      .mx-auto {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .flex {
-        display: flex;
-      }
-      
-      .grid {
-        display: grid;
-      }
-      
-      .flex-col {
-        flex-direction: column;
-      }
-      
-      .items-center {
-        align-items: center;
-      }
-      
-      .justify-center {
-        justify-content: center;
-      }
-      
-      .text-center {
-        text-align: center;
-      }
-      
-      .text-white {
-        color: white;
-      }
-      
-      .font-bold {
-        font-weight: 700;
-      }
-      
-      .text-2xl {
-        font-size: 1.5rem;
-        line-height: 2rem;
-      }
-      
-      .text-xl {
-        font-size: 1.25rem;
-        line-height: 1.75rem;
-      }
-      
-      .text-lg {
-        font-size: 1.125rem;
-        line-height: 1.75rem;
-      }
-      
-      .text-base {
-        font-size: 1rem;
-        line-height: 1.5rem;
-      }
-      
-      .py-2 {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-      }
-      
-      .px-7 {
-        padding-left: 1.75rem;
-        padding-right: 1.75rem;
-      }
-      
-      .rounded-b-lg {
-        border-bottom-left-radius: 0.5rem;
-        border-bottom-right-radius: 0.5rem;
-      }
-      
-      .rounded-xl {
-        border-radius: 0.75rem;
-      }
-      
-      .rounded-3xl {
-        border-radius: 1.5rem;
-      }
-      
-      .rounded-full {
-        border-radius: 9999px;
-      }
-      
-      .overflow-hidden {
-        overflow: hidden;
-      }
-      
-      .mt-6 {
-        margin-top: 1.5rem;
-      }
-      
-      .mt-12 {
-        margin-top: 3rem;
-      }
-      
-      .mt-24 {
-        margin-top: 6rem;
-      }
-      
-      .mt-36 {
-        margin-top: 9rem;
-      }
-      
-      .mt-4 {
-        margin-top: 1rem;
-      }
-      
-      .mt-8 {
-        margin-top: 2rem;
-      }
-      
-      .mt-10 {
-        margin-top: 2.5rem;
-      }
-      
-      .gap-12 {
-        gap: 3rem;
-      }
-      
-      .gap-8 {
-        gap: 2rem;
-      }
-      
-      .gap-4 {
-        gap: 1rem;
-      }
-      
-      .max-w-\[300px\] {
-        max-width: 300px;
-      }
-      
-      .max-w-\[700px\] {
-        max-width: 700px;
-      }
-      
-      .max-w-\[80\%\] {
-        max-width: 80%;
-      }
-      
-      .max-w-\[90\%\] {
-        max-width: 90%;
-      }
-      
-      .max-w-\[70\%\] {
-        max-width: 70%;
-      }
-      
-      .w-full {
-        width: 100%;
-      }
-      
-      .h-full {
-        height: 100%;
-      }
-      
-      .h-12 {
-        height: 3rem;
-      }
-      
-      .h-16 {
-        height: 4rem;
-      }
-      
-      .aspect-video {
-        aspect-ratio: 16 / 9;
-      }
-      
-      .aspect-square {
-        aspect-ratio: 1 / 1;
-      }
-      
-      .object-cover {
-        object-fit: cover;
-      }
-      
-      .relative {
-        position: relative;
-      }
-      
-      .absolute {
-        position: absolute;
-      }
-      
-      .left-1\/2 {
-        left: 50%;
-      }
-      
-      .top-1\/2 {
-        top: 50%;
-      }
-      
-      .-translate-x-1\/2 {
-        transform: translateX(-50%);
-      }
-      
-      .-translate-y-1\/2 {
-        transform: translateY(-50%);
-      }
-      
-      .shadow-bottom {
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      }
-      
-      .line-clamp-2 {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-      
-      .leading-6 {
-        line-height: 1.5rem;
-      }
-      
-      .pb-10 {
-        padding-bottom: 2.5rem;
-      }
-      
-      .pb-2 {
-        padding-bottom: 0.5rem;
-      }
-      
-      .pt-3 {
-        padding-top: 0.75rem;
-      }
-      
-      .pl-5 {
-        padding-left: 1.25rem;
-      }
-      
-      .pl-14 {
-        padding-left: 3.5rem;
-      }
-      
-      .py-6 {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
-      }
-      
-      .hidden {
-        display: none;
-      }
-      
-      .block {
-        display: block;
-      }
-      
-      /* Features Icons */
-      .feature-icon {
-        width: 60px;
-        height: 60px;
-        background-color: var(--color-primary);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-      }
-      
-      .feature-icon svg {
-        width: 32px;
-        height: 32px;
-        fill: white;
-      }
-      
-      /* Media Queries */
-      @media (min-width: 768px) {
-        .md\:flex {
-          display: flex;
-        }
-        
-        .md\:grid {
-          display: grid;
-        }
-        
-        .md\:grid-cols-3 {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-        
-        .md\:grid-cols-12 {
-          grid-template-columns: repeat(12, minmax(0, 1fr));
-        }
-        
-        .md\:col-start-1 {
-          grid-column-start: 1;
-        }
-        
-        .md\:col-end-6 {
-          grid-column-end: 6;
-        }
-        
-        .md\:col-start-4 {
-          grid-column-start: 4;
-        }
-        
-        .md\:col-end-13 {
-          grid-column-end: 13;
-        }
-        
-        .md\:row-span-full {
-          grid-row: 1 / -1;
-        }
-        
-        .md\:flex-row {
-          flex-direction: row;
-        }
-        
-        .md\:flex-row-reverse {
-          flex-direction: row-reverse;
-        }
-        
-        .md\:flex-1 {
-          flex: 1 1 0%;
-        }
-        
-        .md\:basis-\[40\%\] {
-          flex-basis: 40%;
-        }
-        
-        .md\:basis-\[60\%\] {
-          flex-basis: 60%;
-        }
-        
-        .md\:static {
-          position: static;
-        }
-        
-        .md\:hidden {
-          display: none;
-        }
-        
-        .md\:block {
-          display: block;
-        }
-        
-        .md\:text-left {
-          text-align: left;
-        }
-        
-        .md\:w-full {
-          width: 100%;
-        }
-        
-        .md\:w-\[95\%\] {
-          width: 95%;
-        }
-        
-        .md\:max-w-\[80\%\] {
-          max-width: 80%;
-        }
-        
-        .md\:max-w-\[90\%\] {
-          max-width: 90%;
-        }
-        
-        .md\:max-w-\[550px\] {
-          max-width: 550px;
-        }
-        
-        .md\:rounded-3xl {
-          border-radius: 1.5rem;
-        }
-        
-        .md\:mt-10 {
-          margin-top: 2.5rem;
-        }
-        
-        .md\:mt-\[180px\] {
-          margin-top: 180px;
-        }
-        
-        .md\:mx-0 {
-          margin-left: 0;
-          margin-right: 0;
-        }
-        
-        .md\:mt-28 {
-          margin-top: 7rem;
-        }
-        
-        .md\:mt-72 {
-          margin-top: 18rem;
-        }
-        
-        .md\:gap-8 {
-          gap: 2rem;
-        }
-        
-        .md\:gap-20 {
-          gap: 5rem;
-        }
-        
-        .md\:text-base {
-          font-size: 1rem;
-        }
-        
-        .md\:aspect-\[29\/35\] {
-          aspect-ratio: 29 / 35;
-        }
-      }
-      
-      /* Splide Custom Styles */
-      .splide__pagination__page {
-        background: #ccc;
-      }
-      
-      .splide__pagination__page.is-active {
-        background: var(--color-primary);
-      }
-    </style>
-  </head>
-
-  <body>
-    <main>
-      <section class="w-[min(1200px,_90%)] mx-auto">
-        <div class="w-full flex-col items-center flex md:mt-10">
-          <div
-            @click="showVideo = !showVideo"
-            x-data="{ showVideo: false }"
-            class="hidden md:block w-full aspect-video rounded-2xl overflow-hidden"
-          >
-            <div x-show="!showVideo" class="relative h-full">
-              <img
-                src="/api/placeholder/1200/675"
-                alt="Video Thumbnail"
-                class="h-full object-cover"
-              />
-              <button
-                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              >
-                <svg
-                  width="80"
-                  height="80"
-                  viewBox="0 0 80 80"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="40"
-                    cy="40"
-                    r="40"
-                    fill="white"
-                    fill-opacity="0.53"
-                  />
-                  <circle cx="40" cy="40" r="32" fill="white" />
-                  <path
-                    d="M51 40.5L35.25 49.5933L35.25 31.4067L51 40.5Z"
-                    fill="#1A1A1A"
-                  />
-                </svg>
-              </button>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-links">
+                    <a href="#" class="top-link">LOJA OFICIAL</a>
+                    <a href="#" class="top-link">BLOG</a>
+                    <a href="#" class="top-link">CENTRAL DE AJUDA</a>
+                    <a href="#" class="top-link">ASSISTÊNCIA TÉCNICA</a>
+                    <a href="#" class="top-link">CONTATO</a>
+                </div>
             </div>
-
-            <iframe
-              x-show="showVideo"
-              loading="lazy"
-              :src="showVideo ? 'https://www.youtube.com/embed/VIDEO_ID_HERE?enablejsapi=1&autoplay=1' : ''"
-              frameborder="0"
-              class="w-full aspect-video hidden md:block"
-              allow="autoplay; encrypted-media"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="flex">
-            <h1
-              class="py-2 text-center text-white rounded-b-lg md:py-2 px-7 text-1xl font-poppins bg-orange-primary"
-            >
-              WAP
-            </h1>
-          </div>
         </div>
-      </section>
-      
-      <section class="mt-24 w-[min(1200px,_90%)] mx-auto">
-        <div class="mx-auto max-w-[1000px] relative">
-          <header
-            class="flex items-center w-max absolute top-0 right-0 max-w-[62%] -mt-7"
-          >
-            <div class="w-1/4 mr-2 md:mr-4">
-              <!-- WAP Logo -->
-              <svg
-                class="w-full"
-                width="167"
-                height="92"
-                viewBox="0 0 167 92"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M37.9979 13.6275H58.0021C73.9125 13.6275 86.0021 25.717 86.0021 41.6275V41.6275C86.0021 57.5379 73.9125 69.6275 58.0021 69.6275H37.9979C22.0875 69.6275 9.99789 57.5379 9.99789 41.6275V41.6275C9.99789 25.717 22.0875 13.6275 37.9979 13.6275Z"
-                  fill="#FF6500"
-                />
-                <path
-                  d="M33.5 41.5L42.5 32.5L42.5 50.5L33.5 41.5Z"
-                  fill="white"
-                />
-                <path
-                  d="M48.5 41.5L57.5 32.5L57.5 50.5L48.5 41.5Z"
-                  fill="white"
-                />
-                <path
-                  d="M63.5 41.5L72.5 32.5L72.5 50.5L63.5 41.5Z"
-                  fill="white"
-                />
-              </svg>
+        
+        <div class="main-header container">
+            <div class="logo">
+                <a href="/">
+                    <img src="path/to/wap-logo.png" alt="WAP" />
+                </a>
             </div>
-            <div
-              class="flex flex-col justify-center font-uni_sans border-l border-black pl-2 md:pl-5"
-            >
-              <span
-                class="font-bold leading-6 md:leading-8 text-[clamp(15px,4vw,45px)]"
-                >FURADEIRA DE IMPACTO</span
-              >
-              <span class="text-[clamp(14px,4vw,35px)]">WF 700FE W2</span>
+            
+            <div class="search-container">
+                <form action="/search" method="get">
+                    <input 
+                        type="text" 
+                        name="q" 
+                        placeholder="Olá, o que está procurando hoje?" 
+                        class="search-input"
+                    />
+                    <button type="submit" class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </form>
             </div>
-          </header>
-          <img
-            class="w-full"
-            src="/api/placeholder/1000/800"
-            alt="Furadeira de Impacto WF 700FE W2"
-          />
+            
+            <div class="header-actions">
+                <a href="/account" class="account-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+                
+                <a href="/cart" class="cart-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">2</span>
+                </a>
+            </div>
         </div>
-      </section>
-      
-      <section class="mt-24 pb-10 w-[min(1200px,_90%)] mx-auto">
-        <div
-          class="max-w-[900px] grid mx-auto font-uni_sans gap-12 justify-center md:grid-cols-3"
-        >
-          <div class="flex flex-col gap-0.5 max-w-[300px] items-center">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M11.9997 2.31245C6.56225 2.31245 2.33301 6.5417 2.33301 11.9791C2.33301 17.4166 6.56225 21.6458 11.9997 21.6458C17.4372 21.6458 21.6664 17.4166 21.6664 11.9791C21.6664 6.5417 17.4372 2.31245 11.9997 2.31245ZM16.1456 15.9374L15.043 17.0399L11.9997 14.0207L8.95642 17.0399L7.85384 15.9374L10.8972 12.9166L7.85384 9.8957L8.95642 8.79311L11.9997 11.8124L15.043 8.79311L16.1456 9.8957L13.1022 12.9166L16.1456 15.9374Z" fill="white"/>
-              </svg>
+        
+        <nav class="main-nav">
+            <div class="container">
+                <button class="menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                
+                <div class="nav-categories">
+                    <a href="#" class="nav-category-toggle">Todas as Categorias <span class="dropdown-icon">▼</span></a>
+                    <!-- Dropdown menu would go here -->
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#">Lançamentos</a></li>
+                    <li><a href="#">Aspirador de Pó</a></li>
+                    <li><a href="#">Robô Aspirador de Pó</a></li>
+                    <li><a href="#">Extratoras</a></li>
+                    <li><a href="#">Lavadoras de Alta Pressão</a></li>
+                    <li><a href="#">Ferramentas</a></li>
+                </ul>
             </div>
-            <header
-              class="font-bold text-2xl text-center line-clamp-2 leading-6 h-12 mt-6"
-            >
-              Alta potência
-            </header>
-            <article class="text-lg text-center md:text-base">
-              Motor de 700W para perfurações precisas em madeira, metal e concreto.
-            </article>
-          </div>
-          <div class="flex flex-col gap-0.5 max-w-[300px] items-center">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M13.0493 2.26901C12.4403 1.91701 11.5583 1.91701 10.9493 2.26901L3.77929 6.25701C3.14929 6.62301 2.72729 7.34901 2.72729 8.08001V15.916C2.72729 16.646 3.14929 17.372 3.77929 17.738L10.9493 21.726C11.5583 22.078 12.4403 22.078 13.0493 21.726L20.2193 17.738C20.8493 17.372 21.2713 16.647 21.2713 15.916V8.08001C21.2713 7.34901 20.8493 6.62301 20.2193 6.25701L13.0493 2.26901ZM11.9993 15.9C9.89929 15.9 8.19929 14.2 8.19929 12.1C8.19929 9.99901 9.89929 8.30001 11.9993 8.30001C14.0993 8.30001 15.7993 10 15.7993 12.1C15.7993 14.2 14.0993 15.9 11.9993 15.9Z" fill="white"/>
-              </svg>
-            </div>
-            <header
-              class="font-bold text-2xl text-center line-clamp-2 leading-6 h-12 mt-6"
-            >
-              Mandril de 1/2"
-            </header>
-            <article class="text-lg text-center md:text-base">
-              Compatível com diversos acessórios para diferentes aplicações.
-            </article>
-          </div>
-          <div class="flex flex-col gap-0.5 max-w-[300px] items-center">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12.3701 2.31L15.2801 8.18L21.7001 9.09L17.0301 13.6L18.1201 20L12.3701 16.98L6.62012 20L7.71012 13.6L3.04012 9.09L9.46012 8.18L12.3701 2.31ZM8.00012 14V16H16.0001V14H8.00012ZM8.00012 11V13H16.0001V11H8.00012ZM8.00012 8V10H16.0001V8H8.00012Z" fill="white"/>
-              </svg>
-            </div>
-            <header
-              class="font-bold text-2xl text-center line-clamp-2 leading-6 h-12 mt-6"
-            >
-              Controle de velocidade
-            </header>
-            <article class="text-lg text-center md:text-base">
-              Ajuste a velocidade conforme o material, proporcionando maior precisão.
-            </article>
-          </div>
+        </nav>
+        
+        <div class="breadcrumb container">
+            <ul>
+                <li><a href="#">Loja Oficial WAP</a></li>
+                <li><a href="#">Aspirador de Pó</a></li>
+                <li><a href="#">Robô Aspirador de Pó</a></li>
+                <li>Robot W90</li>
+            </ul>
         </div>
-      </section>
-      
-      <section
-        class="bg-zinc-primary relative mt-[clamp(150px,55vw,500px)] max-w-[1200px] mx-auto text-white font-uni_sans md:mt-[180px] md:rounded-3xl md:w-[95%]"
-      >
-        <div class="md:flex md:flex-row-reverse md:max-w-[80%] md:mx-auto">
-          <div class="relative md:static md:basis-[60%]">
-            <img
-              class="absolute -top-[clamp(150px,55vw,500px)] left-1/2 -translate-x-1/2 max-w-[68%] mx-auto md:translate-x-0 md:-top-[min(10vw,120px)] md:right-0 md:max-w-[55%] md:max-h-[700px]"
-              src="/api/placeholder/500/700"
-              alt="Furadeira de Impacto WF 700FE W2 em ação"
-            />
-          </div>
-          <header
-            class="pt-[clamp(150px,55vw,500px)] md:basis-[40%] md:py-[min(10vw,120px)]"
-          >
-            <h3
-              class="text-center font-bold text-2xl mt-8 w-[min(700px,85%)] mx-auto md:w-full md:text-left"
-            >
-              TRANSFORME CONSTRUÇÕES E MONTAGENS COM PRATICIDADE
-            </h3>
-            <p
-              class="mt-6 w-4/5 mx-auto text-center md:w-full md:text-left text-lg md:text-base"
-            >
-              A busca por uma solução confiável e versátil para seus projetos acabou. A
-              <strong>FURADEIRA DE IMPACTO WAP WF 700FE W2</strong> traz potência e precisão para perfurar
-              diferentes materiais como madeira, metal e concreto. Equipada com controle de velocidade
-              variável e mandril de 1/2", ela garante o melhor desempenho em qualquer tipo de trabalho.
-            </p>
-          </header>
-        </div>
-        <div class="mt-16 pb-[145px] md:pb-[210px] md:mt-28">
-          <h3 class="text-center font-bold text-2xl w-[min(700px,90%)] mx-auto">
-            CONTROLE TOTAL EM QUALQUER DESAFIO
-          </h3>
-          <p
-            class="mt-6 w-4/5 mx-auto text-center max-w-[700px] text-lg md:text-base"
-          >
-            A velocidade variável da furadeira WAP permite que você assuma o controle
-            do trabalho do início ao fim com facilidade. Com o botão trava, você pode 
-            manter a velocidade constante para trabalhos contínuos sem esforço adicional. 
-            A função de reversão amplia as possibilidades de uso, permitindo tanto 
-            perfurar quanto parafusar com precisão.
-          </p>
-        </div>
-        <
-          class="text-black absolute bottom-0 translate-y-3/4 md:translate-y-2/4 w-full"
-        >
-          <div
-            class="grid grid-cols-3 max-w-[90%] mx-auto gap-1.5 md:gap-4 md:max-w-[80%]"
-          >
-            <div class="text-center">
-              <div class="relative">
-                <div
-                  class="w-full aspect-[21/44] md:aspect-[29/35] rounded-xl overflow-hidden"
-                >
-                  <img
-                    class="w-full h-full object-cover"
-                    src="/api/placeholder/300/500"
-                    alt="Capacidade de perfuração MADEIRA"
-                  />
-                </div>
-              </div>
-              <div>
-                <h4 class="font-bold text-xl mt-4">MADEIRA</h4>
-                <span class="text-zinc-primary mt-1.5">
-                  20mm de capacidade;
-                </span>
-              </div>
+    </header>
+    
+    <main class="container">
+        <div class="product-detail">
+            <div class="product-gallery">
+                <!-- Product image would go here -->
             </div>
-            <div class="text-center">
-              <div class="relative aspect-square">
-                <div
-                  class="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2"
-                >
-                  <svg
-                    width="45"
-                    height="45"
-                    viewBox="0 0 81 81"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      width="80.9998"
-                      height="80.8566"
-                      rx="8"
-                      fill="#FF6500"
-                    />
-                    <path
-                      d="M24 29L29 24L38 33L52 19L57 24L38 43L24 29ZM19 62V52L28 43L37 52L28 61L19 62Z"
-                      stroke="white"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+            
+            <div class="product-info">
+                <div class="product-rating">
+                    <span class="rating-score">4.9 de 5</span>
+                    <div class="rating-stars">
+                        <span class="star filled"></span>
+                        <span class="star filled"></span>
+                        <span class="star filled"></span>
+                        <span class="star filled"></span>
+                        <span class="star filled"></span>
+                    </div>
+                    <a href="#reviews" class="review-count">(6) Clique e veja!</a>
                 </div>
-                <divabsolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2"
-                >
-                  <svg
-                    width="45"
-                    height="45"
-                    viewBox="0 0 81 81"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      width="80.9998"
-                      height="80.8566"
-                      rx="8"
-                      fill="#FF6500"
-                    />
-                    <path
-                      d="M41.4 23H28.4C25.1 23 22.4 25.7 22.4 29V53C22.4 56.3 25.1 59 28.4 59H52.4C55.7 59 58.4 56.3 58.4 53V40M41.5 40.5L59 23M56 23H46V33"
-                      stroke="white"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+                
+                <h1 class="product-title">Otimize o tempo da faxina com o robô aspirador WAP ROBOT W90!</h1>
+                <p class="product-sku">Ref: FW009026 <a href="#" class="view-details">Ver descrição completa</a></p>
+                
+                <div class="shipping-calculator">
+                    <h3>Informe seu CEP (obrigatório):</h3>
+                    <div class="shipping-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="10" r="3"></circle>
+                            <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path>
+                        </svg>
+                        <input type="text" placeholder="00.000-000" class="cep-input">
+                        <button class="ok-button">OK</button>
+                    </div>
+                    <p class="shipping-note">Dúvidas seu CEP <a href="#" class="click-here">Clique Aqui!</a></p>
                 </div>
-                <div
-                  class="w-full aspect-[21/44] md:aspect-[29/35] rounded-xl overflow-hidden"
-                >
-                  <img
-                    class="w-full h-full object-cover"
-                    src="/api/placeholder/300/500"
-                    alt="Capacidade de perfuração AÇO"
-                  />
-                </div>
-              </div>
-              <div>
-                <h4 class="font-bold text-xl mt-4">AÇO</h4>
-                <span class="text-zinc-primary mt-1.5">
-                  10mm de capacidade;
-                </span>
-              </div>
             </div>
-            <div class="text-center">
-              <div class="relative aspect-square">
-                <div
-                  class="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2"
-                >
-                  <svg
-                    width="45"
-                    height="45"
-                    viewBox="0 0 81 81"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.000976562"
-                      width="80.9998"
-                      height="80.8566"
-                      rx="8"
-                      fill="#FF6500"
-                    />
-                    <path
-                      d="M56 23.001L54 19.001L27 29.001L29 33.001L56 23.001ZM29 33.001L25 60.001L31 62.001L35 35.001L29 33.001Z"
-                      stroke="white"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-             
-                </div>
-                </div>
-              </main>
-              </body>
-              
+        </div>
+    </main>
+</body>
+</html>

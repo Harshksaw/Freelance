@@ -105,20 +105,31 @@
     <main class="container">
         <div class="product-detail">
             <div class="product-gallery">
-                <!-- Product image would go here -->
+                <div class="video-container">
+                    <div class="video-player">
+                        <video poster="path/to/video-thumbnail.jpg" controls>
+                            <source src="path/to/product-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
             
             <div class="product-info">
                 <div class="product-rating">
-                    <span class="rating-score">4.9 de 5</span>
                     <div class="rating-stars">
                         <span class="star filled"></span>
                         <span class="star filled"></span>
                         <span class="star filled"></span>
                         <span class="star filled"></span>
                         <span class="star filled"></span>
+                        <span class="review-count">(6) Clique e veja!</span>
                     </div>
-                    <a href="#reviews" class="review-count">(6) Clique e veja!</a>
                 </div>
                 
                 <h1 class="product-title">Otimize o tempo da faxina com o robô aspirador WAP ROBOT W90!</h1>
@@ -126,16 +137,32 @@
                 
                 <div class="shipping-calculator">
                     <h3>Informe seu CEP (obrigatório):</h3>
-                    <div class="shipping-input">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="10" r="3"></circle>
-                            <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path>
-                        </svg>
+                    <div class="shipping-input-wrapper">
                         <input type="text" placeholder="00.000-000" class="cep-input">
                         <button class="ok-button">OK</button>
                     </div>
                     <p class="shipping-note">Dúvidas seu CEP <a href="#" class="click-here">Clique Aqui!</a></p>
                 </div>
+                
+                <div class="product-actions">
+                    <button class="buy-now-button">COMPRAR AGORA</button>
+                    <button class="buy-partner-button">COMPRE EM UMA LOJA PARCEIRA</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Video section below product info -->
+        <div class="product-video-section">
+            <div class="video-wrapper">
+                <video poster="path/to/main-video-thumbnail.jpg" controls>
+                    <source src="path/to/main-product-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button class="play-button large">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                </button>
             </div>
         </div>
     </main>

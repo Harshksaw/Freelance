@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Uni Sans';
+  src: url('font/Uni_Sans_SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Uni Sans';
+  src: url('font/Uni_Sans_Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Uni Sans';
+  src: url('font/Uni_Sans_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}

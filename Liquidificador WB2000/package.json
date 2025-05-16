@@ -1,0 +1,17 @@
+{
+  "name": "liquidificador-wb2000",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss -i ./styles.css -o ./src/styles/styles.css --minify",
+    "LIQUIDIFICADOR_WB2000": "tailwindcss -i ./styles.css -o ./src/styles/styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
+  }
+}

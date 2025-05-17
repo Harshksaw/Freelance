@@ -1761,3 +1761,145 @@ ul {
     max-width: calc(50% - 20px);
   }
 }
+
+
+
+
+/* Product Highlights Section - Desktop Only */
+.product-highlights-section {
+  margin: 80px 0;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hide on mobile */
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .desktop-only {
+    display: block;
+  }
+}
+
+.highlights-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Main Drill Image Container */
+.drill-main-image {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.drill-image-500 {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit:cover;
+  z-index: 1;
+
+}
+
+/* Remove the callout-line::after since we're using the dot span now */
+.callout-line::after {
+  display: none;
+}
+
+/* Tagline at Bottom */
+.highlight-tagline {
+  margin-top: 30px;
+  position: relative;
+  text-align: left;
+  max-width: 1400px;
+  padding: 0 20px;
+}
+
+.highlight-tagline h2 {
+  font-size: 38px;
+  font-weight: 300;
+  color: #333;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.highlight-tagline strong {
+  font-weight: 900;
+  color: #000;
+}
+
+.tagline-spacer {
+  margin: 0 15px;
+}
+
+.tagline-line {
+  height: 1px;
+  background-color: #000;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Responsive adjustments for different desktop sizes */
+@media (max-width: 1400px) {
+  .feature-callout {
+    width: 250px;
+  }
+  
+  .callout-text {
+    font-size: 13px;
+  }
+  
+  .highlight-tagline h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .drill-main-image {
+    height: 500px;
+  }
+  
+  .feature-callout {
+    width: 220px;
+  }
+  
+  .callout-line {
+    flex: 0 0 60px;
+  }
+  
+  .highlight-tagline h2 {
+    font-size: 28px;
+  }
+  
+  /* Adjust positions for smaller desktop */
+  .depth-limiter {
+    top: 30px;
+    right: 0;
+  }
+  
+  .chuck {
+    top: 120px;
+    left: 100px;
+  }
+  
+  .aux-handle {
+    top: 370px;
+    left: 100px;
+  }
+  
+  .ergonomic-grip {
+    top: 200px;
+    right: 0;
+  }
+  
+  .chuck-key {
+    top: 420px;
+    right: 0;
+  }
+}

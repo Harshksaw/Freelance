@@ -10,81 +10,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles/styles.css" />
     <script >
-        // Carousel functionality
+    // Simple swipe handling for the mobile carousel
+// Enhanced snap behavior for the mobile carousel
 document.addEventListener('DOMContentLoaded', function() {
-  // Get carousel elements
   const slidesContainer = document.querySelector('.carousel-slides-container');
-  const slides = document.querySelectorAll('.carousel-slide');
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
-  const indicators = document.querySelectorAll('.indicator');
   
-  // Set initial slide index
-  let currentSlide = 0;
-  const totalSlides = slides.length;
-  
-  // Function to update carousel position
-  function updateCarousel() {
-    // Update slides position
-    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+  if (slidesContainer && window.innerWidth < 768) {
+    const slides = slidesContainer.querySelectorAll('.carousel-slide');
     
-    // Update indicators
-    indicators.forEach((indicator, index) => {
-      if (index === currentSlide) {
-        indicator.classList.add('active');
-      } else {
-        indicator.classList.remove('active');
+    // Force precise scroll snap by programmatically moving to slides
+    function snapToSlide() {
+      const scrollLeft = slidesContainer.scrollLeft;
+      const slideWidth = slides[0].offsetWidth;
+      const slideIndex = Math.round(scrollLeft / slideWidth);
+      
+      if (slidesContainer.scrollLeft !== slideIndex * slideWidth) {
+        slidesContainer.scrollTo({
+          left: slideIndex * slideWidth,
+          behavior: 'smooth'
+        });
       }
-    });
-  }
-  
-  // Event listeners for navigation buttons
-  prevBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateCarousel();
-  });
-  
-  nextBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
-  });
-  
-  // Event listeners for indicators
-  indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
-      currentSlide = index;
-      updateCarousel();
-    });
-  });
-  
-  // Touch events for swipe functionality
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  slidesContainer.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-  
-  slidesContainer.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // Swipe left - next slide
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateCarousel();
-    } else if (touchEndX > touchStartX + swipeThreshold) {
-      // Swipe right - previous slide
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateCarousel();
     }
+    
+    // Add scroll end detection to ensure clean snapping
+    let scrollTimeout;
+    slidesContainer.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(snapToSlide, 150);
+    });
+    
+    // Set initial position to the first slide
+    slidesContainer.scrollTo(0, 0);
   }
-  
-  // Initialize carousel
-  updateCarousel();
 });
     </script>
 </head>
@@ -143,23 +100,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
             </div>
         </div>
-
         <nav class="main-nav">
             <div class="container">
-                <button class="menu-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
-
-                <div class="nav-categories">
-                    <a href="#" class="nav-category-toggle">Todas as Categorias <span class="dropdown-icon">▼</span></a>
-                    <!-- Dropdown menu would go here -->
+                <div class="mobile-menu-container">
+                    <button class="menu-toggle" aria-label="Menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+        
+                    <div class="nav-categories">
+                        <a href="#" class="nav-category-toggle">Todas as Categorias <span class="dropdown-icon">▼</span></a>
+                    </div>
                 </div>
-
+        
                 <ul class="nav-links">
                     <li><a href="#">Lançamentos</a></li>
                     <li><a href="#">Aspirador de Pó</a></li>
@@ -192,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </video>
                         <button class="play-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
                                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
                             </svg>
@@ -200,31 +157,34 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             </div>
-
+        
             <div class="product-info">
                 <div class="product-rating">
                     <div class="rating-stars">
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="review-count">(6) Clique e veja!</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <a href="#reviews" class="review-count">(6) Clique e veja!</a>
                     </div>
                 </div>
-
+        
                 <h1 class="product-title">Otimize o tempo da faxina com o robô aspirador WAP ROBOT W90!</h1>
-                <p class="product-sku">Ref: FW009026 <a href="#" class="view-details">Ver descrição completa</a></p>
-
+                <p class="product-sku">
+                    Ref: <span class="sku-code">FW009026</span> 
+                    <a href="#description" class="view-details">Ver descrição completa</a>
+                </p>
+        
                 <div class="shipping-calculator">
                     <h3>Informe seu CEP (obrigatório):</h3>
                     <div class="shipping-input-wrapper">
                         <input type="text" placeholder="00.000-000" class="cep-input">
                         <button class="ok-button">OK</button>
                     </div>
-                    <p class="shipping-note">Dúvidas seu CEP <a href="#" class="click-here">Clique Aqui!</a></p>
+                    <p class="shipping-note">Dúvidas seu CEP <a href="#cep-help" class="click-here">Clique Aqui!</a></p>
                 </div>
-
+        
                 <div class="product-actions">
                     <button class="buy-now-button">COMPRAR AGORA</button>
                     <button class="buy-partner-button">COMPRE EM UMA LOJA PARCEIRA</button>
@@ -458,101 +418,93 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </section>
 
-
-        <div class="power-tool-controls-container">
-            <!-- Mobile Carousel View -->
-            <div class="controls-carousel-mobile">
-              <!-- Carousel Navigation -->
-              <button class="carousel-nav prev-btn" aria-label="Previous control">&lt;</button>
-              <button class="carousel-nav next-btn" aria-label="Next control">&gt;</button>
-              
-              <!-- Carousel Slides Container -->
-              <div class="carousel-slides-container">
-                <!-- Switch Mode Button Control -->
-                <div class="control-item mode-switch-control carousel-slide">
-                  <div class="control-image-wrapper">
-                    <img src="images/g7.png" alt="Botão comutador" class="control-image">
-                  </div>
-                  <h3 class="control-title">Botão comutador</h3>
-                  <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
-                </div>
-                
-                <!-- Speed Selector Control -->
-                <div class="control-item speed-selector-control carousel-slide">
-                  <div class="control-image-wrapper">
-                    <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
-                  </div>
-                  <h3 class="control-title">Seletor de velocidade</h3>
-                  <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
-                </div>
-                
-                <!-- Lock Button Control -->
-                <div class="control-item lock-button-control carousel-slide">
-                  <div class="control-image-wrapper">
-                    <img src="images/g9.png" alt="Botão trava" class="control-image">
-                  </div>
-                  <h3 class="control-title">Botão trava</h3>
-                  <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
-                </div>
-                
-                <!-- Rotation Direction Selector -->
-                <div class="control-item rotation-selector-control carousel-slide">
-                  <div class="control-image-wrapper">
-                    <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
-                  </div>
-                  <h3 class="control-title">Seletor de sentido de rotação</h3>
-                  <p class="control-description">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
-                </div>
-              </div>
-              
-              <!-- Carousel Indicators -->
-              <div class="carousel-indicators">
-                <span class="indicator active" data-slide="0"></span>
-                <span class="indicator" data-slide="1"></span>
-                <span class="indicator" data-slide="2"></span>
-                <span class="indicator" data-slide="3"></span>
-              </div>
-            </div>
-            
-            <!-- Desktop Grid View - Hidden on Mobile -->
-            <div class="controls-grid">
-              <!-- Switch Mode Button Control -->
-              <div class="control-item mode-switch-control">
-                <div class="control-image-wrapper">
-                  <img src="switch-mode-button.jpg" alt="Botão comutador" class="control-image">
-                </div>
-                <h3 class="control-title">Botão comutador</h3>
-                <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
-              </div>
-              
-              <!-- Speed Selector Control -->
-              <div class="control-item speed-selector-control">
-                <div class="control-image-wrapper">
-                  <img src="speed-selector.jpg" alt="Seletor de velocidade" class="control-image">
-                </div>
-                <h3 class="control-title">Seletor de velocidade</h3>
-                <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
-              </div>
-              
-              <!-- Lock Button Control -->
-              <div class="control-item lock-button-control">
-                <div class="control-image-wrapper">
-                  <img src="lock-button.jpg" alt="Botão trava" class="control-image">
-                </div>
-                <h3 class="control-title">Botão trava</h3>
-                <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
-              </div>
-              
-              <!-- Rotation Direction Selector -->
-              <div class="control-item rotation-selector-control">
-                <div class="control-image-wrapper">
-                  <img src="rotation-selector.jpg" alt="Seletor de sentido de rotação" class="control-image">
-                </div>
-                <h3 class="control-title">Seletor de sentido de rotação</h3>
-                <p class="control-description">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
-              </div>
-            </div>
+       <!-- Power Tool Controls Section -->
+<!-- Power Tool Controls Section -->
+<!-- Power Tool Controls Section -->
+<section class="tool-controls-section">
+    <div class="container">
+      <!-- Desktop Grid View - All controls displayed in a row -->
+      <div class="desktop-controls-grid">
+        <!-- Switch Mode Button Control -->
+        <div class="control-item mode-switch-control">
+          <div class="control-image-wrapper">
+            <img src="images/g7.png" alt="Botão comutador" class="control-image">
           </div>
+          <h3 class="control-title">Botão comutador</h3>
+          <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
+        </div>
+        
+        <!-- Speed Selector Control -->
+        <div class="control-item speed-selector-control">
+          <div class="control-image-wrapper">
+            <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
+          </div>
+          <h3 class="control-title">Seletor de velocidade</h3>
+          <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
+        </div>
+        
+        <!-- Lock Button Control -->
+        <div class="control-item lock-button-control">
+          <div class="control-image-wrapper">
+            <img src="images/g9.png" alt="Botão trava" class="control-image">
+          </div>
+          <h3 class="control-title">Botão trava</h3>
+          <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
+        </div>
+        
+        <!-- Rotation Direction Selector -->
+        <div class="control-item rotation-selector-control">
+          <div class="control-image-wrapper">
+            <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
+          </div>
+          <h3 class="control-title">Seletor de sentido de rotação</h3>
+          <p class="control-description">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
+        </div>
+      </div>
+      
+      <!-- Mobile Simple Swipeable Carousel View -->
+      <div class="mobile-controls-wrapper">
+        <!-- Carousel Slides Container -->
+        <div class="carousel-slides-container">
+          <!-- Switch Mode Button Control -->
+          <div class="control-item mode-switch-control carousel-slide">
+            <div class="control-image-container">
+              <img src="images/g7.png" alt="Botão comutador" class="control-image">
+            </div>
+            <h3 class="control-title">Botão comutador</h3>
+            <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
+          </div>
+          
+          <!-- Speed Selector Control -->
+          <div class="control-item speed-selector-control carousel-slide">
+            <div class="control-image-container">
+              <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
+            </div>
+            <h3 class="control-title">Seletor de velocidade</h3>
+            <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
+          </div>
+          
+          <!-- Lock Button Control -->
+          <div class="control-item lock-button-control carousel-slide">
+            <div class="control-image-container">
+              <img src="images/g9.png" alt="Botão trava" class="control-image">
+            </div>
+            <h3 class="control-title">Botão trava</h3>
+            <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
+          </div>
+          
+          <!-- Rotation Direction Selector -->
+          <div class="control-item rotation-selector-control carousel-slide">
+            <div class="control-image-container">
+              <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
+            </div>
+            <h3 class="control-title">Seletor de sentido de rotação</h3>
+            <p class="control-description">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
     </main>

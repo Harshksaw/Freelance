@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +9,86 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles/styles.css" />
+    <script >
+        // Carousel functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Get carousel elements
+  const slidesContainer = document.querySelector('.carousel-slides-container');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const indicators = document.querySelectorAll('.indicator');
+  
+  // Set initial slide index
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+  
+  // Function to update carousel position
+  function updateCarousel() {
+    // Update slides position
+    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+      if (index === currentSlide) {
+        indicator.classList.add('active');
+      } else {
+        indicator.classList.remove('active');
+      }
+    });
+  }
+  
+  // Event listeners for navigation buttons
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+  });
+  
+  // Event listeners for indicators
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      currentSlide = index;
+      updateCarousel();
+    });
+  });
+  
+  // Touch events for swipe functionality
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  slidesContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  slidesContainer.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swipe left - next slide
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      // Swipe right - previous slide
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+  }
+  
+  // Initialize carousel
+  updateCarousel();
+});
+    </script>
 </head>
+
 <body>
     <header>
         <div class="top-bar">
@@ -22,41 +102,39 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="main-header container">
             <div class="logo">
                 <a href="/">
                     <img src="path/to/wap-logo.png" alt="WAP" />
                 </a>
             </div>
-            
+
             <div class="search-container">
                 <form action="/search" method="get">
-                    <input 
-                        type="text" 
-                        name="q" 
-                        placeholder="Olá, o que está procurando hoje?" 
-                        class="search-input"
-                    />
+                    <input type="text" name="q" placeholder="Olá, o que está procurando hoje?" class="search-input" />
                     <button type="submit" class="search-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
                     </button>
                 </form>
             </div>
-            
+
             <div class="header-actions">
                 <a href="/account" class="account-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
                 </a>
-                
+
                 <a href="/cart" class="cart-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
@@ -65,22 +143,23 @@
                 </a>
             </div>
         </div>
-        
+
         <nav class="main-nav">
             <div class="container">
                 <button class="menu-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
                 </button>
-                
+
                 <div class="nav-categories">
                     <a href="#" class="nav-category-toggle">Todas as Categorias <span class="dropdown-icon">▼</span></a>
                     <!-- Dropdown menu would go here -->
                 </div>
-                
+
                 <ul class="nav-links">
                     <li><a href="#">Lançamentos</a></li>
                     <li><a href="#">Aspirador de Pó</a></li>
@@ -91,7 +170,7 @@
                 </ul>
             </div>
         </nav>
-        
+
         <div class="breadcrumb container">
             <ul>
                 <li><a href="#">Loja Oficial WAP</a></li>
@@ -101,43 +180,384 @@
             </ul>
         </div>
     </header>
-    
+
     <main class="container">
         <div class="product-detail">
             <div class="product-gallery">
-                <!-- Product image would go here -->
+                <div class="video-container">
+                    <div class="video-player">
+                        <video poster="path/to/video-thumbnail.jpg" controls>
+                            <source src="path/to/product-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button class="play-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
-            
+
             <div class="product-info">
                 <div class="product-rating">
-                    <span class="rating-score">4.9 de 5</span>
                     <div class="rating-stars">
                         <span class="star filled"></span>
                         <span class="star filled"></span>
                         <span class="star filled"></span>
                         <span class="star filled"></span>
                         <span class="star filled"></span>
+                        <span class="review-count">(6) Clique e veja!</span>
                     </div>
-                    <a href="#reviews" class="review-count">(6) Clique e veja!</a>
                 </div>
-                
+
                 <h1 class="product-title">Otimize o tempo da faxina com o robô aspirador WAP ROBOT W90!</h1>
                 <p class="product-sku">Ref: FW009026 <a href="#" class="view-details">Ver descrição completa</a></p>
-                
+
                 <div class="shipping-calculator">
                     <h3>Informe seu CEP (obrigatório):</h3>
-                    <div class="shipping-input">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="10" r="3"></circle>
-                            <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path>
-                        </svg>
+                    <div class="shipping-input-wrapper">
                         <input type="text" placeholder="00.000-000" class="cep-input">
                         <button class="ok-button">OK</button>
                     </div>
                     <p class="shipping-note">Dúvidas seu CEP <a href="#" class="click-here">Clique Aqui!</a></p>
                 </div>
+
+                <div class="product-actions">
+                    <button class="buy-now-button">COMPRAR AGORA</button>
+                    <button class="buy-partner-button">COMPRE EM UMA LOJA PARCEIRA</button>
+                </div>
             </div>
         </div>
+
+        <!-- Video section below product info -->
+        <div class="product-video-section">
+            <div class="video-wrapper">
+                <video poster="path/to/main-video-thumbnail.jpg" controls>
+                    <source src="path/to/main-product-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button class="play-button large">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <section class="product-hero">
+            <div class="container">
+                <div class="product-hero-content">
+                    <!-- Product Image Container -->
+                    <div class="product-image-container">
+                        <img src="./images/asset1.png" alt="Furadeira de Impacto WF 700FE W2" class="product-image">
+                    </div>
+        
+                    <!-- Product Info Container -->
+                    <div class="product-info-container">
+                        <div class="product-header">
+                            <h5>PARAFUSADEIRA E FURADEIRA DE IMPACTO</h5>
+                            <h1>WF 700FE W2</h1>
+                        </div>
+        
+                        <div class="product-description">
+                            <h2>Transforme construções, montagens e instalações com robustez</h2>
+                            <p>Para os que procuram potência e precisão em um só produto, ela combina <strong>700W de potência</strong> e <strong>40Nm de torque</strong> para elevar o status dos projetos do dia a dia a um novo nível.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Features Section -->
+                <div class="product-features">
+                    <div class="feature-icons-grid">
+                        <!-- Feature 1 -->
+                        <div class="feature-icons-grid">
+                            <!-- Feature 1 -->
+                            <div class="feature-icon-item">
+                                <img src="images/g4.png" alt="Ícone empunhadura" class="material-icon-img">
+                                <h3>Função impacto</h3>
+                                <p>Garanta mais facilidade ao perfurar superfícies duras e materiais rígidos.</p>
+                            </div>
+    
+                            <!-- Feature 2 -->
+                            <div class="feature-icon-item">
+                                <img src="images/g5.png" alt="Ícone empunhadura" class="material-icon-img">
+                                <h3>Controle de velocidade</h3>
+                                <p>Alterne entre os níveis de velocidade para maior controle, precisão e força para os
+                                    trabalhos.</p>
+                            </div>
+    
+                            <!-- Feature 3 -->
+                            <div class="feature-icon-item">
+                                  <img src="images/g5.png" alt="Ícone empunhadura" class="material-icon-img">
+                                <h3>Empunhadura auxiliar removível</h3>
+                                <p>Permite mais estabilidade e segurança ao perfurar materiais mais exigentes.</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Product Feature Main Section -->
+        <!-- Product Feature Section with proper image alignment -->
+        <section class="product-features">
+            <!-- Feature icons section -->
+          
+
+            <!-- Main feature panel with proper image positioning -->
+            <div class="feature-panel">
+                <div class="container">
+                    <div class="feature-content">
+                        <div class="feature-text">
+                            <h2>Força e estabilidade<br>total</h2>
+                            <p>
+                                Perfure com mais facilidade, precisão e conforto! A <strong>função impacto</strong>
+                                adiciona
+                                impactos simultâneos, facilitando a perfuração até em materiais rígidos e difíceis,
+                                como concreto e alvenaria. Para ter ainda mais controle, a <strong>empunhadura auxiliar
+                                    removível</strong> garante estabilidade e proporciona um manuseio mais confortável,
+                                tornando cada trabalho mais seguro.
+                            </p>
+                        </div>
+
+                        <!-- Fixed positioning for the drill image -->
+                        <div class="feature-image-container">
+                            <div class="drill-image-wrapper">
+                                <img src="./images/asset2.png" alt="Furadeira de Impacto WF 700FE W2"
+                                    class="drill-image">
+                                <div class="feature-label function-label">Função impacto</div>
+                                <div class="feature-label handle-label">Empunhadura auxiliar removível</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <section class="drill-capabilities">
+            <div class="container">
+                <!-- Desktop Layout -->
+                <div class="desktop-capabilities">
+                    <!-- Left side: Chuck image -->
+                    <div class="chuck-image-container">
+                        <img src="images/assets14.png" alt="Mandril da Furadeira de Impacto" class="chuck-image">
+                    </div>
+
+                    <!-- Right side: Text content -->
+                    <div class="agility-content">
+                        <h2>Mais agilidade e força</h2>
+                        <p>
+                            A parafusadeira e furadeira WAP conta com <strong>diferentes
+                                níveis de velocidade</strong>, permitindo ajustar a potência
+                            conforme a necessidade. Isso garante mais precisão em
+                            acabamentos e força extra para perfurações e fixações
+                            mais exigentes, para um acabamento de qualidade com
+                            menos esforço.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mobile Layout -->
+                <div class="mobile-capabilities">
+                    <!-- Mobile drill image at top for mobile -->
+                    <div class="mobile-drill-image"
+                    style="z-index: 1;"
+                    >
+                        <img src="images/assets14.png" alt="Mandril da Furadeira de Impacto" class="mobile-chuck-image">
+                    </div>
+
+                    <!-- Capacity panel for mobile -->
+                    <div class="mobile-capacity-panel"
+
+                    >
+                        <h3>Capacidade de perfuração:</h3>
+
+                        <div class="mobile-materials-grid">
+                            <!-- Material 1: Aço -->
+                            <div class="mobile-material-item">
+
+                                <img src="images/g1.png" alt="Ícone aço" class="mobile-material-icon-img">
+
+                                <div class="mobile-material-capacity">10mm</div>
+                            </div>
+
+                            <!-- Material 2: Madeira -->
+                            <div class="mobile-material-item">
+
+                                <img src="images/g3.png" alt="Ícone madeira" class="mobile-material-icon-img">
+
+                                <div class="mobile-material-capacity">20mm</div>
+                            </div>
+
+                            <!-- Material 3: Alvenaria -->
+                            <div class="mobile-material-item">
+
+                                <img src="images/g2.png" alt="Ícone alvenaria" class="mobile-material-icon-img">
+
+                                <div class="mobile-material-capacity">13mm</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile text content below capacity panel -->
+                    <div class="mobile-agility-content">
+                        <h2>Mais agilidade e força</h2>
+                        <p>
+                            A parafusadeira e furadeira WAP conta com <strong>diferentes
+                                níveis de velocidade</strong>, permitindo ajustar a potência
+                            conforme a necessidade. Isso garante mais precisão em
+                            acabamentos e força extra para perfurações e fixações
+                            mais exigentes, para um acabamento de qualidade com
+                            menos esforço.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Desktop Capacity Panel -->
+                <div class="capacity-panel">
+                    <div class="capacity-header">
+                        <h3>Capacidade </h3>
+                        <h3>de perfuração </h3>
+                    </div>
+
+                    <div class="materials-grid">
+                        <!-- Material 1: Aço -->
+                        <div class="material-item">
+
+                            <img src="images/g1.png" alt="Ícone aço" class="material-icon-img">
+
+                            <div class="material-capacity">10mm</div>
+                        </div>
+
+                        <!-- Material 2: Madeira -->
+                        <div class="material-item">
+
+                            <img src="images/g3.png" alt="Ícone madeira" class="material-icon-img">
+
+                            <div class="material-capacity">20mm</div>
+                        </div>
+
+                        <!-- Material 3: Alvenaria -->
+                        <div class="material-item">
+
+                            <img src="images/g2.png" alt="Ícone alvenaria" class="material-icon-img">
+
+                            <div class="material-capacity">13mm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="power-tool-controls-container">
+            <!-- Mobile Carousel View -->
+            <div class="controls-carousel-mobile">
+              <!-- Carousel Navigation -->
+              <button class="carousel-nav prev-btn" aria-label="Previous control">&lt;</button>
+              <button class="carousel-nav next-btn" aria-label="Next control">&gt;</button>
+              
+              <!-- Carousel Slides Container -->
+              <div class="carousel-slides-container">
+                <!-- Switch Mode Button Control -->
+                <div class="control-item mode-switch-control carousel-slide">
+                  <div class="control-image-wrapper">
+                    <img src="images/g7.png" alt="Botão comutador" class="control-image">
+                  </div>
+                  <h3 class="control-title">Botão comutador</h3>
+                  <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
+                </div>
+                
+                <!-- Speed Selector Control -->
+                <div class="control-item speed-selector-control carousel-slide">
+                  <div class="control-image-wrapper">
+                    <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
+                  </div>
+                  <h3 class="control-title">Seletor de velocidade</h3>
+                  <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
+                </div>
+                
+                <!-- Lock Button Control -->
+                <div class="control-item lock-button-control carousel-slide">
+                  <div class="control-image-wrapper">
+                    <img src="images/g9.png" alt="Botão trava" class="control-image">
+                  </div>
+                  <h3 class="control-title">Botão trava</h3>
+                  <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
+                </div>
+                
+                <!-- Rotation Direction Selector -->
+                <div class="control-item rotation-selector-control carousel-slide">
+                  <div class="control-image-wrapper">
+                    <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
+                  </div>
+                  <h3 class="control-title">Seletor de sentido de rotação</h3>
+                  <p class="control-description">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
+                </div>
+              </div>
+              
+              <!-- Carousel Indicators -->
+              <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
+              </div>
+            </div>
+            
+            <!-- Desktop Grid View - Hidden on Mobile -->
+            <div class="controls-grid">
+              <!-- Switch Mode Button Control -->
+              <div class="control-item mode-switch-control">
+                <div class="control-image-wrapper">
+                  <img src="switch-mode-button.jpg" alt="Botão comutador" class="control-image">
+                </div>
+                <h3 class="control-title">Botão comutador</h3>
+                <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
+              </div>
+              
+              <!-- Speed Selector Control -->
+              <div class="control-item speed-selector-control">
+                <div class="control-image-wrapper">
+                  <img src="speed-selector.jpg" alt="Seletor de velocidade" class="control-image">
+                </div>
+                <h3 class="control-title">Seletor de velocidade</h3>
+                <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
+              </div>
+              
+              <!-- Lock Button Control -->
+              <div class="control-item lock-button-control">
+                <div class="control-image-wrapper">
+                  <img src="lock-button.jpg" alt="Botão trava" class="control-image">
+                </div>
+                <h3 class="control-title">Botão trava</h3>
+                <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
+              </div>
+              
+              <!-- Rotation Direction Selector -->
+              <div class="control-item rotation-selector-control">
+                <div class="control-image-wrapper">
+                  <img src="rotation-selector.jpg" alt="Seletor de sentido de rotação" class="control-image">
+                </div>
+                <h3 class="control-title">Seletor de sentido de rotação</h3>
+                <p class="control-description">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
+              </div>
+            </div>
+          </div>
+
+
     </main>
+
+
 </body>
+
 </html>

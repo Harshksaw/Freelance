@@ -1451,3 +1451,174 @@ ul {
     max-width: 80%;
   }
 }
+
+
+
+
+/* Container for the entire power tool controls section */
+.power-tool-controls-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Individual control item styling */
+.control-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--background-light);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Control image wrapper to maintain consistent sizing */
+.control-image-wrapper {
+  width: 100%;
+  max-width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Control image styling */
+.control-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Control title styling */
+.control-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 0 var(--spacing-sm);
+  color: var(--text-color);
+}
+
+/* Control description styling */
+.control-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Mode Switch specific styling */
+.mode-switch-control .control-image-wrapper {
+  background-color: rgba(249, 168, 37, 0.1);
+}
+
+/* Speed Selector specific styling */
+.speed-selector-control .control-image-wrapper {
+  background-color: rgba(249, 168, 37, 0.1);
+}
+
+/* Lock Button specific styling */
+.lock-button-control .control-image-wrapper {
+  background-color: rgba(249, 168, 37, 0.1);
+}
+
+/* Rotation Direction Selector specific styling */
+.rotation-selector-control .control-image-wrapper {
+  background-color: rgba(249, 168, 37, 0.1);
+}
+
+/* Mobile Carousel Styles */
+.controls-carousel-mobile {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-slides-container {
+  display: flex;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Carousel Navigation */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-md);
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background-color: var(--primary-color);
+}
+
+/* Desktop Grid - Hidden on Mobile */
+.controls-grid {
+  display: none;
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  /* Tablet and above: Hide carousel, show grid */
+  .controls-carousel-mobile {
+    display: none;
+  }
+  
+  .controls-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .controls-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Larger spacing on desktop */
+  .power-tool-controls-container {
+    padding: var(--spacing-lg);
+  }
+}

@@ -1012,45 +1012,42 @@ ul {
   }
 }
 
-
-/* Drill capabilities section
----------------------------------------------- */
-
-/* Common styles */
 .drill-capabilities {
   font-family: 'Poppins', sans-serif;
-  /* margin: 80px 0; */
+  margin: 80px 0;
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1140px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
-/* Desktop capabilities layout */
+/* Desktop layout styling */
 .desktop-capabilities {
   display: flex;
   align-items: center;
-  /* gap: 50px; */
   margin-bottom: 60px;
+  position: relative;
+  padding-bottom: 100px; /* Space for overlapping panel */
 }
 
-/* Chuck image styling */
 .chuck-image-container {
   flex: 1;
   max-width: 45%;
+  position: relative;
+  z-index: 2; /* Place above the panel */
 }
 
 .chuck-image {
   width: 120%;
   max-width: 500px;
-  height:400px;
+  height: 400px;
   display: block;
-  transform: rotate(-20deg); 
+  transform: rotate(-20deg);
 }
 
-/* Text content styling */
 .agility-content {
   flex: 1;
 }
@@ -1073,210 +1070,33 @@ ul {
   color: #222;
 }
 
-/* Large capacity panel with blue border */
-.large-capacity-panel {
+/* Desktop Capacity panel styling */
+.capacity-panel {
   background-color: #222;
-  color: white;
   border-radius: 12px;
-  overflow: hidden;
-  position: relative;
   padding: 40px;
-
-  border: 2px solid #1e6dde; /* Blue border as shown in Image 1 */
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border: 2px solid #1e90ff;
 }
 
-.capacity-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.large-capacity-panel h3 {
+.capacity-header h3 {
   font-size: 26px;
   font-weight: 600;
   margin-bottom: 30px;
-  margin-right: auto; /* Align to left */
-}
-
-.materials-grid-large {
-  display: flex;
-  justify-content: space-around;
-  gap: 40px;
-}
-
-.material-item-large {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.material-header {
-  background-color: #f5a623; /* Orange header */
   color: white;
-  padding: 8px 15px;
-  border-radius: 8px 8px 0 0;
-  font-weight: 600;
-  font-size: 14px;
-  width: 100%;
-  text-align: center;
-}
-
-.material-icon-large {
-  background-color: white;
-  padding: 20px;
-  border-radius: 0 0 8px 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 80px;
-}
-
-.material-icon-img {
-  width: 40px;
-  height: auto;
-}
-
-.material-capacity {
-  font-size: 24px;
-  font-weight: 600;
-  margin-top: 15px;
-  color: white;
-}
-
-/* Mobile layout - Initially hidden */
-.mobile-capabilities {
-  display: none;
-}
-
-/* Responsive styles */
-@media (max-width: 991px) {
-  .desktop-capabilities, 
-  .large-capacity-panel {
-      display: none; /* Hide desktop layout */
-  }
-  
-  .mobile-capabilities {
-      display: block; /* Show mobile layout */
-  }
-  
-  /* Mobile chuck image */
-  .mobile-chuck-image {
-      text-align: center;
-      /* margin-bottom: 30px; */
-  }
-  
-  .mobile-chuck-image .chuck-image {
-      max-width: 250px;
-      margin: 0 auto;
-  }
-  
- 
-  
-  .capacity-panel h3 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 25px;
-      text-align: center;
-  }
-  
-  .materials-grid {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-  }
-  
-  .material-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
-  
-  .material-item .material-header {
-      font-size: 12px;
-      padding: 6px 10px;
-  }
-  
-  .material-item .material-icon {
-      background-color: white;
-      width: 100%;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 0 0 8px 8px;
-  }
-  
-  .material-item .material-capacity {
-      font-size: 18px;
-      margin-top: 10px;
-  }
-  
-  /* Mobile agility content */
-  .mobile-agility-content {
-      text-align: center;
-      padding: 0 15px;
-  }
-  
-  .mobile-agility-content h2 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 15px;
-  }
-  
-  .mobile-agility-content p {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #444;
-  }
-}
-
-@media (max-width: 767px) {
-  .materials-grid {
-      gap: 10px;
-  }
-  
-  .material-item .material-header {
-      font-size: 11px;
-      padding: 5px 8px;
-  }
-  
-  .material-item .material-icon {
-      height: 50px;
-  }
-  
-  .material-item .material-capacity {
-      font-size: 16px;
-  }
-}
-
-/* Material capacity panel styling */
-.capacity-panel {
-  display: flex;
-  background-color: #222;
-  color: white;
-  border-radius: 12px;
-  overflow: hidden;
-  padding: 40px;
-  margin-top: 20px;
-
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.capacity-panel h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 40px;
 }
 
 .materials-grid {
-  width: 80%;
   display: flex;
   justify-content: space-around;
   gap: 40px;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .material-item {
@@ -1284,11 +1104,11 @@ ul {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 100px; /* Fixed width for consistent sizing */
+  width: 100px;
 }
 
 .material-header {
-  background-color: #f5a623; /* Orange background */
+  background-color: #f5a623; /* Orange header */
   color: white;
   padding: 8px 15px;
   border-radius: 8px 8px 0 0;
@@ -1310,14 +1130,163 @@ ul {
 }
 
 .material-icon-img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
+  width: 80px;
   height: auto;
+  object-fit: contain;
 }
 
 .material-capacity {
   font-size: 24px;
   font-weight: 600;
   margin-top: 15px;
+  color: white;
+}
+
+/* Initially hide mobile layout */
+.mobile-capabilities {
+  display: none;
+}
+
+/* Mobile specific styling */
+.mobile-drill-image {
+  text-align: center;
+  margin-bottom: -60px;
+  position: relative;
+  z-index: 2;
+}
+
+.mobile-chuck-image {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.mobile-capacity-panel {
+  background-color: #222;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  margin: 0 auto 30px;
+  position: relative;
+  z-index: 1;
+  border: 2px solid #1e90ff;
+}
+
+.mobile-capacity-panel h3 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.mobile-materials-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.mobile-material-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.mobile-material-header {
+  background-color: #f5a623;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px 8px 0 0;
+  font-weight: 600;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-material-icon {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 8px 8px;
+  padding: 10px;
+  height: 60px;
+}
+
+.mobile-material-icon-img {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+.mobile-material-capacity {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: white;
+}
+
+.mobile-agility-content {
+  text-align: left;
+  padding: 0 15px;
+}
+
+.mobile-agility-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.mobile-agility-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+  .desktop-capabilities,
+  .capacity-panel {
+    display: none; /* Hide desktop components */
+  }
+  
+  .mobile-capabilities {
+    display: block; /* Show mobile layout */
+
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-materials-grid {
+    gap: 5px;
+  }
+  
+  .mobile-material-header {
+    font-size: 11px;
+    padding: 5px;
+  }
+  
+  .mobile-material-icon {
+    height: 50px;
+  }
+  
+  .mobile-material-capacity {
+    font-size: 16px;
+  }
+  
+  .mobile-agility-content h2 {
+    font-size: 22px;
+  }
+  
+  .mobile-agility-content p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-chuck-image {
+    max-width: 80%;
+  }
 }

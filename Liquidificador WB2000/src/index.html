@@ -265,13 +265,11 @@
 
 
 
-
-        <!-- Drill capabilities and agility section -->
         <section class="drill-capabilities">
             <div class="container">
-                <!-- Desktop layout (Image 1) -->
+                <!-- Desktop Layout -->
                 <div class="desktop-capabilities">
-                    <!-- Left side: Chuck closeup image -->
+                    <!-- Left side: Chuck image -->
                     <div class="chuck-image-container">
                         <img src="images/assets14.png" alt="Mandril da Furadeira de Impacto" class="chuck-image">
                     </div>
@@ -280,58 +278,59 @@
                     <div class="agility-content">
                         <h2>Mais agilidade e força</h2>
                         <p>
-                            A parafusadeira e furadeira WAP conta com <strong>diferentes níveis
-                                de velocidade</strong>, permitindo ajustar a potência conforme a
-                            necessidade. Isso garante mais precisão em acabamentos e
-                            força extra para perfurações e fixações mais exigentes, para
-                            um acabamento de qualidade com menos esforço.
+                            A parafusadeira e furadeira WAP conta com <strong>diferentes
+                                níveis de velocidade</strong>, permitindo ajustar a potência
+                            conforme a necessidade. Isso garante mais precisão em
+                            acabamentos e força extra para perfurações e fixações
+                            mais exigentes, para um acabamento de qualidade com
+                            menos esforço.
                         </p>
                     </div>
                 </div>
 
-                <!-- Mobile layout (Image 2) -->
+                <!-- Mobile Layout -->
                 <div class="mobile-capabilities">
-                    <!-- Chuck closeup image -->
-                    <div class="mobile-chuck-image">
-                        <img src="path/to/drill-chuck.png" alt="Mandril da Furadeira de Impacto" class="chuck-image">
+                    <!-- Mobile drill image at top for mobile -->
+                    <div class="mobile-drill-image"
+                    style="z-index: 1;"
+                    >
+                        <img src="images/assets14.png" alt="Mandril da Furadeira de Impacto" class="mobile-chuck-image">
                     </div>
 
-                    <!-- Material capacity panel -->
-                    <div class="capacity-panel">
+                    <!-- Capacity panel for mobile -->
+                    <div class="mobile-capacity-panel"
+
+                    >
                         <h3>Capacidade de perfuração:</h3>
 
-                        <div class="materials-grid">
+                        <div class="mobile-materials-grid">
                             <!-- Material 1: Aço -->
-                            <div class="material-item">
-                                <div class="material-header">AÇO</div>
-                                <div class="material-icon">
-                                    <img src="path/to/aco-icon.svg" alt="Ícone aço" class="material-icon-img">
-                                </div>
-                                <div class="material-capacity">10mm</div>
+                            <div class="mobile-material-item">
+
+                                <img src="images/g1.png" alt="Ícone aço" class="mobile-material-icon-img">
+
+                                <div class="mobile-material-capacity">10mm</div>
                             </div>
 
                             <!-- Material 2: Madeira -->
-                            <div class="material-item">
-                                <div class="material-header">MADEIRA</div>
-                                <div class="material-icon">
-                                    <img src="path/to/madeira-icon.svg" alt="Ícone madeira" class="material-icon-img">
-                                </div>
-                                <div class="material-capacity">20mm</div>
+                            <div class="mobile-material-item">
+
+                                <img src="images/g3.png" alt="Ícone madeira" class="mobile-material-icon-img">
+
+                                <div class="mobile-material-capacity">20mm</div>
                             </div>
 
                             <!-- Material 3: Alvenaria -->
-                            <div class="material-item">
-                                <div class="material-header">ALVENARIA</div>
-                                <div class="material-icon">
-                                    <img src="path/to/alvenaria-icon.svg" alt="Ícone alvenaria"
-                                        class="material-icon-img">
-                                </div>
-                                <div class="material-capacity">13mm</div>
+                            <div class="mobile-material-item">
+
+                                <img src="images/g2.png" alt="Ícone alvenaria" class="mobile-material-icon-img">
+
+                                <div class="mobile-material-capacity">13mm</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Text content -->
+                    <!-- Mobile text content below capacity panel -->
                     <div class="mobile-agility-content">
                         <h2>Mais agilidade e força</h2>
                         <p>
@@ -345,17 +344,11 @@
                     </div>
                 </div>
 
-
-                <div class="capacity-panel" style="display: flex; flex-direction: row; 
-                gap: 10px; justify-content: space-between;
-align-items: center;
-margin-top: -130px;
-">
-
-                    <div style="display: flex; flex-direction: row; gap: 10px;">
-
-                        <h3>Capacidade de perfuração: </h3>
-                        <!-- <h3></h3> -->
+                <!-- Desktop Capacity Panel -->
+                <div class="capacity-panel">
+                    <div class="capacity-header">
+                        <h3>Capacidade </h3>
+                        <h3>de perfuração </h3>
                     </div>
 
                     <div class="materials-grid">
@@ -371,6 +364,7 @@ margin-top: -130px;
                         <div class="material-item">
 
                             <img src="images/g3.png" alt="Ícone madeira" class="material-icon-img">
+
                             <div class="material-capacity">20mm</div>
                         </div>
 
@@ -383,7 +377,6 @@ margin-top: -130px;
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
     </main>

@@ -2016,3 +2016,87 @@ ul {
 .next-btn {
   right: -10px;
 }
+
+
+
+/* Product Gallery Section */
+.product-gallery-section {
+  margin: 50px 0;
+  padding: 0 15px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Common Gallery Item Styling */
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  
+  object-fit: cover;
+  display: block;
+}
+
+/* Desktop Gallery Layout */
+.desktop-gallery {
+  display: flex;
+  gap: 15px;
+  height: 550px;
+}
+
+.desktop-gallery .large {
+  flex: 0.5;
+  height: 100%;
+
+}
+
+.gallery-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* Mobile Gallery Layout */
+.mobile-gallery {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobile-gallery-row {
+  display: flex;
+  gap: 15px;
+  height: 220px;
+}
+
+.mobile-gallery-row .gallery-item {
+  flex: 1;
+}
+
+/* Responsive Behavior */
+@media (max-width: 991px) {
+  .desktop-gallery {
+    display: none;
+  }
+  
+  .mobile-gallery {
+    display: flex;
+  }
+}
+
+@media (max-width: 576px) {
+  .mobile-gallery-row {
+    height: 170px;
+  }
+}

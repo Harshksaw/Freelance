@@ -43,6 +43,59 @@
                 slidesContainer.scrollTo(0, 0);
             }
         });
+
+
+        // Mobile Features Carousel Navigation
+// JavaScript for the mobile feature carousel
+document.addEventListener('DOMContentLoaded', function() {
+  const sliderContainer = document.querySelector('.features-slider-container');
+  const slides = document.querySelectorAll('.feature-slide');
+  const prevButtons = document.querySelectorAll('.prev-btn');
+  const nextButtons = document.querySelectorAll('.next-btn');
+  
+  let currentSlideIndex = 0;
+  const totalSlides = slides.length;
+  
+  // Function to show a specific slide
+  function showSlide(index) {
+    // Ensure index is within valid range
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
+    
+    currentSlideIndex = index;
+    
+    // Calculate the scroll position
+    const slideWidth = slides[0].offsetWidth;
+    sliderContainer.scrollTo({
+      left: slideWidth * index,
+      behavior: 'smooth'
+    });
+  }
+  
+  // Event listeners for previous buttons
+  prevButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      showSlide(currentSlideIndex - 1);
+    });
+  });
+  
+  // Event listeners for next buttons
+  nextButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      showSlide(currentSlideIndex + 1);
+    });
+  });
+  
+  // Handle scroll events to update current slide index
+  sliderContainer.addEventListener('scroll', function() {
+    const scrollLeft = sliderContainer.scrollLeft;
+    const slideWidth = slides[0].offsetWidth;
+    currentSlideIndex = Math.round(scrollLeft / slideWidth);
+  });
+  
+  // Initialize
+  showSlide(0);
+});
     </script>
 </head>
 
@@ -604,6 +657,80 @@
                 </div>
             </div>
         </section>
+
+
+        <!-- Mobile Features Carousel -->
+
+        <section class="mobile-features-carousel">
+            <div class="features-slider-container">
+              <!-- Slide 1: Chuck -->
+              <div class="feature-slide">
+                <div class="feature-image-container">
+                  <img src="images/g16.png" alt="Suporte e chave de mandril" class="feature-image">
+                
+                </div>
+                <div class="feature-floating-description">
+                    <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                    <p><strong>O mandril de 3/8" (10mm)</strong> suporta brocas de 0,8 a 10mm de diâmetro.</p>
+                    <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                  </div>
+              </div>
+          
+              <!-- Slide 2: Auxiliary Handle -->
+              <div class="feature-slide">
+                <div class="feature-image-container">
+                  <img src="images/g16.png" alt="Empunhadura auxiliar removível" class="feature-image">
+                  
+                </div>
+                <div class="feature-floating-description">
+                    <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                  <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                  <p>A empunhadura auxiliar removível torna os trabalhos mais estáveis</p>
+                </div>
+              </div>
+          
+              <!-- Slide 3: Chuck Key -->
+              <div class="feature-slide">
+                <div class="feature-image-container">
+                  <img src="images/g17.png" alt="Suporte e chave de mandril" class="feature-image">
+                 
+                </div>
+                <div class="feature-floating-description">
+                    <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                    <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                  <p>Durante as atividades, o suporte e a chave de mandril</p>
+                </div>
+              </div>
+          
+              <!-- Slide 4: Depth Limiter -->
+              <div class="feature-slide">
+                <div class="feature-image-container">
+                  <img src="images/g18.png" alt="Limitador de profundidade" class="feature-image">
+                
+                </div>
+                <div class="feature-floating-description">
+                    <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                    <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                  <p>Regule a profundidade dos furos, evitando acidentes</p>
+                </div>
+              </div>
+          
+              <!-- Slide 5: Ergonomic Grip -->
+              <div class="feature-slide">
+                <div class="feature-image-container">
+                  <img src="images/g19.png" alt="Empunhadura emborrachada ergonômica" class="feature-image">
+                 
+                </div>
+                <div class="feature-floating-description">
+                    <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                    <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                  <p>A empunhadura emborrachada ergonômica oferece mais conforto</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
 
     </main>
 

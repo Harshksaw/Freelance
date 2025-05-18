@@ -1138,6 +1138,7 @@ ul {
 .feature-content {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .feature-text {
@@ -2066,22 +2067,48 @@ ul {
   grid-template-rows: repeat(2, 1fr);
   gap: 15px;
 }
-
 /* Mobile Gallery Layout */
 .mobile-gallery {
   display: none;
-  flex-direction: column;
-  gap: 15px;
+  padding: 0;
+  margin: 0;
 }
 
-.mobile-gallery-row {
-  display: flex;
-  gap: 15px;
-  height: 220px;
+.mobile-gallery-grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  height: 450px;
 }
 
-.mobile-gallery-row .gallery-item {
-  flex: 1;
+/* Grid positioning */
+.item-top-left {
+  grid-column: 1;
+  grid-row: 1;
+  width: 110%;
+}
+
+.item-top-right {
+  grid-column: 2;
+  grid-row: 1;
+  width: 80%;
+  height: 100%;
+
+  margin-left: 20%;
+}
+
+.item-bottom-left {
+  grid-column: 1;
+  grid-row: 2;
+  width: 60%;
+}
+
+.item-bottom-right {
+  grid-column: 2;
+  grid-row: 2;
+  width: 150%;
+margin-left: -50%;
 }
 
 /* Responsive Behavior */
@@ -2091,12 +2118,113 @@ ul {
   }
   
   .mobile-gallery {
-    display: flex;
+    display: block;
   }
 }
 
 @media (max-width: 576px) {
-  .mobile-gallery-row {
-    height: 170px;
+  .mobile-gallery-grid {
+    height: 350px;
+  }
+}
+
+
+
+/* Product Feature Section Styles */
+.product-feature-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+/* Desktop Layout */
+.desktop-feature {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.feature-image {
+  width: 55%;
+}
+
+.product-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.feature-content {
+  width: 55%;
+}
+
+.feature-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #000;
+}
+
+.feature-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.feature-text strong {
+  font-weight: 700;
+}
+
+/* Mobile Layout */
+.mobile-feature {
+  display: none;
+  flex-direction: column;
+}
+
+.feature-image-mobile {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.product-img-mobile {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.feature-content-mobile {
+  width: 100%;
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+  .desktop-feature {
+    display: none;
+  }
+  
+  .mobile-feature {
+    display: flex;
+  }
+  
+  .feature-title {
+    font-size: 20px;
+    text-align: left;
+  }
+  
+  .feature-text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-feature-section {
+    padding: 30px 15px;
+  }
+  
+  .feature-title {
+    font-size: 18px;
   }
 }

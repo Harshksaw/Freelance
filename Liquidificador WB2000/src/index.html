@@ -9,83 +9,93 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles/styles.css" />
-    <script >
-        // Carousel functionality
-document.addEventListener('DOMContentLoaded', function() {
-  // Get carousel elements
-  const slidesContainer = document.querySelector('.carousel-slides-container');
-  const slides = document.querySelectorAll('.carousel-slide');
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
-  const indicators = document.querySelectorAll('.indicator');
-  
-  // Set initial slide index
-  let currentSlide = 0;
-  const totalSlides = slides.length;
-  
-  // Function to update carousel position
-  function updateCarousel() {
-    // Update slides position
-    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    // Update indicators
-    indicators.forEach((indicator, index) => {
-      if (index === currentSlide) {
-        indicator.classList.add('active');
-      } else {
-        indicator.classList.remove('active');
-      }
-    });
-  }
-  
-  // Event listeners for navigation buttons
-  prevBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateCarousel();
-  });
-  
-  nextBtn.addEventListener('click', () => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
-  });
-  
-  // Event listeners for indicators
-  indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
-      currentSlide = index;
-      updateCarousel();
-    });
-  });
-  
-  // Touch events for swipe functionality
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  slidesContainer.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-  
-  slidesContainer.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // Swipe left - next slide
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateCarousel();
-    } else if (touchEndX > touchStartX + swipeThreshold) {
-      // Swipe right - previous slide
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateCarousel();
-    }
-  }
-  
-  // Initialize carousel
-  updateCarousel();
-});
+    <script>
+        // Simple swipe handling for the mobile carousel
+        // Enhanced snap behavior for the mobile carousel
+        document.addEventListener('DOMContentLoaded', function () {
+            const slidesContainer = document.querySelector('.carousel-slides-container');
+
+            if (slidesContainer && window.innerWidth < 768) {
+                const slides = slidesContainer.querySelectorAll('.carousel-slide');
+
+                // Force precise scroll snap by programmatically moving to slides
+                function snapToSlide() {
+                    const scrollLeft = slidesContainer.scrollLeft;
+                    const slideWidth = slides[0].offsetWidth;
+                    const slideIndex = Math.round(scrollLeft / slideWidth);
+
+                    if (slidesContainer.scrollLeft !== slideIndex * slideWidth) {
+                        slidesContainer.scrollTo({
+                            left: slideIndex * slideWidth,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                // Add scroll end detection to ensure clean snapping
+                let scrollTimeout;
+                slidesContainer.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(snapToSlide, 150);
+                });
+
+                // Set initial position to the first slide
+                slidesContainer.scrollTo(0, 0);
+            }
+        });
+
+
+        // Mobile Features Carousel Navigation
+        // JavaScript for the mobile feature carousel
+        document.addEventListener('DOMContentLoaded', function () {
+            const sliderContainer = document.querySelector('.features-slider-container');
+            const slides = document.querySelectorAll('.feature-slide');
+            const prevButtons = document.querySelectorAll('.prev-btn');
+            const nextButtons = document.querySelectorAll('.next-btn');
+
+            let currentSlideIndex = 0;
+            const totalSlides = slides.length;
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Ensure index is within valid range
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+
+                currentSlideIndex = index;
+
+                // Calculate the scroll position
+                const slideWidth = slides[0].offsetWidth;
+                sliderContainer.scrollTo({
+                    left: slideWidth * index,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Event listeners for previous buttons
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    showSlide(currentSlideIndex - 1);
+                });
+            });
+
+            // Event listeners for next buttons
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    showSlide(currentSlideIndex + 1);
+                });
+            });
+
+            // Handle scroll events to update current slide index
+            sliderContainer.addEventListener('scroll', function () {
+                const scrollLeft = sliderContainer.scrollLeft;
+                const slideWidth = slides[0].offsetWidth;
+                currentSlideIndex = Math.round(scrollLeft / slideWidth);
+            });
+
+            // Initialize
+            showSlide(0);
+        });
     </script>
 </head>
 
@@ -143,21 +153,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
             </div>
         </div>
-
         <nav class="main-nav">
             <div class="container">
-                <button class="menu-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
+                <div class="mobile-menu-container">
+                    <button class="menu-toggle" aria-label="Menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
 
-                <div class="nav-categories">
-                    <a href="#" class="nav-category-toggle">Todas as Categorias <span class="dropdown-icon">▼</span></a>
-                    <!-- Dropdown menu would go here -->
+                    <div class="nav-categories">
+                        <a href="#" class="nav-category-toggle">Todas as Categorias <span
+                                class="dropdown-icon">▼</span></a>
+                    </div>
                 </div>
 
                 <ul class="nav-links">
@@ -192,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </video>
                         <button class="play-button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round">
                                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
                             </svg>
@@ -204,17 +215,20 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="product-info">
                 <div class="product-rating">
                     <div class="rating-stars">
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="review-count">(6) Clique e veja!</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <a href="#reviews" class="review-count">(6) Clique e veja!</a>
                     </div>
                 </div>
 
                 <h1 class="product-title">Otimize o tempo da faxina com o robô aspirador WAP ROBOT W90!</h1>
-                <p class="product-sku">Ref: FW009026 <a href="#" class="view-details">Ver descrição completa</a></p>
+                <p class="product-sku">
+                    Ref: <span class="sku-code">FW009026</span>
+                    <a href="#description" class="view-details">Ver descrição completa</a>
+                </p>
 
                 <div class="shipping-calculator">
                     <h3>Informe seu CEP (obrigatório):</h3>
@@ -222,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <input type="text" placeholder="00.000-000" class="cep-input">
                         <button class="ok-button">OK</button>
                     </div>
-                    <p class="shipping-note">Dúvidas seu CEP <a href="#" class="click-here">Clique Aqui!</a></p>
+                    <p class="shipping-note">Dúvidas seu CEP <a href="#cep-help" class="click-here">Clique Aqui!</a></p>
                 </div>
 
                 <div class="product-actions">
@@ -255,21 +269,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="product-image-container">
                         <img src="./images/asset1.png" alt="Furadeira de Impacto WF 700FE W2" class="product-image">
                     </div>
-        
+
                     <!-- Product Info Container -->
                     <div class="product-info-container">
                         <div class="product-header">
                             <h5>PARAFUSADEIRA E FURADEIRA DE IMPACTO</h5>
                             <h1>WF 700FE W2</h1>
                         </div>
-        
+
                         <div class="product-description">
                             <h2>Transforme construções, montagens e instalações com robustez</h2>
-                            <p>Para os que procuram potência e precisão em um só produto, ela combina <strong>700W de potência</strong> e <strong>40Nm de torque</strong> para elevar o status dos projetos do dia a dia a um novo nível.</p>
+                            <p>Para os que procuram potência e precisão em um só produto, ela combina <strong>700W de
+                                    potência</strong> e <strong>40Nm de torque</strong> para elevar o status dos
+                                projetos do dia a dia a um novo nível.</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Product Features Section -->
                 <div class="product-features">
                     <div class="feature-icons-grid">
@@ -281,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h3>Função impacto</h3>
                                 <p>Garanta mais facilidade ao perfurar superfícies duras e materiais rígidos.</p>
                             </div>
-    
+
                             <!-- Feature 2 -->
                             <div class="feature-icon-item">
                                 <img src="images/g5.png" alt="Ícone empunhadura" class="material-icon-img">
@@ -289,16 +305,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <p>Alterne entre os níveis de velocidade para maior controle, precisão e força para os
                                     trabalhos.</p>
                             </div>
-    
+
                             <!-- Feature 3 -->
                             <div class="feature-icon-item">
-                                  <img src="images/g5.png" alt="Ícone empunhadura" class="material-icon-img">
+                                <img src="images/g5.png" alt="Ícone empunhadura" class="material-icon-img">
                                 <h3>Empunhadura auxiliar removível</h3>
                                 <p>Permite mais estabilidade e segurança ao perfurar materiais mais exigentes.</p>
                             </div>
                         </div>
+                    </div>
                 </div>
-            </div>
         </section>
 
 
@@ -308,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Product Feature Section with proper image alignment -->
         <section class="product-features">
             <!-- Feature icons section -->
-          
+
 
             <!-- Main feature panel with proper image positioning -->
             <div class="feature-panel">
@@ -369,16 +385,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <!-- Mobile Layout -->
                 <div class="mobile-capabilities">
                     <!-- Mobile drill image at top for mobile -->
-                    <div class="mobile-drill-image"
-                    style="z-index: 1;"
-                    >
+                    <div class="mobile-drill-image" style="z-index: 1;">
                         <img src="images/assets14.png" alt="Mandril da Furadeira de Impacto" class="mobile-chuck-image">
                     </div>
 
                     <!-- Capacity panel for mobile -->
-                    <div class="mobile-capacity-panel"
-
-                    >
+                    <div class="mobile-capacity-panel">
                         <h3>Capacidade de perfuração:</h3>
 
                         <div class="mobile-materials-grid">
@@ -458,101 +470,378 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </section>
 
+        <!-- Power Tool Controls Section -->
+        <!-- Power Tool Controls Section -->
+        <!-- Power Tool Controls Section -->
+        <section class="tool-controls-section">
+            <div class="container">
+                <!-- Desktop Grid View - All controls displayed in a row -->
+                <div class="desktop-controls-grid">
+                    <!-- Switch Mode Button Control -->
+                    <div class="control-item mode-switch-control">
+                        <div class="control-image-wrapper">
+                            <img src="images/g7.png" alt="Botão comutador" class="control-image">
+                        </div>
+                        <h3 class="control-title">Botão comutador</h3>
+                        <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar
+                            perfurações com ou sem impacto.</p>
+                    </div>
 
-        <div class="power-tool-controls-container">
-            <!-- Mobile Carousel View -->
-            <div class="controls-carousel-mobile">
-              <!-- Carousel Navigation -->
-              <button class="carousel-nav prev-btn" aria-label="Previous control">&lt;</button>
-              <button class="carousel-nav next-btn" aria-label="Next control">&gt;</button>
-              
-              <!-- Carousel Slides Container -->
-              <div class="carousel-slides-container">
-                <!-- Switch Mode Button Control -->
-                <div class="control-item mode-switch-control carousel-slide">
-                  <div class="control-image-wrapper">
-                    <img src="images/g7.png" alt="Botão comutador" class="control-image">
-                  </div>
-                  <h3 class="control-title">Botão comutador</h3>
-                  <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
+                    <!-- Speed Selector Control -->
+                    <div class="control-item speed-selector-control">
+                        <div class="control-image-wrapper">
+                            <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
+                        </div>
+                        <h3 class="control-title">Seletor de velocidade</h3>
+                        <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência,
+                            proporcionando força e precisão.</p>
+                    </div>
+
+                    <!-- Lock Button Control -->
+                    <div class="control-item lock-button-control">
+                        <div class="control-image-wrapper">
+                            <img src="images/g9.png" alt="Botão trava" class="control-image">
+                        </div>
+                        <h3 class="control-title">Botão trava</h3>
+                        <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
+                            necessidade de pressionar o gatilho.</p>
+                    </div>
+
+                    <!-- Rotation Direction Selector -->
+                    <div class="control-item rotation-selector-control">
+                        <div class="control-image-wrapper">
+                            <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
+                        </div>
+                        <h3 class="control-title">Seletor de sentido de rotação</h3>
+                        <p class="control-description">Permite alternar entre dois modos principais: sentido horário e
+                            anti-horário.</p>
+                    </div>
                 </div>
-                
-                <!-- Speed Selector Control -->
-                <div class="control-item speed-selector-control carousel-slide">
-                  <div class="control-image-wrapper">
-                    <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
-                  </div>
-                  <h3 class="control-title">Seletor de velocidade</h3>
-                  <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
+
+                <!-- Mobile Simple Swipeable Carousel View -->
+                <div class="mobile-controls-wrapper">
+                    <!-- Carousel Slides Container -->
+                    <div class="carousel-slides-container">
+                        <!-- Switch Mode Button Control -->
+                        <div class="control-item mode-switch-control carousel-slide">
+                            <div class="control-image-container">
+                                <img src="images/g7.png" alt="Botão comutador" class="control-image">
+                            </div>
+                            <h3 class="control-title">Botão comutador</h3>
+                            <p class="control-description">Alterne entre diferentes modos de operação, que permite
+                                realizar perfurações com ou sem impacto.</p>
+                        </div>
+
+                        <!-- Speed Selector Control -->
+                        <div class="control-item speed-selector-control carousel-slide">
+                            <div class="control-image-container">
+                                <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
+                            </div>
+                            <h3 class="control-title">Seletor de velocidade</h3>
+                            <p class="control-description">Oferece uma nova experiência com diferentes níveis de
+                                potência, proporcionando força e precisão.</p>
+                        </div>
+
+                        <!-- Lock Button Control -->
+                        <div class="control-item lock-button-control carousel-slide">
+                            <div class="control-image-container">
+                                <img src="images/g9.png" alt="Botão trava" class="control-image">
+                            </div>
+                            <h3 class="control-title">Botão trava</h3>
+                            <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
+                                necessidade de pressionar o gatilho.</p>
+                        </div>
+
+                        <!-- Rotation Direction Selector -->
+                        <div class="control-item rotation-selector-control carousel-slide">
+                            <div class="control-image-container">
+                                <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
+                            </div>
+                            <h3 class="control-title">Seletor de sentido de rotação</h3>
+                            <p class="control-description">Permite alternar entre dois modos principais: sentido horário
+                                e anti-horário.</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Lock Button Control -->
-                <div class="control-item lock-button-control carousel-slide">
-                  <div class="control-image-wrapper">
-                    <img src="images/g9.png" alt="Botão trava" class="control-image">
-                  </div>
-                  <h3 class="control-title">Botão trava</h3>
-                  <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
-                </div>
-                
-                <!-- Rotation Direction Selector -->
-                <div class="control-item rotation-selector-control carousel-slide">
-                  <div class="control-image-wrapper">
-                    <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
-                  </div>
-                  <h3 class="control-title">Seletor de sentido de rotação</h3>
-                  <p class="control-description">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
-                </div>
-              </div>
-              
-              <!-- Carousel Indicators -->
-              <div class="carousel-indicators">
-                <span class="indicator active" data-slide="0"></span>
-                <span class="indicator" data-slide="1"></span>
-                <span class="indicator" data-slide="2"></span>
-                <span class="indicator" data-slide="3"></span>
-              </div>
             </div>
-            
-            <!-- Desktop Grid View - Hidden on Mobile -->
-            <div class="controls-grid">
-              <!-- Switch Mode Button Control -->
-              <div class="control-item mode-switch-control">
-                <div class="control-image-wrapper">
-                  <img src="switch-mode-button.jpg" alt="Botão comutador" class="control-image">
+        </section>
+
+
+        <!-- Product Feature Highlights - Desktop Only -->
+        <!-- Product Feature Highlights - Desktop Only -->
+        <section class="product-highlights-section desktop-only">
+            <div class="container">
+                <div class="highlights-container">
+                    <!-- Main Drill Image -->
+                    <div class="drill-main-image">
+                        <img src="images/g11.png" alt="Furadeira de Impacto WAP" class="drill-image-500">
+
+                        <!-- Feature Callouts with Lines -->
+                        <!-- Depth Limiter Callout - Top Right -->
+                        <div class="feature-callout depth-limiter"
+                            style="position: absolute; top: 150px; right: 0; display: flex; align-items: center; width: 400px; z-index: 10;">
+                            <div class="callout-line"
+                                style="width: 300px; height: 1px; background-color: #000; position: relative;   z-index: 100;">
+                                <span class="dot"
+                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; right: 0;"></span>
+                            </div>
+                            <div class="callout-text" style="text-align: left; padding-left: 15px;">
+                                <p>Regule a profundidade dos furos, evitando acidentes, com o <strong>limitador de
+                                        profundidade.</strong></p>
+                            </div>
+                        </div>
+
+                        <!-- Chuck Callout - Left -->
+                        <div class="feature-callout chuck"
+                            style="position: absolute; top: 160px; left: -50px; display: flex; align-items: center; width: 600px; z-index: 10;">
+                            <div class="callout-text" style="text-align: right; padding-right: 55px;">
+                                <p>O <strong>mandril de 3/8" (10mm)</strong> suporte brocas e bits de 0,8 a 10mm,
+                                    oferecendo excelente capacidade de perfuração.</p>
+                            </div>
+                            <div class="callout-line"
+                                style="width: 400px; height: 1px; background-color: #000; position: relative;   z-index: 100;">
+                                <span class="dot"
+                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; left: 0;"></span>
+                            </div>
+                        </div>
+
+                        <!-- Auxiliary Handle Callout - Left -->
+                        <div class="feature-callout aux-handle" style="position: absolute; top: 300px; left: 0; display: flex; align-items: center; width: 450px;
+                             z-index: 10;">
+                            <div class="callout-text" style="text-align: right; padding-right: 25px;">
+                                <p>A <strong>empunhadura auxiliar removível</strong> torna os trabalhos mais estáveis e
+                                    seguros, para maior confiança durante perfurações.</p>
+                            </div>
+                            <div class="callout-line" style="width: 500px; height: 1px; background-color: #000; position: relative; 
+                                 z-index: 100;">
+                                <span class="dot" style="position: absolute; width: 6px; height: 6px; background-color: #000; 
+                                    border-radius: 50%; top: -2.5px; left: 0;"></span>
+                            </div>
+                        </div>
+
+                        <!-- Ergonomic Grip Callout - Right -->
+                        <div class="feature-callout ergonomic-grip"
+                            style="position: absolute; top: 240px; right: 0; display: flex; align-items: center; width: 350px; z-index: 10;">
+                            <div class="callout-line"
+                                style="width: 180px; height: 1px; background-color: #000; position: relative; transform: rotate(0deg); transform-origin: right center; z-index: 100;">
+                                <span class="dot"
+                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; right: 0;"></span>
+                            </div>
+                            <div class="callout-text" style="text-align: left; padding-left: 15px;">
+                                <p>A <strong>empunhadura emborrachada ergonômica</strong> oferece mais conforto e
+                                    controle durante o uso.</p>
+                            </div>
+                        </div>
+
+                        <!-- Chuck Key Callout - Bottom Right -->
+                        <div class="feature-callout chuck-key"
+                            style="position: absolute; top: 400px; right: 0; display: flex; align-items: center; width: 350px; z-index: 10;">
+                            <div class="callout-line"
+                                style="width: 220px; height: 1px; background-color: #000; position: relative; transform-origin: right center; z-index: 100;">
+                                <span class="dot"
+                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; right: 0;"></span>
+                            </div>
+                            <div class="callout-text" style="text-align: left; padding-left: 15px;">
+                                <p>Durante as atividades, o <strong>suporte e a chave de mandril</strong> promovem
+                                    organização e agilidade ao usuário.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="control-title">Botão comutador</h3>
-                <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
-              </div>
-              
-              <!-- Speed Selector Control -->
-              <div class="control-item speed-selector-control">
-                <div class="control-image-wrapper">
-                  <img src="speed-selector.jpg" alt="Seletor de velocidade" class="control-image">
+
+                <!-- Tagline at Bottom -->
+                <div class="highlight-tagline">
+                    <h2>DOS PROJETOS MAIS SIMPLES <span class="tagline-spacer">AOS</span> <strong>MAIS
+                            DESAFIADORES</strong></h2>
+                    <div class="tagline-line"></div>
                 </div>
-                <h3 class="control-title">Seletor de velocidade</h3>
-                <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
-              </div>
-              
-              <!-- Lock Button Control -->
-              <div class="control-item lock-button-control">
-                <div class="control-image-wrapper">
-                  <img src="lock-button.jpg" alt="Botão trava" class="control-image">
-                </div>
-                <h3 class="control-title">Botão trava</h3>
-                <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
-              </div>
-              
-              <!-- Rotation Direction Selector -->
-              <div class="control-item rotation-selector-control">
-                <div class="control-image-wrapper">
-                  <img src="rotation-selector.jpg" alt="Seletor de sentido de rotação" class="control-image">
-                </div>
-                <h3 class="control-title">Seletor de sentido de rotação</h3>
-                <p class="control-description">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
-              </div>
             </div>
-          </div>
+        </section>
+
+
+        <!-- Mobile Features Carousel -->
+
+        <section class="mobile-features-carousel">
+            <div class="features-slider-container">
+                <!-- Slide 1: Chuck -->
+                <div class="feature-slide">
+                    <div class="feature-image-container">
+                        <img src="images/g16.png" alt="Suporte e chave de mandril" class="feature-image">
+
+                    </div>
+                    <div class="feature-floating-description">
+                        <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                        <p><strong>O mandril de 3/8" (10mm)</strong> suporta brocas de 0,8 a 10mm de diâmetro.</p>
+                        <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Auxiliary Handle -->
+                <div class="feature-slide">
+                    <div class="feature-image-container">
+                        <img src="images/g16.png" alt="Empunhadura auxiliar removível" class="feature-image">
+
+                    </div>
+                    <div class="feature-floating-description">
+                        <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                        <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                        <p>A empunhadura auxiliar removível torna os trabalhos mais estáveis</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Chuck Key -->
+                <div class="feature-slide">
+                    <div class="feature-image-container">
+                        <img src="images/g17.png" alt="Suporte e chave de mandril" class="feature-image">
+
+                    </div>
+                    <div class="feature-floating-description">
+                        <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                        <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                        <p>Durante as atividades, o suporte e a chave de mandril</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Depth Limiter -->
+                <div class="feature-slide">
+                    <div class="feature-image-container">
+                        <img src="images/g18.png" alt="Limitador de profundidade" class="feature-image">
+
+                    </div>
+                    <div class="feature-floating-description">
+                        <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                        <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                        <p>Regule a profundidade dos furos, evitando acidentes</p>
+                    </div>
+                </div>
+
+                <!-- Slide 5: Ergonomic Grip -->
+                <div class="feature-slide">
+                    <div class="feature-image-container">
+                        <img src="images/g19.png" alt="Empunhadura emborrachada ergonômica" class="feature-image">
+
+                    </div>
+                    <div class="feature-floating-description">
+                        <button class="carousel-nav-btn prev-btn" aria-label="Feature anterior">&lt;</button>
+                        <button class="carousel-nav-btn next-btn" aria-label="Próxima feature">&gt;</button>
+                        <p>A empunhadura emborrachada ergonômica oferece mais conforto</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Product Feature Gallery Section -->
+        <!-- Product Feature Gallery Section -->
+        <section class="product-gallery-section">
+            <!-- Desktop Gallery Layout -->
+            <div class="desktop-gallery">
+                <!-- Left large image -->
+                <div class="gallery-item large">
+                    <img src="images/g23.png" alt="Empunhadura ergonômica"
+                        style="object-fit: contain; width: 100%; height: 100%;">
+                </div>
+
+                <!-- Right grid of smaller images -->
+                <div class="gallery-grid">
+                    <div class="gallery-item" style="width: 120%; height: 80%;">
+                        <img src="images/g24.png" alt="Empunhadura auxiliar" class="gallery-image">
+                    </div>
+                    <div class="gallery-item" style="width: 60%; height: 80%; margin-left: 20%;">
+                        <img src="images/g20.png" alt="Chave de mandril" class="gallery-image">
+                    </div>
+                    <div class="gallery-item"
+                    style="width: 60%; height: 120%; margin-top:-15% "
+                    >
+                        <img src="images/g21.png" alt="Seletor de velocidade" class="gallery-image">
+                    </div>
+                    <div class="gallery-item"
+                    style="width: 120%; height: 120%; margin-left: -40%; margin-top: -15%; "
+                    >
+                        <img src="images/g25.png" alt="Mandril da furadeira" class="gallery-image">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Gallery Layout -->
+          <!-- Mobile Gallery Layout -->
+<div class="mobile-gallery">
+    <div class="mobile-gallery-grid">
+      <div class="gallery-item item-top-left">
+        <img src="images/g28.png" alt="Empunhadura auxiliar" class="gallery-image">
+      </div>
+      <div class="gallery-item item-top-right">
+        <img src="images/g27.png" alt="Chave de mandril" class="gallery-image">
+      </div>
+      <div class="gallery-item item-bottom-left">
+        <img src="images/g29.png" alt="Empunhadura ergonômica" class="gallery-image">
+      </div>
+      <div class="gallery-item item-bottom-right">
+        <img src="images/g26.png" alt="Mandril da furadeira" class="gallery-image">
+      </div>
+    </div>
+  </div>
+        </section>
+
+
+        <!-- Product Feature Section -->
+<section class="product-feature-section">
+    <!-- Desktop Layout -->
+    <div class="desktop-feature">
+      <div class="feature-image">
+        <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img">
+      </div>
+      <div class="feature-content">
+        <h2 class="feature-title">Controle total nas suas mãos</h2>
+        <p class="feature-text">
+          Com a <strong>Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Mobile Layout -->
+    <div class="mobile-feature">
+      <div class="feature-image-mobile">
+        <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img-mobile">
+      </div>
+      <div class="feature-content-mobile">
+        <h2 class="feature-title">Controle total nas suas mãos</h2>
+        <p class="feature-text">
+          Com a <strong>Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+<!-- Product Packaging Section -->
+<section class="wap-product-section">
+    <!-- Desktop Layout -->
+    <div class="wap-desktop-container">
+      <div class="wap-desktop-content">
+        <h2 class="wap-desktop-title">O produto que irá completar sua caixa de ferramentas</h2>
+        <p class="wap-desktop-text">
+          Otimize instalações, obras e montagens com tecnologia e qualidade. Deixe sua rotina mais descomplicada com a eficiência e potência da <strong>Parafusadeira e Furadeira de Impacto 3/8" WAP WF 700FE W2.</strong>
+        </p>
+      </div>
+      <div class="wap-desktop-image">
+        <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img">
+      </div>
+    </div>
+    
+    <!-- Mobile Layout -->
+    <div class="wap-mobile-container">
+      <div class="wap-mobile-image">
+        <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img">
+      </div>
+      <div class="wap-mobile-content">
+        <h2 class="wap-mobile-title">Confiança e potência WAP na sua caixa de ferramentas</h2>
+        <p class="wap-mobile-text">
+          Otimize instalações, obras e montagens com tecnologia e qualidade. Deixe sua rotina mais descomplicada com a eficiência e potência da <strong>Parafusadeira e Furadeira de Impacto 3/8" WAP WF 700FE W2.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+  
 
 
     </main>

@@ -101,8 +101,8 @@
 
 <body>
     <header>
+        <div class="container">
         <div class="top-bar">
-            <div class="container">
                 <div class="top-links">
                     <a href="#" class="top-link">LOJA OFICIAL</a>
                     <a href="#" class="top-link">BLOG</a>
@@ -114,11 +114,11 @@
         </div>
 
         <div class="main-header container">
-            <div class="logo">
-                <a href="/">
-                    <img src="path/to/wap-logo.png" alt="WAP" />
-                </a>
-            </div>
+          <!-- somewhere in your HTML -->
+<div class="logo-container">
+    <img src="images/logo.png" alt="Wap logo" class="wap-logo">
+  </div>
+  
 
             <div class="search-container">
                 <form action="/search" method="get">
@@ -434,36 +434,34 @@
                 <!-- Desktop Capacity Panel -->
                 <div class="capacity-panel">
                     <div class="capacity-header">
-                        <h3>Capacidade </h3>
-                        <h3>de perfuração </h3>
+                      <h3>Capacidade<br>de perfuração:</h3>
                     </div>
-
+                  
                     <div class="materials-grid">
-                        <!-- Material 1: Aço -->
-                        <div class="material-item">
+                      <!-- Material 1: Aço -->
+                      <div class="material-item">
 
-                            <img src="images/g1.png" alt="Ícone aço" class="material-icon-img">
 
-                            <div class="material-capacity">10mm</div>
-                        </div>
+                          <img src="images/g1.png" alt="Ícone aço">
 
-                        <!-- Material 2: Madeira -->
-                        <div class="material-item">
+                        <div class="material-capacity">10mm</div>
+                      </div>
+                  
+                      <!-- Material 2: Madeira -->
+                      <div class="material-item">
+                    
+                          <img src="images/g3.png" alt="Ícone madeira">
+                        <div class="material-capacity">20mm</div>
+                      </div>
+                  
+                      <!-- Material 3: Alvenaria -->
+                      <div class="material-item">
 
-                            <img src="images/g3.png" alt="Ícone madeira" class="material-icon-img">
-
-                            <div class="material-capacity">20mm</div>
-                        </div>
-
-                        <!-- Material 3: Alvenaria -->
-                        <div class="material-item">
-
-                            <img src="images/g2.png" alt="Ícone alvenaria" class="material-icon-img">
-
-                            <div class="material-capacity">13mm</div>
-                        </div>
+                          <img src="images/g2.png" alt="Ícone alvenaria">
+                        <div class="material-capacity">13mm</div>
+                      </div>
                     </div>
-                </div>
+                  </div>
             </div>
         </section>
 
@@ -483,7 +481,7 @@
                         <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar
                             perfurações com ou sem impacto.</p>
                     </div>
-
+    
                     <!-- Speed Selector Control -->
                     <div class="control-item speed-selector-control">
                         <div class="control-image-wrapper">
@@ -493,7 +491,7 @@
                         <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência,
                             proporcionando força e precisão.</p>
                     </div>
-
+    
                     <!-- Lock Button Control -->
                     <div class="control-item lock-button-control">
                         <div class="control-image-wrapper">
@@ -503,7 +501,7 @@
                         <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
                             necessidade de pressionar o gatilho.</p>
                     </div>
-
+    
                     <!-- Rotation Direction Selector -->
                     <div class="control-item rotation-selector-control">
                         <div class="control-image-wrapper">
@@ -514,7 +512,7 @@
                             anti-horário.</p>
                     </div>
                 </div>
-
+    
                 <!-- Mobile Simple Swipeable Carousel View -->
                 <div class="mobile-controls-wrapper">
                     <!-- Carousel Slides Container -->
@@ -528,7 +526,7 @@
                             <p class="control-description">Alterne entre diferentes modos de operação, que permite
                                 realizar perfurações com ou sem impacto.</p>
                         </div>
-
+    
                         <!-- Speed Selector Control -->
                         <div class="control-item speed-selector-control carousel-slide">
                             <div class="control-image-container">
@@ -538,7 +536,7 @@
                             <p class="control-description">Oferece uma nova experiência com diferentes níveis de
                                 potência, proporcionando força e precisão.</p>
                         </div>
-
+    
                         <!-- Lock Button Control -->
                         <div class="control-item lock-button-control carousel-slide">
                             <div class="control-image-container">
@@ -548,7 +546,7 @@
                             <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
                                 necessidade de pressionar o gatilho.</p>
                         </div>
-
+    
                         <!-- Rotation Direction Selector -->
                         <div class="control-item rotation-selector-control carousel-slide">
                             <div class="control-image-container">

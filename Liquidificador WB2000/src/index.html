@@ -96,13 +96,128 @@
             // Initialize
             showSlide(0);
         });
-    </script>
+ 
+            // Simple mobile-only slider functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Set up variables for mobile only
+  const carouselContainer = document.querySelector('.carousel-slides-container');
+  const slides = document.querySelectorAll('.carousel-slide');
+  
+  if (!carouselContainer || slides.length === 0) return;
+  
+  let currentSlide = 0;
+  let startX, moveX;
+  let isDragging = false;
+  
+  // Set initial position
+  updateSlidePosition();
+  
+  // Touch events for mobile swipe
+  carouselContainer.addEventListener('touchstart', handleTouchStart, false);
+  carouselContainer.addEventListener('touchmove', handleTouchMove, false);
+  carouselContainer.addEventListener('touchend', handleTouchEnd, false);
+  
+  // Handle touch start
+  function handleTouchStart(e) {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  }
+  
+  // Handle touch move
+  function handleTouchMove(e) {
+    if (!isDragging) return;
+    moveX = e.touches[0].clientX;
+    const diff = moveX - startX;
+    
+    // Add some resistance to the drag
+    carouselContainer.style.transform = `translateX(calc(-${currentSlide * 100}% + ${diff * 0.5}px))`;
+  }
+  
+  // Handle touch end
+  function handleTouchEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    
+    const diff = moveX - startX;
+    
+    if (diff > 50 && currentSlide > 0) {
+      // Swipe right
+      currentSlide--;
+    } else if (diff < -50 && currentSlide < slides.length - 1) {
+      // Swipe left
+      currentSlide++;
+    }
+    
+    updateSlidePosition();
+  }
+  
+  // Update the slide position
+  function updateSlidePosition() {
+    carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+});
+ // Simple scroll functionality for both desktop and mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.carousel-slides-container');
+  const desktopGrid = document.querySelector('.desktop-controls-grid');
+  
+  // Mobile touch functionality
+  if (carousel) {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    let startX, moveX;
+    let isDragging = false;
+    
+    if (slides.length > 1) {
+      // Touch events
+      carousel.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      });
+      
+      carousel.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        
+        moveX = e.touches[0].clientX;
+        const diff = moveX - startX;
+        const currentTransform = -currentSlide * 100;
+        
+        carousel.style.transform = `translateX(calc(${currentTransform}% + ${diff}px))`;
+      });
+      
+      carousel.addEventListener('touchend', function() {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diff = moveX - startX;
+        
+        if (diff > 50 && currentSlide > 0) {
+          // Swipe right - go to previous
+          currentSlide--;
+        } else if (diff < -50 && currentSlide < slides.length - 1) {
+          // Swipe left - go to next
+          currentSlide++;
+        }
+        
+        // Update position with animation
+        carousel.style.transition = 'transform 0.3s ease';
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Reset transition after animation completes
+        setTimeout(function() {
+          carousel.style.transition = '';
+        }, 300);
+      });
+    }
+  }
+});
+ </script>
 </head>
 
 <body>
     <header>
         <div class="container">
-        <div class="top-bar">
+            <div class="top-bar">
                 <div class="top-links">
                     <a href="#" class="top-link">LOJA OFICIAL</a>
                     <a href="#" class="top-link">BLOG</a>
@@ -114,11 +229,11 @@
         </div>
 
         <div class="main-header container">
-          <!-- somewhere in your HTML -->
-<div class="logo-container">
-    <img src="images/logo.png" alt="Wap logo" class="wap-logo">
-  </div>
-  
+            <!-- somewhere in your HTML -->
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Wap logo" class="wap-logo">
+            </div>
+
 
             <div class="search-container">
                 <form action="/search" method="get">
@@ -321,37 +436,39 @@
 
 
 
-<!-- Product Feature Section with proper image alignment -->
-<section class="product-features5">
-    <!-- Feature icons section can go here if needed -->
+        <!-- Product Feature Section with proper image alignment -->
+        <section class="product-features5">
+            <!-- Feature icons section can go here if needed -->
 
-    <!-- Main feature panel with proper image positioning -->
-    <div class="feature-panel5">
-        <div class="container">
-            <div class="feature-content5">
-                <div class="feature-text5">
-                    <h2>Força e estabilidade<br>total</h2>
-                    <p>
-                        Perfure com mais facilidade, precisão e conforto! A <strong>função impacto</strong>
-                        adiciona impactos simultâneos, facilitando a perfuração até em materiais rígidos e difíceis,
-                        como concreto e alvenaria. Para ter ainda mais controle, a <strong>empunhadura auxiliar
-                        removível</strong> garante estabilidade e proporciona um manuseio mais confortável,
-                        tornando cada trabalho mais seguro.
-                    </p>
-                </div>
+            <!-- Main feature panel with proper image positioning -->
+            <div class="feature-panel5">
+                <div class="container">
+                    <div class="feature-content5">
+                        <div class="feature-text5">
+                            <h2>Força e estabilidade<br>total</h2>
+                            <p>
+                                Perfure com mais facilidade, precisão e conforto! A <strong>função impacto</strong>
+                                adiciona impactos simultâneos, facilitando a perfuração até em materiais rígidos e
+                                difíceis,
+                                como concreto e alvenaria. Para ter ainda mais controle, a <strong>empunhadura auxiliar
+                                    removível</strong> garante estabilidade e proporciona um manuseio mais confortável,
+                                tornando cada trabalho mais seguro.
+                            </p>
+                        </div>
 
-                <!-- Fixed positioning for the drill image -->
-                <div class="feature-image-container5">
-                    <div class="drill-image-wrapper5">
-                        <img src="./images/asset2.png" alt="Furadeira de Impacto WF 700FE W2" class="drill-image5">
-                        <div class="feature-label5 function-label5">Função impacto</div>
-                        <div class="feature-label5 handle-label5">Empunhadura auxiliar removível</div>
+                        <!-- Fixed positioning for the drill image -->
+                        <div class="feature-image-container5">
+                            <div class="drill-image-wrapper5">
+                                <img src="./images/asset2.png" alt="Furadeira de Impacto WF 700FE W2"
+                                    class="drill-image5">
+                                <div class="feature-label5 function-label5">Função impacto</div>
+                                <div class="feature-label5 handle-label5">Empunhadura auxiliar removível</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
 
         <section class="drill-capabilities">
@@ -360,9 +477,7 @@
                 <div class="desktop-capabilities">
                     <!-- Left side: Chuck image -->
                     <div class="chuck-image-container">
-                        <img src="images/assets14.png" alt="Mandril da Furadeira de Impacto" class="chuck-image"
-                        
-                        >
+                        <img src="images/assets14.png" alt="Mandril da Furadeira de Impacto" class="chuck-image">
                     </div>
 
                     <!-- Right side: Text content -->
@@ -434,34 +549,34 @@
                 <!-- Desktop Capacity Panel -->
                 <div class="capacity-panel">
                     <div class="capacity-header">
-                      <h3>Capacidade<br>de perfuração:</h3>
+                        <h3>Capacidade<br>de perfuração:</h3>
                     </div>
-                  
+
                     <div class="materials-grid">
-                      <!-- Material 1: Aço -->
-                      <div class="material-item">
+                        <!-- Material 1: Aço -->
+                        <div class="material-item">
 
 
-                          <img src="images/g1.png" alt="Ícone aço">
+                            <img src="images/g1.png" alt="Ícone aço">
 
-                        <div class="material-capacity">10mm</div>
-                      </div>
-                  
-                      <!-- Material 2: Madeira -->
-                      <div class="material-item">
-                    
-                          <img src="images/g3.png" alt="Ícone madeira">
-                        <div class="material-capacity">20mm</div>
-                      </div>
-                  
-                      <!-- Material 3: Alvenaria -->
-                      <div class="material-item">
+                            <div class="material-capacity">10mm</div>
+                        </div>
 
-                          <img src="images/g2.png" alt="Ícone alvenaria">
-                        <div class="material-capacity">13mm</div>
-                      </div>
+                        <!-- Material 2: Madeira -->
+                        <div class="material-item">
+
+                            <img src="images/g3.png" alt="Ícone madeira">
+                            <div class="material-capacity">20mm</div>
+                        </div>
+
+                        <!-- Material 3: Alvenaria -->
+                        <div class="material-item">
+
+                            <img src="images/g2.png" alt="Ícone alvenaria">
+                            <div class="material-capacity">13mm</div>
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
         </section>
 
@@ -481,7 +596,7 @@
                         <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar
                             perfurações com ou sem impacto.</p>
                     </div>
-    
+
                     <!-- Speed Selector Control -->
                     <div class="control-item speed-selector-control">
                         <div class="control-image-wrapper">
@@ -491,7 +606,7 @@
                         <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência,
                             proporcionando força e precisão.</p>
                     </div>
-    
+
                     <!-- Lock Button Control -->
                     <div class="control-item lock-button-control">
                         <div class="control-image-wrapper">
@@ -501,7 +616,7 @@
                         <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
                             necessidade de pressionar o gatilho.</p>
                     </div>
-    
+
                     <!-- Rotation Direction Selector -->
                     <div class="control-item rotation-selector-control">
                         <div class="control-image-wrapper">
@@ -512,7 +627,7 @@
                             anti-horário.</p>
                     </div>
                 </div>
-    
+
                 <!-- Mobile Simple Swipeable Carousel View -->
                 <div class="mobile-controls-wrapper">
                     <!-- Carousel Slides Container -->
@@ -526,7 +641,7 @@
                             <p class="control-description">Alterne entre diferentes modos de operação, que permite
                                 realizar perfurações com ou sem impacto.</p>
                         </div>
-    
+
                         <!-- Speed Selector Control -->
                         <div class="control-item speed-selector-control carousel-slide">
                             <div class="control-image-container">
@@ -536,7 +651,7 @@
                             <p class="control-description">Oferece uma nova experiência com diferentes níveis de
                                 potência, proporcionando força e precisão.</p>
                         </div>
-    
+
                         <!-- Lock Button Control -->
                         <div class="control-item lock-button-control carousel-slide">
                             <div class="control-image-container">
@@ -546,7 +661,7 @@
                             <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
                                 necessidade de pressionar o gatilho.</p>
                         </div>
-    
+
                         <!-- Rotation Direction Selector -->
                         <div class="control-item rotation-selector-control carousel-slide">
                             <div class="control-image-container">
@@ -745,99 +860,102 @@
                     <div class="gallery-item" style="width: 60%; height: 80%; margin-left: 20%;">
                         <img src="images/g20.png" alt="Chave de mandril" class="gallery-image">
                     </div>
-                    <div class="gallery-item"
-                    style="width: 60%; height: 120%; margin-top:-15% "
-                    >
+                    <div class="gallery-item" style="width: 60%; height: 120%; margin-top:-15% ">
                         <img src="images/g21.png" alt="Seletor de velocidade" class="gallery-image">
                     </div>
-                    <div class="gallery-item"
-                    style="width: 120%; height: 120%; margin-left: -40%; margin-top: -15%; "
-                    >
+                    <div class="gallery-item" style="width: 120%; height: 120%; margin-left: -40%; margin-top: -15%; ">
                         <img src="images/g25.png" alt="Mandril da furadeira" class="gallery-image">
                     </div>
                 </div>
             </div>
 
             <!-- Mobile Gallery Layout -->
-          <!-- Mobile Gallery Layout -->
-<div class="mobile-gallery">
-    <div class="mobile-gallery-grid">
-      <div class="gallery-item item-top-left">
-        <img src="images/g28.png" alt="Empunhadura auxiliar" class="gallery-image">
-      </div>
-      <div class="gallery-item item-top-right">
-        <img src="images/g27.png" alt="Chave de mandril" class="gallery-image">
-      </div>
-      <div class="gallery-item item-bottom-left">
-        <img src="images/g29.png" alt="Empunhadura ergonômica" class="gallery-image">
-      </div>
-      <div class="gallery-item item-bottom-right">
-        <img src="images/g26.png" alt="Mandril da furadeira" class="gallery-image">
-      </div>
-    </div>
-  </div>
+            <!-- Mobile Gallery Layout -->
+            <div class="mobile-gallery">
+                <div class="mobile-gallery-grid">
+                    <div class="gallery-item item-top-left">
+                        <img src="images/g28.png" alt="Empunhadura auxiliar" class="gallery-image">
+                    </div>
+                    <div class="gallery-item item-top-right">
+                        <img src="images/g27.png" alt="Chave de mandril" class="gallery-image">
+                    </div>
+                    <div class="gallery-item item-bottom-left">
+                        <img src="images/g29.png" alt="Empunhadura ergonômica" class="gallery-image">
+                    </div>
+                    <div class="gallery-item item-bottom-right">
+                        <img src="images/g26.png" alt="Mandril da furadeira" class="gallery-image">
+                    </div>
+                </div>
+            </div>
         </section>
 
 
         <!-- Product Feature Section -->
-<section class="product-feature-section">
-    <!-- Desktop Layout -->
-    <div class="desktop-feature">
-      <div class="feature-image">
-        <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" 
-        class="product-img">
-      </div>
-      <div class="feature-content">
-        <h2 class="feature-title">Controle total nas suas mãos</h2>
-        <p class="feature-text">
-          Com a <strong>Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
-        </p>
-      </div>
-    </div>
-    
-    <!-- Mobile Layout -->
-    <div class="mobile-feature">
-      <div class="feature-image-mobile">
-        <!-- <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img-mobile"> -->
-      </div>
-      <div class="feature-content-mobile">
-        <h2 class="feature-title">Controle total nas suas mãos</h2>
-        <p class="feature-text">
-          Com a <strong>Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
-        </p>
-      </div>
-    </div>
-  </section>
+        <section class="product-feature-section">
+            <!-- Desktop Layout -->
+            <div class="desktop-feature">
+                <div class="feature-image">
+                    <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img">
+                </div>
+                <div class="feature-content">
+                    <h2 class="feature-title">Controle total nas suas mãos</h2>
+                    <p class="feature-text">
+                        Com a <strong>Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a
+                        velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em
+                        usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
+                    </p>
+                </div>
+            </div>
 
-<!-- Product Packaging Section -->
-<section class="wap-product-section">
-    <!-- Desktop Layout -->
-    <div class="wap-desktop-container">
-      <div class="wap-desktop-content">
-        <h2 class="wap-desktop-title">O produto que irá completar sua caixa de ferramentas</h2>
-        <p class="wap-desktop-text">
-          Otimize instalações, obras e montagens com tecnologia e qualidade. Deixe sua rotina mais descomplicada com a eficiência e potência da <strong>Parafusadeira e Furadeira de Impacto 3/8" WAP WF 700FE W2.</strong>
-        </p>
-      </div>
-      <div class="wap-desktop-image">
-        <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img">
-      </div>
-    </div>
-    
-    <!-- Mobile Layout -->
-    <div class="wap-mobile-container">
-      <div class="wap-mobile-image">
-        <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img">
-      </div>
-      <div class="wap-mobile-content">
-        <h2 class="wap-mobile-title">Confiança e potência WAP na sua caixa de ferramentas</h2>
-        <p class="wap-mobile-text">
-          Otimize instalações, obras e montagens com tecnologia e qualidade. Deixe sua rotina mais descomplicada com a eficiência e potência da <strong>Parafusadeira e Furadeira de Impacto 3/8" WAP WF 700FE W2.</strong>
-        </p>
-      </div>
-    </div>
-  </section>
-  
+            <!-- Mobile Layout -->
+            <div class="mobile-feature">
+                <div class="feature-image-mobile">
+                    <!-- <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img-mobile"> -->
+                </div>
+                <div class="feature-content-mobile">
+                    <h2 class="feature-title">Controle total nas suas mãos</h2>
+                    <p class="feature-text">
+                        Com a <strong>Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a
+                        velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em
+                        usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Packaging Section -->
+        <section class="wap-product-section">
+            <!-- Desktop Layout -->
+            <div class="wap-desktop-container">
+                <div class="wap-desktop-content">
+                    <h2 class="wap-desktop-title">O produto que irá completar sua caixa de ferramentas</h2>
+                    <p class="wap-desktop-text">
+                        Otimize instalações, obras e montagens com tecnologia e qualidade. Deixe sua rotina mais
+                        descomplicada com a eficiência e potência da <strong>Parafusadeira e Furadeira de Impacto 3/8"
+                            WAP WF 700FE W2.</strong>
+                    </p>
+                </div>
+                <div class="wap-desktop-image">
+                    <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img">
+                </div>
+            </div>
+
+            <!-- Mobile Layout -->
+            <div class="wap-mobile-container">
+                <div class="wap-mobile-image">
+                    <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img">
+                </div>
+                <div class="wap-mobile-content">
+                    <h2 class="wap-mobile-title">Confiança e potência WAP na sua caixa de ferramentas</h2>
+                    <p class="wap-mobile-text">
+                        Otimize instalações, obras e montagens com tecnologia e qualidade. Deixe sua rotina mais
+                        descomplicada com a eficiência e potência da <strong>Parafusadeira e Furadeira de Impacto 3/8"
+                            WAP WF 700FE W2.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
 
 
     </main>

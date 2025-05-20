@@ -69,7 +69,7 @@ ul {
 
 .logo-container {
   text-align: center;   /* horizontally center if block-level */
-  /* margin: 2rem 0;    */
+  margin: 1rem 0;   
 
 }
 
@@ -1347,6 +1347,8 @@ ul {
   max-width: 45%;
   position: relative;
   z-index: 2; /* Place above the panel */
+  overflow: hidden;
+
 }
 
 .chuck-image {
@@ -1614,68 +1616,100 @@ ul {
 }
 
 /* Tool Controls Section Styles */
+
+
+
+/* ------------------------------------------- */
+/* Desktop: show 4 controls in a row, hide mobile */
+/* ------------------------------------------- */
+/* Tool Controls Section Styles */
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  /* overflow: hidden; */
+}
+
+/* Desktop Layout - Partial View on Sides */
+/* Tool Controls Section Styles */
 .tool-controls-section {
-  padding: 60px 0;
-  background-color: #f9f9f9;
+  padding: 40px 0;
+  /* background-color: #f9f9f9; */
+  overflow: hidden;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0;
+  overflow: hidden;
 }
 
-/* Desktop Grid View */
+/* Desktop Layout - Partial View on Sides */
 .desktop-controls-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: nowrap;
   gap: 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;   /* IE, Edge */
+  scrollbar-width: none;      /* Firefox */
+  position: relative;
+  padding: 10px 5px;
+}
+
+/* Hide scrollbar */
+.desktop-controls-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .control-item {
-  background-color: white;
-  border-radius: 10px;
-  padding: 30px 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+  border-radius: 8px;
+  padding: 30px 30px 20px;
+  flex: 0 0 calc(33.33% - 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.control-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
 }
 
 .control-image-wrapper {
   width: 100%;
-  height: 200px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  background-color: transparent;
+  padding: 0;
 }
 
 .control-image {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: auto;
   object-fit: contain;
+  max-height: 300px;
+  display: block;
 }
 
 .control-title {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: 700;
   margin: 0 0 15px;
-  color: #222;
+  color: #080808; /* White text on red background */
 }
 
 .control-description {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
-  color: #666;
+  color: rgba(6, 6, 6, 0.85); /* Slightly transparent white for description */
   margin: 0;
+  max-width: 100%;
 }
 
 /* Mobile Carousel View */
@@ -1690,7 +1724,6 @@ ul {
   display: flex;
   width: 100%;
   transition: transform 0.3s ease;
-  cursor: grab;
 }
 
 .carousel-slide {
@@ -1701,19 +1734,17 @@ ul {
 
 .control-image-container {
   width: 100%;
-  height: 200px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border-radius: 8px;
+  margin-bottom: 30px;
 }
 
 /* Responsive Settings */
 @media (max-width: 992px) {
-  .desktop-controls-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .control-item {
+    flex: 0 0 calc(50% - 10px);
   }
 }
 
@@ -1726,6 +1757,11 @@ ul {
     display: block;
   }
   
+  .control-item.carousel-slide {
+    background-color: #d80000;
+    padding: 20px;
+  }
+  
   .control-title {
     font-size: 20px;
   }
@@ -1734,7 +1770,6 @@ ul {
     font-size: 14px;
   }
 }
-
 
 
 /* Product Highlights Section - Desktop Only */

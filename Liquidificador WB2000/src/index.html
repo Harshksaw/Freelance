@@ -263,7 +263,6 @@
                 </button>
             </div>
         </div>
-
         <section class="product-hero">
             <div class="container">
                 <div class="product-hero-content">
@@ -271,53 +270,263 @@
                     <div class="product-image-container">
                         <img src="./images/asset1.png" alt="Furadeira de Impacto WF 700FE W2" class="product-image">
                     </div>
-
+                
                     <!-- Product Info Container -->
                     <div class="product-info-container">
                         <div class="product-header">
                             <h5>PARAFUSADEIRA E FURADEIRA DE IMPACTO</h5>
                             <h1>WF 700FE W2</h1>
                         </div>
-
+                
                         <div class="product-description">
                             <h2>Transforme construções, montagens e instalações com robustez</h2>
-                            <p>Para os que procuram potência e precisão em um só produto, ela combina <strong>700W de
-                                    potência</strong> e <strong>40Nm de torque</strong> para elevar o status dos
-                                projetos do dia a dia a um novo nível.</p>
+                            <p>Para os que procuram potência e precisão em um só produto, ela combina <strong>700W de potência</strong> e <strong>40Nm de torque</strong> para elevar o status dos projetos do dia a dia a um novo nível.</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Product Features Section -->
-                <div class="product-features">
-                    <div class="feature-icons-grid">
-                        <!-- Feature 1 -->
-                        <div class="feature-icons-grid">
-                            <!-- Feature 1 -->
-                            <div class="feature-icon-item">
-                                <img src="images/g4.png" alt="Ícone empunhadura" class="material-icon-img">
-                                <h3>Função impacto</h3>
-                                <p>Garanta mais facilidade ao perfurar superfícies duras e materiais rígidos.</p>
-                            </div>
-
-                            <!-- Feature 2 -->
-                            <div class="feature-icon-item">
-                                <img src="images/g5.png" alt="Ícone empunhadura" class="material-icon-img">
-                                <h3>Controle de velocidade</h3>
-                                <p>Alterne entre os níveis de velocidade para maior controle, precisão e força para os
-                                    trabalhos.</p>
-                            </div>
-
-                            <!-- Feature 3 -->
-                            <div class="feature-icon-item">
-                                <img src="images/g5.png" alt="Ícone empunhadura" class="material-icon-img">
-                                <h3>Empunhadura auxiliar removível</h3>
-                                <p>Permite mais estabilidade e segurança ao perfurar materiais mais exigentes.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
         </section>
+        
+        <style>
+        /* Desktop styles */
+        .product-hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+        }
+        
+        .product-image-container {
+            min-width: 400px;
+            max-width: 45%;
+        }
+        
+        .product-image {
+            width: 100%;
+        }
+        
+        .product-info-container {
+            flex: 1;
+        }
+        
+        .product-header h5 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .product-header h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .product-description h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .product-description p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 991px) {
+            .product-hero-content {
+                display: grid;
+                grid-template-areas: 
+                    "header"
+                    "image"
+                    "description";
+                text-align: center;
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+            
+            .product-image-container {
+                grid-area: image;
+                min-width: auto;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .product-info-container {
+                display: contents; /* This makes the children participate in the grid layout directly */
+            }
+            
+            .product-header {
+                grid-area: header;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .product-description {
+                grid-area: description;
+                width: 100%;
+            }
+            
+            .product-header h5 {
+                font-size: 14px;
+            }
+            
+            .product-header h1 {
+                font-size: 34px;
+            }
+            
+            .product-description h2 {
+                font-size: 20px;
+            }
+            
+            .product-description p {
+                font-size: 15px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .product-header h1 {
+                font-size: 30px;
+            }
+            
+            .product-description h2 {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-image-container {
+                max-width: 250px;
+            }
+            
+            .product-header h5 {
+                font-size: 12px;
+            }
+            
+            .product-header h1 {
+                font-size: 28px;
+            }
+        }
+        </style>
+        
+        <style>
+        /* Desktop styles */
+        .product-hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .product-image-container {
+            min-width: 400px;
+            max-width: 45%;
+        }
+        
+        .product-image {
+            width: 100%;
+        }
+        
+        .product-info-container {
+            flex: 1;
+        }
+        
+        .product-header h5 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .product-header h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .product-description h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .product-description p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        /* Hide mobile header on desktop */
+        .mobile-header {
+            display: none;
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 991px) {
+            .product-hero-content {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+            
+            /* Show mobile header and hide desktop header */
+            .mobile-header {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            
+            .desktop-header {
+                display: none;
+            }
+            
+            .product-image-container {
+                min-width: auto;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .product-info-container {
+                width: 100%;
+            }
+            
+            .product-header h5 {
+                font-size: 14px;
+            }
+            
+            .product-header h1 {
+                font-size: 34px;
+            }
+            
+            .product-description h2 {
+                font-size: 20px;
+            }
+            
+            .product-description p {
+                font-size: 15px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .product-header h1 {
+                font-size: 30px;
+            }
+            
+            .product-description h2 {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-image-container {
+                max-width: 250px;
+            }
+            
+            .product-header h5 {
+                font-size: 12px;
+            }
+            
+            .product-header h1 {
+                font-size: 28px;
+            }
+        }
+        </style>
 
 
 
@@ -712,8 +921,7 @@
                 </div>
 
                 <!-- Feature description container with fixed navigation -->
-                <div class="feature-description-container"
-                    style=" background-color: white; position: relative; padding: 0;    background-color: #F2F2F2;
+                <div class="feature-description-container" style=" background-color: white; position: relative; padding: 0;    background-color: #F2F2F2;
                     margin-left: 40px;
                     margin-right: 40px;
                     border-radius: 10px;
@@ -848,98 +1056,124 @@
 
         <!-- Product Feature Gallery Section -->
         <!-- Product Feature Gallery Section -->
-     
+
         <section class="product-gallery-section bg-black" style="background-color: #ffffff;">
             <!-- Header -->
             <div style="display: flex; width: 100%;">
-              <div style="padding: 20px 15px; background-color: #ffffff; flex-grow: 1;">
-                <div style="position: relative;">
-                  <p style="font-family: Arial, sans-serif; font-size: 24px; font-weight: 500; margin: 0; line-height: 1.2; padding-bottom: 10px;">
-                    DOS PROJETOS MAIS SIMPLES<br>
-                    AOS <span style="font-weight: 700;">MAIS DESAFIADORES</span>
-                    <span style="display: inline-block; height: 1px; background-color: #333; margin-left: 10px; vertical-align: middle; width: 300px;"></span>
-                  </p>
+                <div style="padding: 20px 15px; background-color: #ffffff; flex-grow: 1;">
+                    <div style="position: relative;">
+                        <p
+                            style="font-family: Arial, sans-serif; font-size: 24px; font-weight: 500; margin: 0; line-height: 1.2; padding-bottom: 10px;">
+                            DOS PROJETOS MAIS SIMPLES<br>
+                            AOS <span style="font-weight: 700;">MAIS DESAFIADORES</span>
+                            <span
+                                style="display: inline-block; height: 1px; background-color: #333; margin-left: 10px; vertical-align: middle; width: 300px;"></span>
+                        </p>
+                    </div>
                 </div>
-              </div>
             </div>
-          
+
             <!-- Desktop Gallery Layout - reduced height -->
-            <div class="desktop-gallery" style="display: flex; gap: 10px; padding: 15px; background-color: #ffffff; height: 700px; max-width: 1200px; margin: 0 auto;">
+            <div class="desktop-gallery"
+                style="display: flex; gap: 10px; padding: 15px; background-color: #ffffff; height: 700px; max-width: 1200px; margin: 0 auto;">
                 <!-- Left large image -->
-                <div class="gallery-item large" style="flex: 0 0 35%; height: 100%; background-color: #060606; border-radius: 8px; overflow: hidden;">
-                  <img src="images/g23.png" alt="Empunhadura ergonômica" style="object-fit: cover; width: 100%; height: 100%; padding: 20px;">
+                <div class="gallery-item large"
+                    style="flex: 0 0 35%; height: 100%; background-color: #060606; border-radius: 8px; overflow: hidden;">
+                    <img src="images/g23.png" alt="Empunhadura ergonômica"
+                        style="object-fit: cover; width: 100%; height: 100%; padding: 20px;">
                 </div>
-              
+
                 <!-- Right grid of smaller images -->
-                <div class="gallery-grid" style="flex: 0 0 65%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10px; height: 100%;">
-                  <div class="gallery-item" style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 1/2; grid-row: 1/2; position: relative;">
-                    <img src="images/g24.png" alt="Empunhadura auxiliar" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
-                  </div>
-                  <div class="gallery-item" style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 2/3; grid-row: 1/2; position: relative;">
-                    <img src="images/g20.png" alt="Chave de mandril" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
-                  </div>
-                  <div class="gallery-item" style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 1/2; grid-row: 2/3; position: relative;">
-                    <img src="images/g21.png" alt="Seletor de velocidade" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
-                  </div>
-                  <div class="gallery-item" style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 2/3; grid-row: 2/3; position: relative;">
-                    <img src="images/g25.png" alt="Mandril da furadeira" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
-                  </div>
+                <div class="gallery-grid"
+                    style="flex: 0 0 65%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10px; height: 100%;">
+                    <div class="gallery-item"
+                        style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 1/2; grid-row: 1/2; position: relative;">
+                        <img src="images/g24.png" alt="Empunhadura auxiliar"
+                            style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                    </div>
+                    <div class="gallery-item"
+                        style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 2/3; grid-row: 1/2; position: relative;">
+                        <img src="images/g20.png" alt="Chave de mandril"
+                            style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                    </div>
+                    <div class="gallery-item"
+                        style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 1/2; grid-row: 2/3; position: relative;">
+                        <img src="images/g21.png" alt="Seletor de velocidade"
+                            style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                    </div>
+                    <div class="gallery-item"
+                        style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 2/3; grid-row: 2/3; position: relative;">
+                        <img src="images/g25.png" alt="Mandril da furadeira"
+                            style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                    </div>
                 </div>
-              </div>
-          
-            <!-- Mobile Gallery Layout - only shows on mobile -->
-            <div class="mobile-gallery" style="display: none; padding: 15px; background-color: #ffffff; overflow: hidden; height: 400px;">
-              <div class="mobile-gallery-grid" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px; ">
-                <div class="gallery-item item-top-left" style="background-color: #2D2926; border-radius: 8px; overflow: hidden;">
-                  <img src="images/g28.png" alt="Empunhadura auxiliar" style="object-fit: cover; width: 100%; height: 100%;">
-                </div>
-                <div class="gallery-item item-top-right" style="background-color: #2D2926; border-radius: 8px; overflow: hidden;">
-                  <img src="images/g27.png" alt="Chave de mandril" style="object-fit: cover; width: 100%; height: 100%;">
-                </div>
-                <div class="gallery-item item-bottom-left" style="background-color: #2D2926; border-radius: 8px; overflow: hidden; ">
-                  <img src="images/g29.png" alt="Empunhadura ergonômica" style="object-fit: cover; width: 100%; height: 100%; border-radius: 8px;">
-                </div>
-                <div class="gallery-item item-bottom-right" style="background-color: #2D2926; border-radius: 8px; overflow: hidden; ">
-                  <img src="images/g26.png" alt="Mandril da furadeira" style="object-fit: cover; width: 100%; height: 100%;  margin-left: 10px; border-radius: 8px;">
-                </div>
-              </div>
             </div>
-          
+
+            <!-- Mobile Gallery Layout - only shows on mobile -->
+            <div class="mobile-gallery"
+                style="display: none; padding: 15px; background-color: #ffffff; overflow: hidden; height: 400px;">
+                <div class="mobile-gallery-grid"
+                    style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px; ">
+                    <div class="gallery-item item-top-left"
+                        style="background-color: #2D2926; border-radius: 8px; overflow: hidden;">
+                        <img src="images/g28.png" alt="Empunhadura auxiliar"
+                            style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="gallery-item item-top-right"
+                        style="background-color: #2D2926; border-radius: 8px; overflow: hidden;">
+                        <img src="images/g27.png" alt="Chave de mandril"
+                            style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="gallery-item item-bottom-left"
+                        style="background-color: #2D2926; border-radius: 8px; overflow: hidden; ">
+                        <img src="images/g29.png" alt="Empunhadura ergonômica"
+                            style="object-fit: cover; width: 100%; height: 100%; border-radius: 8px;">
+                    </div>
+                    <div class="gallery-item item-bottom-right"
+                        style="background-color: #2D2926; border-radius: 8px; overflow: hidden; ">
+                        <img src="images/g26.png" alt="Mandril da furadeira"
+                            style="object-fit: cover; width: 100%; height: 100%;  margin-left: 10px; border-radius: 8px;">
+                    </div>
+                </div>
+            </div>
+
             <!-- Media Queries for Responsiveness -->
             <style>
-              @media screen and (max-width: 768px) {
-                .desktop-gallery {
-                  display: none !important;
+                @media screen and (max-width: 768px) {
+                    .desktop-gallery {
+                        display: none !important;
+                    }
+
+                    .mobile-gallery {
+                        display: block !important;
+                    }
                 }
-                .mobile-gallery {
-                  display: block !important;
+
+                @media screen and (min-width: 769px) {
+                    .desktop-gallery {
+                        display: flex !important;
+                    }
+
+                    .mobile-gallery {
+                        display: none !important;
+                    }
                 }
-              }
-              
-              @media screen and (min-width: 769px) {
-                .desktop-gallery {
-                  display: flex !important;
+
+                /* Remove relative positioning and padding since we're using fixed heights */
+                .gallery-item {
+                    position: relative;
                 }
-                .mobile-gallery {
-                  display: none !important;
+
+                .gallery-item img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
                 }
-              }
-              
-              /* Remove relative positioning and padding since we're using fixed heights */
-              .gallery-item {
-                position: relative;
-              }
-              
-              .gallery-item img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-              }
             </style>
-          </section>
+        </section>
 
         <!-- Product Feature Section -->
         <section class="product-feature-section">
@@ -986,12 +1220,9 @@
                             WAP WF 700FE W2.</strong>
                     </p>
                 </div>
-                <div class="wap-desktop-image"
-                style="width: 100%; height: 100%;"
-                >
+                <div class="wap-desktop-image" style="width: 100%; height: 100%;">
                     <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img"
-                    style="width: 100%; height: 100%;"
-                    >
+                        style="width: 100%; height: 100%;">
                 </div>
             </div>
 

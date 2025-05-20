@@ -97,121 +97,8 @@
             showSlide(0);
         });
  
-            // Simple mobile-only slider functionality
-document.addEventListener('DOMContentLoaded', function() {
-  // Set up variables for mobile only
-  const carouselContainer = document.querySelector('.carousel-slides-container');
-  const slides = document.querySelectorAll('.carousel-slide');
-  
-  if (!carouselContainer || slides.length === 0) return;
-  
-  let currentSlide = 0;
-  let startX, moveX;
-  let isDragging = false;
-  
-  // Set initial position
-  updateSlidePosition();
-  
-  // Touch events for mobile swipe
-  carouselContainer.addEventListener('touchstart', handleTouchStart, false);
-  carouselContainer.addEventListener('touchmove', handleTouchMove, false);
-  carouselContainer.addEventListener('touchend', handleTouchEnd, false);
-  
-  // Handle touch start
-  function handleTouchStart(e) {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-  }
-  
-  // Handle touch move
-  function handleTouchMove(e) {
-    if (!isDragging) return;
-    moveX = e.touches[0].clientX;
-    const diff = moveX - startX;
-    
-    // Add some resistance to the drag
-    carouselContainer.style.transform = `translateX(calc(-${currentSlide * 100}% + ${diff * 0.5}px))`;
-  }
-  
-  // Handle touch end
-  function handleTouchEnd(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    
-    const diff = moveX - startX;
-    
-    if (diff > 50 && currentSlide > 0) {
-      // Swipe right
-      currentSlide--;
-    } else if (diff < -50 && currentSlide < slides.length - 1) {
-      // Swipe left
-      currentSlide++;
-    }
-    
-    updateSlidePosition();
-  }
-  
-  // Update the slide position
-  function updateSlidePosition() {
-    carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-  }
-});
- // Simple scroll functionality for both desktop and mobile
-document.addEventListener('DOMContentLoaded', function() {
-  const carousel = document.querySelector('.carousel-slides-container');
-  const desktopGrid = document.querySelector('.desktop-controls-grid');
-  
-  // Mobile touch functionality
-  if (carousel) {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    let startX, moveX;
-    let isDragging = false;
-    
-    if (slides.length > 1) {
-      // Touch events
-      carousel.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-      });
-      
-      carousel.addEventListener('touchmove', function(e) {
-        if (!isDragging) return;
-        
-        moveX = e.touches[0].clientX;
-        const diff = moveX - startX;
-        const currentTransform = -currentSlide * 100;
-        
-        carousel.style.transform = `translateX(calc(${currentTransform}% + ${diff}px))`;
-      });
-      
-      carousel.addEventListener('touchend', function() {
-        if (!isDragging) return;
-        isDragging = false;
-        
-        const diff = moveX - startX;
-        
-        if (diff > 50 && currentSlide > 0) {
-          // Swipe right - go to previous
-          currentSlide--;
-        } else if (diff < -50 && currentSlide < slides.length - 1) {
-          // Swipe left - go to next
-          currentSlide++;
-        }
-        
-        // Update position with animation
-        carousel.style.transition = 'transform 0.3s ease';
-        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-        
-        // Reset transition after animation completes
-        setTimeout(function() {
-          carousel.style.transition = '';
-        }, 300);
-      });
-    }
-  }
-});
- </script>
+
+</script>
 </head>
 
 <body>
@@ -438,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <!-- Product Feature Section with proper image alignment -->
         <section class="product-features5">
-            <!-- Feature icons section can go here if needed -->
+
 
             <!-- Main feature panel with proper image positioning -->
             <div class="feature-panel5">
@@ -629,52 +516,55 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
 
                 <!-- Mobile Simple Swipeable Carousel View -->
-                <div class="mobile-controls-wrapper">
-                    <!-- Carousel Slides Container -->
-                    <div class="carousel-slides-container">
-                        <!-- Switch Mode Button Control -->
-                        <div class="control-item mode-switch-control carousel-slide">
-                            <div class="control-image-container">
-                                <img src="images/g7.png" alt="Botão comutador" class="control-image">
-                            </div>
-                            <h3 class="control-title">Botão comutador</h3>
-                            <p class="control-description">Alterne entre diferentes modos de operação, que permite
-                                realizar perfurações com ou sem impacto.</p>
+             
+            </div>
+            <div class="mobile-controls-wrapper">
+                <!-- Carousel Slides Container -->
+                <div class="carousel-slides-container">
+                    <!-- Switch Mode Button Control -->
+                    <div class="control-item mode-switch-control carousel-slide">
+                        <div class="control-image-container">
+                            <img src="images/g7.png"
+                            alt="Botão comutador" class="control-image">
                         </div>
+                        <h3 class="control-title">Botão comutador</h3>
+                        <p class="control-description">Alterne entre diferentes modos de operação, que permite
+                            realizar perfurações com ou sem impacto.</p>
+                    </div>
 
-                        <!-- Speed Selector Control -->
-                        <div class="control-item speed-selector-control carousel-slide">
-                            <div class="control-image-container">
-                                <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
-                            </div>
-                            <h3 class="control-title">Seletor de velocidade</h3>
-                            <p class="control-description">Oferece uma nova experiência com diferentes níveis de
-                                potência, proporcionando força e precisão.</p>
+                    <!-- Speed Selector Control -->
+                    <div class="control-item speed-selector-control carousel-slide">
+                        <div class="control-image-container">
+                            <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
                         </div>
+                        <h3 class="control-title">Seletor de velocidade</h3>
+                        <p class="control-description">Oferece uma nova experiência com diferentes níveis de
+                            potência, proporcionando força e precisão.</p>
+                    </div>
 
-                        <!-- Lock Button Control -->
-                        <div class="control-item lock-button-control carousel-slide">
-                            <div class="control-image-container">
-                                <img src="images/g9.png" alt="Botão trava" class="control-image">
-                            </div>
-                            <h3 class="control-title">Botão trava</h3>
-                            <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
-                                necessidade de pressionar o gatilho.</p>
+                    <!-- Lock Button Control -->
+                    <div class="control-item lock-button-control carousel-slide">
+                        <div class="control-image-container">
+                            <img src="images/g9.png" alt="Botão trava" class="control-image">
                         </div>
+                        <h3 class="control-title">Botão trava</h3>
+                        <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
+                            necessidade de pressionar o gatilho.</p>
+                    </div>
 
-                        <!-- Rotation Direction Selector -->
-                        <div class="control-item rotation-selector-control carousel-slide">
-                            <div class="control-image-container">
-                                <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
-                            </div>
-                            <h3 class="control-title">Seletor de sentido de rotação</h3>
-                            <p class="control-description">Permite alternar entre dois modos principais: sentido horário
-                                e anti-horário.</p>
+                    <!-- Rotation Direction Selector -->
+                    <div class="control-item rotation-selector-control carousel-slide">
+                        <div class="control-image-container">
+                            <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
                         </div>
+                        <h3 class="control-title">Seletor de sentido de rotação</h3>
+                        <p class="control-description">Permite alternar entre dois modos principais: sentido horário
+                            e anti-horário.</p>
                     </div>
                 </div>
             </div>
         </section>
+
 
 
         <!-- Product Feature Highlights - Desktop Only -->

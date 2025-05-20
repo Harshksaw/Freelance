@@ -26,6 +26,7 @@ body {
   max-width: 1200px;
   width: 95%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 a {
@@ -1713,23 +1714,40 @@ ul {
 }
 
 /* Mobile Carousel View */
+/* Mobile Carousel View */
 .mobile-controls-wrapper {
   display: none;
   width: 100%;
   overflow: hidden;
   position: relative;
+  padding: 15px 0;
 }
 
 .carousel-slides-container {
   display: flex;
-  width: 100%;
   transition: transform 0.3s ease;
+  padding: 0 15px;
+  margin: 0 -15px;
+  width: 100%;
 }
 
 .carousel-slide {
-  flex: 0 0 100%;
-  width: 100%;
+  flex: 0 0 90%;
+  width: 90%;
+  padding: 0 10px;
   box-sizing: border-box;
+  position: relative;
+}
+
+/* Style for the control items in mobile */
+.control-item.carousel-slide {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .control-image-container {
@@ -1738,17 +1756,144 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
 }
 
-/* Responsive Settings */
-@media (max-width: 992px) {
-  .control-item {
-    flex: 0 0 calc(50% - 10px);
+.control-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.carousel-slide .control-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: #222;
+}
+
+.carousel-slide .control-description {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #666;
+  margin: 0;
+}
+
+/* Show just a glimpse of the next/previous slides */
+
+/* For smaller mobile devices */
+@media (max-width: 480px) {
+  .carousel-slide {
+    flex: 0 0 85%;
+    width: 85%;
+  }
+  
+  .control-item.carousel-slide {
+    padding: 20px 15px 15px;
+  }
+  
+  .carousel-slide .control-title {
+    font-size: 18px;
+  }
+  
+  .carousel-slide .control-description {
+    font-size: 13px;
+  }
+}
+/* === Mobile Carousel === */
+
+/* Mobile Carousel specific fixes */
+@media (max-width: 991px) {
+  /* Hide desktop grid on mobile */
+  .desktop-controls-grid {
+    display: none;
+  }
+  /* Mobile Carousel Styles - matching the provided screenshots with decreased gap */
+.mobile-controls-wrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0 10px; /* Add some padding around the carousel */
+}
+
+.carousel-slides-container {
+  display: flex;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  width: 100%;
+  /* Add gap between slides */
+  gap: 0; /* Reduced to 0 to ensure no other slide is visible */
+}
+
+.carousel-slides-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.carousel-slide {
+  min-width: 100%; /* Each slide takes full width */
+  flex: 0 0 100%; /* Prevent flexbox from resizing items */
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+/* Mobile-specific control image styling */
+.control-image-container {
+  width: 100%;
+  max-width: 550px;
+  height: 500px;
+  background-color: var(--color-bg-gray);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.carousel-slide .control-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.carousel-slide .control-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 15px;
+  color: var(--color-text-dark);
+}
+
+.carousel-slide .control-description {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-gray);
+  margin: 0;
+  max-width: 90%;
+  text-align: center;
+}
+
+/* Responsive layout: Show desktop grid on large screens, carousel on mobile */
+@media (min-width: 768px) {
+  .mobile-controls-wrapper {
+    display: none;
+  }
+  
+  .desktop-controls-grid {
+    display: flex;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .desktop-controls-grid {
     display: none;
   }
@@ -1756,21 +1901,26 @@ ul {
   .mobile-controls-wrapper {
     display: block;
   }
-  
-  .control-item.carousel-slide {
-    background-color: #d80000;
-    padding: 20px;
-  }
-  
-  .control-title {
-    font-size: 20px;
-  }
-  
-  .control-description {
-    font-size: 14px;
+
+  /* Adding additional styling to ensure slides are fully separated */
+  .carousel-slides-container {
+    /* This creates a mask that only shows the current slide */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 0%, black 100%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 0%, black 100%, transparent 100%);
   }
 }
 
+/* Adjustments for smaller desktop screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .desktop-controls-grid {
+    flex-wrap: wrap;
+  }
+  
+  .desktop-controls-grid .control-item {
+    flex-basis: calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
 
 /* Product Highlights Section - Desktop Only */
 .product-highlights-section {
@@ -2342,7 +2492,6 @@ margin-left: -50%;
 }
 
 
-
 /* Main feature panel specific styles */
 .product-features5 .feature-panel5 {
   background-color: #222;
@@ -2351,7 +2500,7 @@ margin-left: -50%;
   padding: 60px 40px;
   margin: 30px 0;
   position: relative;
-  overflow: visible; /* Allow image to overflow */
+  overflow: hidden; /* This prevents content from spilling outside */
 }
 
 .product-features5 .feature-panel5 .container {
@@ -2359,11 +2508,12 @@ margin-left: -50%;
   max-width: 1140px;
   margin: 0 auto;
   position: relative;
+  overflow: visible; /* Allow container contents to overflow for positioning */
 }
 
 .product-features5 .feature-panel5 .feature-content5 {
   display: flex;
-  flex-direction: row; /* Important for correct layout */
+  flex-direction: row;
   align-items: flex-start;
   position: relative;
 }
@@ -2375,6 +2525,7 @@ margin-left: -50%;
   padding-right: 40px;
   z-index: 2; /* Make sure text is above image */
   color: #fff;
+  position: relative;
 }
 
 .product-features5 .feature-panel5 .feature-text5 h2 {
@@ -2393,12 +2544,12 @@ margin-left: -50%;
   font-weight: 600;
 }
 
-/* Image container styling */
+/* Image container styling - FIXED */
 .product-features5 .feature-panel5 .feature-image-container5 {
   position: absolute;
-  right: -730px;
-  top: 30px;
-  width: 120%;
+  right: -150px; /* Adjusted position */
+  top: -100px; /* Adjusted position */
+  width: 60%; /* Adjusted width */
   height: auto;
   z-index: 1;
 }
@@ -2407,11 +2558,10 @@ margin-left: -50%;
   position: relative;
   width: 100%;
   height: auto;
-  
 }
 
 .product-features5 .feature-panel5 .drill-image5 {
-  width: 50%;
+  width: 100%; /* Make image take full width of container */
   height: auto;
   display: block;
 }
@@ -2419,17 +2569,17 @@ margin-left: -50%;
 /* Feature labels */
 .product-features5 .feature-panel5 .feature-label5 {
   position: absolute;
-  /* background-color: rgba(0, 0, 0, 0.8); */
   color: white;
-  padding: 2px 16px 16px 60px;
+  padding: 8px 12px;
   border-radius: 4px;
-  font-size: 10px;
+  font-size: 12px;
   z-index: 3;
+  background-color: rgba(0, 0, 0, 0.7); /* Added for better visibility */
 }
 
 .product-features5 .feature-panel5 .function-label5 {
   top: 30%;
-  right: 60%;
+  left: 10%; /* Adjusted for better positioning */
 }
 
 .product-features5 .feature-panel5 .handle-label5 {
@@ -2441,6 +2591,7 @@ margin-left: -50%;
 @media (max-width: 991px) {
   .product-features5 .feature-panel5 {
     padding: 40px 20px;
+    overflow: hidden;
   }
   
   .product-features5 .feature-panel5 .feature-content5 {
@@ -2451,38 +2602,28 @@ margin-left: -50%;
     max-width: 100%;
     padding-right: 0;
     text-align: center;
-    margin-bottom: 150px;
+    margin-bottom: 320px; /* Space for image below */
   }
   
-
   .product-features5 .feature-panel5 .feature-image-container5 {
-    position: absolute;
+    position: relative;
     right: auto;
     top: auto;
-    width: 150%;
-
+    width: 100%;
     max-width: 350px;
-    margin: 370px -20px;
-
+    margin: 0 auto;
   }
   
   .product-features5 .feature-panel5 .function-label5 {
     top: 20%;
     right: 10%;
+    left: auto;
   }
   
   .product-features5 .feature-panel5 .handle-label5 {
     bottom: 20%;
     left: 10%;
   }
-
-  .product-features5 .feature-panel5 .drill-image5 {
-    width: 100%;
-    height: auto;
-    display: relative;
-    
-  }
-  
 }
 
 @media (max-width: 768px) {
@@ -2490,7 +2631,11 @@ margin-left: -50%;
     font-size: 26px;
   }
   
-  .product-features5 .feature-panel5 .feature-text5  p {
+  .product-features5 .feature-panel5 .feature-text5 p {
     font-size: 15px;
+  }
+  
+  .product-features5 .feature-panel5 .feature-text5 {
+    margin-bottom: 280px; /* Adjusted for smaller screens */
   }
 }

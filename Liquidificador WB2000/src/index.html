@@ -1057,7 +1057,7 @@
         <!-- Product Feature Gallery Section -->
         <!-- Product Feature Gallery Section -->
 
-        <section class="product-gallery-section bg-black" style="background-color: #ffffff;">
+        <section class="product-gallery-section bg-black" style="background-color: #8e0c0c8b;">
             <!-- Header -->
             <div style="display: flex; width: 100%;">
                 <div style="padding: 20px 15px; background-color: #ffffff; flex-grow: 1;">
@@ -1176,70 +1176,157 @@
         </section>
 
         <!-- Product Feature Section -->
-        <section class="product-feature-section">
-            <!-- Desktop Layout -->
-            <div class="desktop-feature">
-                <div class="feature-image">
-                    <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img">
-                </div>
-                <div class="feature-content">
-                    <h2 class="feature-title">Controle total nas suas mãos</h2>
-                    <p class="feature-text">
-                        Com a <strong>Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a
-                        velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em
-                        usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
-                    </p>
-                </div>
-            </div>
+ <!-- Product Feature Section -->
+<section class="product-feature-section" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; background-color: #fff;">
+    <!-- Desktop Layout -->
+    <div class="desktop-feature" style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+        <div class="feature-image" style="align-self: center;">
+            <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img" style="width: 100%; height: auto; display: block;">
+        </div>
+        <div class="feature-content" style="width: 55%;">
+            <h2 class="feature-title" style="font-size: 24px; font-weight: 500; margin-bottom: 16px; color: #000; text-align: left;">Controle total nas suas mãos</h2>
+            <p class="feature-text" style="font-size: 16px; line-height: 1.5; color: #444; text-align: left;">
+                Com a <strong style="font-weight: 600;">Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a
+                velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em
+                usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
+            </p>
+        </div>
+    </div>
 
-            <!-- Mobile Layout -->
-            <div class="mobile-feature">
-                <div class="feature-image-mobile">
-                    <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img-mobile">
-                </div>
-                <div class="feature-content-mobile">
-                    <h2 class="feature-title">Controle total nas suas mãos</h2>
-                    <p class="feature-text">
-                        Com a <strong>Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a
-                        velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em
-                        usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
-                    </p>
-                </div>
-            </div>
-        </section>
+    <!-- Mobile Layout -->
+    <div class="mobile-feature" style="display: none; flex-direction: column;">
+        <div class="feature-image-mobile" style="width: 100%; margin-bottom: 20px;">
+            <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img-mobile" style="width: 100%; max-width: 320px; height: auto; display: block; margin: 0 auto;">
+        </div>
+        <div class="feature-content-mobile" style="width: 100%;">
+            <h2 class="feature-title" style="font-size: 24px; font-weight: 500; margin-bottom: 16px; color: #000; text-align: center;">Controle total nas suas mãos</h2>
+            <p class="feature-text" style="font-size: 16px; line-height: 1.5; color: #444; text-align: center;">
+                Com a <strong style="font-weight: 600;">Parafusadeira WF 700FE W2</strong> o controle está nas suas mãos! Você controla a
+                velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em
+                usos contínuos com o botão trava. Garanta adaptabilidade total da ferramenta à sua necessidade.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Add small script to handle responsive toggle -->
+<script>
+    function handleResponsive() {
+        var desktopFeature = document.querySelector('.desktop-feature');
+        var mobileFeature = document.querySelector('.mobile-feature');
+        var windowWidth = window.innerWidth;
+        
+        if (windowWidth <= 768) {
+            desktopFeature.style.display = 'none';
+            mobileFeature.style.display = 'flex';
+            
+            // Additional styles for smaller screens
+            if (windowWidth <= 480) {
+                document.querySelector('.product-feature-section').style.padding = '30px 15px';
+                var titles = document.querySelectorAll('.mobile-feature .feature-title');
+                titles.forEach(function(title) {
+                    title.style.fontSize = '20px';
+                    title.style.textAlign = 'left';
+                });
+                var texts = document.querySelectorAll('.mobile-feature .feature-text');
+                texts.forEach(function(text) {
+                    text.style.fontSize = '14px';
+                    text.style.textAlign = 'left';
+                });
+            }
+        } else {
+            desktopFeature.style.display = 'flex';
+            mobileFeature.style.display = 'none';
+        }
+    }
+    
+    // Run on page load
+    handleResponsive();
+    
+    // Run when window is resized
+    window.addEventListener('resize', handleResponsive);
+</script>
 
         <!-- Product Packaging Section -->
-        <section class="wap-product-section">
+        <section style="max-width: 1200px; margin: 80px auto; padding: 0 20px;">
             <!-- Desktop Layout -->
-            <div class="wap-desktop-container">
-                <div class="wap-desktop-content">
-                    <h2 class="wap-desktop-title">O produto que irá completar sua caixa de ferramentas</h2>
-                    <p class="wap-desktop-text">
+            <div style="display: flex; flex-direction: row; align-items: center; gap: 40px;" id="wap-desktop-container">
+                <div style="width: 40%; overflow: hidden;">
+                    <h2 style="font-size: 32px; font-weight: 600; margin-bottom: 20px; color: #000; line-height: 1.1;
+                    overflow: hidden;
+                    ">O produto que irá completar sua caixa de ferramentas</h2>
+                    <p style="font-size: 16px; line-height: 1.5; color: #333;">
                         Otimize instalações, obras e montagens com tecnologia e qualidade. Deixe sua rotina mais
-                        descomplicada com a eficiência e potência da <strong>Parafusadeira e Furadeira de Impacto 3/8"
+                        descomplicada com a eficiência e potência da <strong style="font-weight: 600;">Parafusadeira e Furadeira de Impacto 3/8"
                             WAP WF 700FE W2.</strong>
                     </p>
                 </div>
-                <div class="wap-desktop-image" style="width: 100%; height: 100%;">
-                    <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img"
-                        style="width: 100%; height: 100%;">
+                <div style="width: 60%;">
+                    <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" style="width: 100%; height: auto; display: block;">
                 </div>
             </div>
-
+        
             <!-- Mobile Layout -->
-            <div class="wap-mobile-container">
-                <div class="wap-mobile-image">
-                    <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" class="wap-img">
+            <div style="display: none; flex-direction: column; text-align: center;" id="wap-mobile-container">
+                <div style="width: 100%; margin-bottom: 30px;">
+                    <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2" style="width: 100%; height: auto; display: block;">
                 </div>
-                <div class="wap-mobile-content">
-                    <h2 class="wap-mobile-title">Confiança e potência WAP na <br> sua caixa de ferramentas</br></h2>
-                    <p class="wap-mobile-text">
+                <div style="width: 100%;">
+                    <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 20px; color: #000; line-height: 1.2;" id="wap-mobile-title">Confiança e potência WAP na <br> sua caixa de ferramentas</br></h2>
+                    <p style="font-size: 16px; line-height: 1.5; color: #333; text-align: center;" id="wap-mobile-text">
                         Otimize instalações, obras e montagens com tecnologia e qualidade. Deixe sua rotina mais
-                        descomplicada com a eficiência e potência da <strong>Parafusadeira e Furadeira de Impacto 3/8"
+                        descomplicada com a eficiência e potência da <strong style="font-weight: 600;">Parafusadeira e Furadeira de Impacto 3/8"
                             WAP WF 700FE W2.</strong>
                     </p>
                 </div>
             </div>
+        
+            <script>
+                function handleWapResponsive() {
+                    var desktopContainer = document.getElementById('wap-desktop-container');
+                    var mobileContainer = document.getElementById('wap-mobile-container');
+                    var mobileTitle = document.getElementById('wap-mobile-title');
+                    var mobileText = document.getElementById('wap-mobile-text');
+                    var wapSection = desktopContainer.parentElement;
+                    var windowWidth = window.innerWidth;
+                    
+                    // Apply responsive styles
+                    if (windowWidth <= 768) {
+                        desktopContainer.style.display = 'none';
+                        mobileContainer.style.display = 'flex';
+                        wapSection.style.margin = '40px auto';
+                        
+                        // Additional styles for very small screens
+                        if (windowWidth <= 480) {
+                            mobileTitle.style.fontSize = '20px';
+                            mobileTitle.style.textAlign = 'left';
+                            mobileTitle.style.fontWeight = '500';
+                            
+                            mobileText.style.fontSize = '15px';
+                            mobileText.style.textAlign = 'left';
+                            mobileText.style.fontWeight = '500';
+                        } else {
+                            mobileTitle.style.fontSize = '28px';
+                            mobileTitle.style.textAlign = 'center';
+                            mobileTitle.style.fontWeight = '700';
+                            
+                            mobileText.style.fontSize = '16px';
+                            mobileText.style.textAlign = 'center';
+                            mobileText.style.fontWeight = 'normal';
+                        }
+                    } else {
+                        desktopContainer.style.display = 'flex';
+                        mobileContainer.style.display = 'none';
+                        wapSection.style.margin = '80px auto';
+                    }
+                }
+                
+                // Run on page load
+                document.addEventListener('DOMContentLoaded', handleWapResponsive);
+                
+                // Run when window is resized
+                window.addEventListener('resize', handleWapResponsive);
+            </script>
         </section>
 
 

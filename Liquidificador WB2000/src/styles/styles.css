@@ -2214,19 +2214,21 @@ margin-left: -40%;
 
 .feature-title {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 16px;
   color: #000;
+  text-align: left;
 }
 
 .feature-text {
   font-size: 16px;
   line-height: 1.5;
   color: #444;
+  text-align: left;
 }
 
 .feature-text strong {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* Mobile Layout */
@@ -2265,8 +2267,9 @@ margin-left: -40%;
   }
   
   .feature-title {
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
+
     
   }
   
@@ -2281,7 +2284,9 @@ margin-left: -40%;
   }
   
   .feature-title {
-    font-size: 18px;
+    font-size: 20px;
+    text-align: left;
+    font-weight: 500;
   }
 }
 
@@ -2377,11 +2382,15 @@ margin-left: -40%;
 
 @media (max-width: 480px) {
   .wap-mobile-title {
-    font-size: 24px;
+    font-size: 20px;
+    text-align: left;
+    font-weight: 500;
   }
   
   .wap-mobile-text {
     font-size: 15px;
+    text-align: left;
+    font-weight: 500;
   }
 }
 

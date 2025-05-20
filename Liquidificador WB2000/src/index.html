@@ -848,52 +848,98 @@
 
         <!-- Product Feature Gallery Section -->
         <!-- Product Feature Gallery Section -->
-        <section class="product-gallery-section bg-black">
-            <!-- Desktop Gallery Layout -->
-            <div class="desktop-gallery">
+     
+        <section class="product-gallery-section bg-black" style="background-color: #ffffff;">
+            <!-- Header -->
+            <div style="display: flex; width: 100%;">
+              <div style="padding: 20px 15px; background-color: #ffffff; flex-grow: 1;">
+                <div style="position: relative;">
+                  <p style="font-family: Arial, sans-serif; font-size: 24px; font-weight: 500; margin: 0; line-height: 1.2; padding-bottom: 10px;">
+                    DOS PROJETOS MAIS SIMPLES<br>
+                    AOS <span style="font-weight: 700;">MAIS DESAFIADORES</span>
+                    <span style="display: inline-block; height: 1px; background-color: #333; margin-left: 10px; vertical-align: middle; width: 300px;"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Desktop Gallery Layout - reduced height -->
+            <div class="desktop-gallery" style="display: flex; gap: 10px; padding: 15px; background-color: #ffffff; height: 700px; max-width: 1200px; margin: 0 auto;">
                 <!-- Left large image -->
-                <div class="gallery-item large">
-                    <img src="images/g23.png" alt="Empunhadura ergonômica"
-                        style="object-fit: contain; width: 100%; height: 100%;">
+                <div class="gallery-item large" style="flex: 0 0 35%; height: 100%; background-color: #060606; border-radius: 8px; overflow: hidden;">
+                  <img src="images/g23.png" alt="Empunhadura ergonômica" style="object-fit: cover; width: 100%; height: 100%; padding: 20px;">
                 </div>
-
+              
                 <!-- Right grid of smaller images -->
-                <div class="gallery-grid">
-                    <div class="gallery-item" style="width: 120%; height: 80%;">
-                        <img src="images/g24.png" alt="Empunhadura auxiliar" class="gallery-image">
-                    </div>
-                    <div class="gallery-item" style="width: 60%; height: 80%; margin-left: 20%;">
-                        <img src="images/g20.png" alt="Chave de mandril" class="gallery-image">
-                    </div>
-                    <div class="gallery-item" style="width: 60%; height: 120%; margin-top:-15% ">
-                        <img src="images/g21.png" alt="Seletor de velocidade" class="gallery-image">
-                    </div>
-                    <div class="gallery-item" style="width: 120%; height: 120%; margin-left: -40%; margin-top: -15%; ">
-                        <img src="images/g25.png" alt="Mandril da furadeira" class="gallery-image">
-                    </div>
+                <div class="gallery-grid" style="flex: 0 0 65%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10px; height: 100%;">
+                  <div class="gallery-item" style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 1/2; grid-row: 1/2; position: relative;">
+                    <img src="images/g24.png" alt="Empunhadura auxiliar" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                  </div>
+                  <div class="gallery-item" style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 2/3; grid-row: 1/2; position: relative;">
+                    <img src="images/g20.png" alt="Chave de mandril" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                  </div>
+                  <div class="gallery-item" style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 1/2; grid-row: 2/3; position: relative;">
+                    <img src="images/g21.png" alt="Seletor de velocidade" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                  </div>
+                  <div class="gallery-item" style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 2/3; grid-row: 2/3; position: relative;">
+                    <img src="images/g25.png" alt="Mandril da furadeira" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                  </div>
                 </div>
-            </div>
-
-            <!-- Mobile Gallery Layout -->
-            <!-- Mobile Gallery Layout -->
-            <div class="mobile-gallery">
-                <div class="mobile-gallery-grid">
-                    <div class="gallery-item item-top-left">
-                        <img src="images/g28.png" alt="Empunhadura auxiliar" class="gallery-image">
-                    </div>
-                    <div class="gallery-item item-top-right">
-                        <img src="images/g27.png" alt="Chave de mandril" class="gallery-image">
-                    </div>
-                    <div class="gallery-item item-bottom-left">
-                        <img src="images/g29.png" alt="Empunhadura ergonômica" class="gallery-image">
-                    </div>
-                    <div class="gallery-item item-bottom-right">
-                        <img src="images/g26.png" alt="Mandril da furadeira" class="gallery-image">
-                    </div>
+              </div>
+          
+            <!-- Mobile Gallery Layout - only shows on mobile -->
+            <div class="mobile-gallery" style="display: none; padding: 15px; background-color: #ffffff; overflow: hidden; height: 400px;">
+              <div class="mobile-gallery-grid" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px; ">
+                <div class="gallery-item item-top-left" style="background-color: #2D2926; border-radius: 8px; overflow: hidden;">
+                  <img src="images/g28.png" alt="Empunhadura auxiliar" style="object-fit: cover; width: 100%; height: 100%;">
                 </div>
+                <div class="gallery-item item-top-right" style="background-color: #2D2926; border-radius: 8px; overflow: hidden;">
+                  <img src="images/g27.png" alt="Chave de mandril" style="object-fit: cover; width: 100%; height: 100%;">
+                </div>
+                <div class="gallery-item item-bottom-left" style="background-color: #2D2926; border-radius: 8px; overflow: hidden; ">
+                  <img src="images/g29.png" alt="Empunhadura ergonômica" style="object-fit: cover; width: 100%; height: 100%; border-radius: 8px;">
+                </div>
+                <div class="gallery-item item-bottom-right" style="background-color: #2D2926; border-radius: 8px; overflow: hidden; ">
+                  <img src="images/g26.png" alt="Mandril da furadeira" style="object-fit: cover; width: 100%; height: 100%;  margin-left: 10px; border-radius: 8px;">
+                </div>
+              </div>
             </div>
-        </section>
-
+          
+            <!-- Media Queries for Responsiveness -->
+            <style>
+              @media screen and (max-width: 768px) {
+                .desktop-gallery {
+                  display: none !important;
+                }
+                .mobile-gallery {
+                  display: block !important;
+                }
+              }
+              
+              @media screen and (min-width: 769px) {
+                .desktop-gallery {
+                  display: flex !important;
+                }
+                .mobile-gallery {
+                  display: none !important;
+                }
+              }
+              
+              /* Remove relative positioning and padding since we're using fixed heights */
+              .gallery-item {
+                position: relative;
+              }
+              
+              .gallery-item img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+              }
+            </style>
+          </section>
 
         <!-- Product Feature Section -->
         <section class="product-feature-section">

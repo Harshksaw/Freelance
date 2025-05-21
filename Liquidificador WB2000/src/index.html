@@ -46,7 +46,7 @@
 
 
         // Mobile Features Carousel Navigation
-        // JavaScript for the mobile feature carousel
+
         document.addEventListener('DOMContentLoaded', function () {
             const sliderContainer = document.querySelector('.features-slider-container');
             const slides = document.querySelectorAll('.feature-slide');
@@ -813,100 +813,271 @@
         </section>
 
         <!-- Power Tool Controls Section -->
-        <!-- Power Tool Controls Section -->
-        <!-- Power Tool Controls Section -->
+
         <section class="tool-controls-section">
+            <style>
+                  @media (max-width: 768px) {
+            .desktop-controls-wrapper {
+                display: none !important;
+            }
+            .mobile-controls-wrapper {
+                display: block !important;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .desktop-controls-wrapper {
+                display: block !important;
+            }
+            .mobile-controls-wrapper {
+                display: none !important;
+            }
+        }
+            </style>
             <div class="container">
                 <!-- Desktop Grid View - All controls displayed in a row -->
-                <div class="desktop-controls-grid">
-                    <!-- Switch Mode Button Control -->
-                    <div class="control-item mode-switch-control">
-                        <div class="control-image-wrapper">
-                            <img src="images/g7.png" alt="Botão comutador" class="control-image">
+                <div class="desktop-controls-wrapper" style="position: relative; width: 100%; margin: 0 auto; overflow: hidden; padding: 10px 0;">
+                    <!-- Carousel Slides Container -->
+                    <div class="desktop-controls-grid" style="display: flex; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; gap: 50px; padding: 0 5%; 
+                    scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; ">
+                        
+                        <!-- Switch Mode Button Control -->
+                        <div class="control-item mode-switch-control carousel-slide" style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;  display: flex; flex-direction: column; align-items: center; min-width: 0; margin-left:-50px ">
+                            <div class="control-image-wrapper" style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                                <img src="images/g7.png" alt="Botão comutador" class="control-image" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                            </div>
+                            <h3 class="control-title" style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão comutador</h3>
+                            <p class="control-description" style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
                         </div>
-                        <h3 class="control-title">Botão comutador</h3>
-                        <p class="control-description">Alterne entre diferentes modos de operação, que permite realizar
-                            perfurações com ou sem impacto.</p>
-                    </div>
-
-                    <!-- Speed Selector Control -->
-                    <div class="control-item speed-selector-control">
-                        <div class="control-image-wrapper">
-                            <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
+    
+                        <!-- Speed Selector Control -->
+                        <div class="control-item speed-selector-control carousel-slide" style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;  display: flex; flex-direction: column; align-items: center; min-width: 0; ">
+                            <div class="control-image-wrapper" style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                                <img src="images/g8.png" alt="Seletor de velocidade" class="control-image" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                            </div>
+                            <h3 class="control-title" style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Seletor de velocidade</h3>
+                            <p class="control-description" style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
                         </div>
-                        <h3 class="control-title">Seletor de velocidade</h3>
-                        <p class="control-description">Oferece uma nova experiência com diferentes níveis de potência,
-                            proporcionando força e precisão.</p>
-                    </div>
-
-                    <!-- Lock Button Control -->
-                    <div class="control-item lock-button-control">
-                        <div class="control-image-wrapper">
-                            <img src="images/g9.png" alt="Botão trava" class="control-image">
+    
+                        <!-- Lock Button Control -->
+                        <div class="control-item lock-button-control carousel-slide" style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;
+                         display: flex; flex-direction: column; align-items: center; min-width: 0; ">
+                            <div class="control-image-wrapper" style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                                <img src="images/g9.png" alt="Botão trava" class="control-image" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                            </div>
+                            <h3 class="control-title" style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão trava</h3>
+                            <p class="control-description" style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
                         </div>
-                        <h3 class="control-title">Botão trava</h3>
-                        <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
-                            necessidade de pressionar o gatilho.</p>
-                    </div>
-
-                    <!-- Rotation Direction Selector -->
-                    <div class="control-item rotation-selector-control">
-                        <div class="control-image-wrapper">
-                            <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
+    
+                        <!-- Rotation Direction Selector -->
+                        <div class="control-item rotation-selector-control carousel-slide" style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;  display: flex; flex-direction: column; align-items: center; min-width: 0; ">
+                            <div class="control-image-wrapper" style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                                <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                            </div>
+                            <h3 class="control-title" style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Seletor de sentido de rotação</h3>
+                            <p class="control-description" style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
                         </div>
-                        <h3 class="control-title">Seletor de sentido de rotação</h3>
-                        <p class="control-description">Permite alternar entre dois modos principais: sentido horário e
-                            anti-horário.</p>
                     </div>
+                    
+                    <!-- Navigation Arrows (hidden but kept for functionality) -->
+                    <button class="prev-btn-desktop" style="display: none; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">←</button>
+                    <button class="next-btn-desktop" style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">→</button>
                 </div>
 
-                <!-- Mobile Simple Swipeable Carousel View -->
-
             </div>
-            <div class="mobile-controls-wrapper">
-                <!-- Carousel Slides Container -->
-                <div class="carousel-slides-container">
+            <div class="mobile-controls-wrapper" style="position: relative; width: 100%; max-width: 500px; margin: 0 auto; overflow: hidden; padding: 20px 0;">
+                <!-- Carousel Slides Container with wider view to show adjacent slides -->
+                <div class="carousel-slides-container" style="display: flex; width: 100%; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 10px; padding: 0 15%; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
                     <!-- Switch Mode Button Control -->
-                    <div class="control-item mode-switch-control carousel-slide">
-                        <div class="control-image-container">
-                            <img src="images/g7.png" alt="Botão comutador" class="control-image">
+                    <div class="control-item mode-switch-control carousel-slide" style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent;  display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                        <div class="control-image-container" style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                            <img src="images/g7.png" alt="Botão comutador" class="control-image" style="max-width: 100%; max-height: 100%; object-fit: cover;">
                         </div>
-                        <h3 class="control-title">Botão comutador</h3>
-                        <p class="control-description">Alterne entre diferentes modos de operação, que permite
-                            realizar perfurações com ou sem impacto.</p>
+                        <h3 class="control-title" style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão comutador</h3>
+                        <p class="control-description" style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
                     </div>
-
+            
                     <!-- Speed Selector Control -->
-                    <div class="control-item speed-selector-control carousel-slide">
-                        <div class="control-image-container">
-                            <img src="images/g8.png" alt="Seletor de velocidade" class="control-image">
+                    <div class="control-item speed-selector-control carousel-slide" style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent;  display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                        <div class="control-image-container" style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                            <img src="images/g8.png" alt="Seletor de velocidade" class="control-image" style="max-width: 100%; max-height: 100%; object-fit: cover;">
                         </div>
-                        <h3 class="control-title">Seletor de velocidade</h3>
-                        <p class="control-description">Oferece uma nova experiência com diferentes níveis de
-                            potência, proporcionando força e precisão.</p>
+                        <h3 class="control-title" style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Seletor de velocidade</h3>
+                        <p class="control-description" style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Oferece uma nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
                     </div>
-
+            
                     <!-- Lock Button Control -->
-                    <div class="control-item lock-button-control carousel-slide">
-                        <div class="control-image-container">
-                            <img src="images/g9.png" alt="Botão trava" class="control-image">
+                    <div class="control-item lock-button-control carousel-slide" style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px;background-color: transparent;  display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                        <div class="control-image-container" style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                            <img src="images/g9.png" alt="Botão trava" class="control-image" style="max-width: 100%; max-height: 100%;object-fit: cover;">
                         </div>
-                        <h3 class="control-title">Botão trava</h3>
-                        <p class="control-description">Mantenha a ferramenta acionada de forma contínua, sem a
-                            necessidade de pressionar o gatilho.</p>
+                        <h3 class="control-title" style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão trava</h3>
+                        <p class="control-description" style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Mantenha a ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
                     </div>
-
+            
                     <!-- Rotation Direction Selector -->
-                    <div class="control-item rotation-selector-control carousel-slide">
-                        <div class="control-image-container">
-                            <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image">
+                    <div class="control-item rotation-selector-control carousel-slide" style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent;  display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                        <div class="control-image-container" style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                            <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image" style="max-width: 100%; max-height: 100%; object-fit: cover;">
                         </div>
-                        <h3 class="control-title">Seletor de sentido de rotação</h3>
-                        <p class="control-description">Permite alternar entre dois modos principais: sentido horário
-                            e anti-horário.</p>
+                        <h3 class="control-title" style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Seletor de sentido de rotação</h3>
+                        <p class="control-description" style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Permite alternar entre dois modos principais: sentido horário e anti-horário.</p>
                     </div>
                 </div>
+            
+                <!-- Navigation Arrows -->
+                <button class="prev-btn" style="  display: hidden; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent;   border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"></button>
+                <button class="next-btn" style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: transparent;  border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"></button>
             </div>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+            // Get desktop carousel elements
+            const desktopSlidesContainer = document.querySelector('.desktop-controls-grid');
+            const desktopSlides = desktopSlidesContainer.querySelectorAll('.carousel-slide');
+            
+            // Hide scrollbar but keep functionality for desktop
+            desktopSlidesContainer.style.scrollbarWidth = 'none';
+            desktopSlidesContainer.style.msOverflowStyle = 'none';
+            desktopSlidesContainer.style.webkitOverflowScrolling = 'touch';
+            
+            // Mouse drag scrolling for desktop
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            desktopSlidesContainer.addEventListener('mousedown', (e) => {
+                isDown = true;
+                desktopSlidesContainer.style.cursor = 'grabbing';
+                startX = e.pageX - desktopSlidesContainer.offsetLeft;
+                scrollLeft = desktopSlidesContainer.scrollLeft;
+                e.preventDefault();
+            });
+
+            desktopSlidesContainer.addEventListener('mouseleave', () => {
+                isDown = false;
+                desktopSlidesContainer.style.cursor = 'grab';
+            });
+
+            desktopSlidesContainer.addEventListener('mouseup', () => {
+                isDown = false;
+                desktopSlidesContainer.style.cursor = 'grab';
+                snapToNearestSlide();
+            });
+
+            desktopSlidesContainer.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - desktopSlidesContainer.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll speed multiplier
+                desktopSlidesContainer.scrollLeft = scrollLeft - walk;
+            });
+            
+            // Snap to nearest slide when scrolling stops
+            function snapToNearestSlide() {
+                const slideWidth = getSlideWidth();
+                const index = Math.round(desktopSlidesContainer.scrollLeft / slideWidth);
+                
+                desktopSlidesContainer.scrollTo({
+                    left: slideWidth * index,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Calculate slide width (including gap)
+            function getSlideWidth() {
+                const slide = desktopSlides[0];
+                const style = window.getComputedStyle(slide);
+                const marginRight = parseFloat(style.marginRight) || 0;
+                const marginLeft = parseFloat(style.marginLeft) || 0;
+                return slide.offsetWidth + marginRight + marginLeft + 20; // Adding gap size
+            }
+            
+            // Snap to nearest slide when scrolling ends
+            desktopSlidesContainer.addEventListener('scroll', function() {
+                clearTimeout(desktopSlidesContainer.scrollEndTimer);
+                desktopSlidesContainer.scrollEndTimer = setTimeout(function() {
+                    snapToNearestSlide();
+                }, 150);
+            });
+            
+            // Add this to hide scrollbar in WebKit browsers
+            const style = document.createElement('style');
+            style.textContent = '.desktop-controls-grid::-webkit-scrollbar, .carousel-slides-container::-webkit-scrollbar { display: none; }';
+            document.head.appendChild(style);
+        });
+               er('DOMContentLoaded', function() {
+                    // Get carousel elements
+                    const slidesContainer = document.querySelector('.carousel-slides-container');
+                    const slides = slidesContainer.querySelectorAll('.carousel-slide');
+                    const prevBtn = document.querySelector('.prev-btn');
+                    const nextBtn = document.querySelector('.next-btn');
+                    
+                    // Hide scrollbar but keep functionality
+                    slidesContainer.style.scrollbarWidth = 'none';
+                    slidesContainer.style.msOverflowStyle = 'none';
+                    slidesContainer.style.webkitOverflowScrolling = 'touch';
+                    slidesContainer.style.scrollBehavior = 'smooth';
+                    
+                    // Add this to hide scrollbar in WebKit browsers
+                    const style = document.createElement('style');
+                    style.textContent = '.carousel-slides-container::-webkit-scrollbar { display: none; }';
+                    document.head.appendChild(style);
+                    
+                    // Calculate slide width (including gap)
+                    function getSlideWidth() {
+                        const slide = slides[0];
+                        const style = window.getComputedStyle(slide);
+                        return slide.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+                    }
+                    
+                    // Set current slide index (start from second slide)
+                    let currentIndex = 1;
+                    
+                    // Initialize: scroll to the second slide (index 1)
+                    function initCarousel() {
+                        setTimeout(() => {
+                            const slideWidth = getSlideWidth();
+                            slidesContainer.scrollTo({
+                                left: slideWidth * currentIndex,
+                                behavior: 'smooth'
+                            });
+                        }, 100); // Small delay to ensure DOM is ready
+                    }
+                    
+                    // Scroll to a specific slide
+                    function scrollToSlide(index) {
+                        if (index < 0) index = slides.length - 1;
+                        if (index >= slides.length) index = 0;
+                        
+                        currentIndex = index;
+                        const slideWidth = getSlideWidth();
+                        
+                        slidesContainer.scrollTo({
+                            left: slideWidth * index,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Event listeners for buttons
+                    prevBtn.addEventListener('click', () => scrollToSlide(currentIndex - 1));
+                    nextBtn.addEventListener('click', () => scrollToSlide(currentIndex + 1));
+                    
+                    // Update current slide index when scrolling ends
+                    slidesContainer.addEventListener('scroll', function() {
+                        clearTimeout(slidesContainer.scrollEndTimer);
+                        slidesContainer.scrollEndTimer = setTimeout(function() {
+                            const slideWidth = getSlideWidth();
+                            currentIndex = Math.round(slidesContainer.scrollLeft / slideWidth);
+                        }, 100);
+                    });
+                    
+                    // Initialize the carousel
+                    initCarousel();
+                });
+           
+           
+           </script>
         </section>
 
 

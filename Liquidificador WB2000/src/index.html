@@ -1516,7 +1516,7 @@
         <!-- Product Feature Gallery Section -->
         <!-- Product Feature Gallery Section -->
 
-        <section class="product-gallery-section bg-black" style="">
+         <section class="product-gallery-section bg-black" style="">
             <!-- Header -->
             <div style="display: flex; width: 100%;">
                 <div style="padding: 10px 10px; background-color: #ffffff; flex-grow: 1;">
@@ -1533,36 +1533,50 @@
 
             <!-- Desktop Gallery Layout - reduced height -->
             <div class="desktop-gallery"
-                style="display: flex; gap: 10px; padding: 15px; background-color: #ffffff; height: 700px; max-width: 1200px; margin: 0 auto;">
+                style="display: flex; gap: 15px; padding: 0; max-width: 1200px; margin: 0 auto; height: 600px;">
                 <!-- Left large image -->
                 <div class="gallery-item large"
-                    style="flex: 0 0 35%; height: 100%; background-color: #060606; border-radius: 8px; overflow: hidden;">
+                    style="flex: 0 0 30%; height: 100%; background-color: #222; border-radius: 20px; overflow: hidden;">
                     <img src="images/g23.png" alt="Empunhadura ergonômica"
-                        style="object-fit: cover; width: 100%; height: 100%; padding: 20px;">
+                        style="object-fit: cover; width: 100%; height: 100%; padding: 0;">
                 </div>
 
-                <!-- Right grid of smaller images -->
+                <!-- Right grid of smaller images with different sizes -->
+                <!-- Right arrangement of independently sized images -->
                 <div class="gallery-grid"
-                    style="flex: 0 0 65%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10px; height: 100%;">
-                    <div class="gallery-item"
-                        style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 1/2; grid-row: 1/2; position: relative;">
-                        <img src="images/g24.png" alt="Empunhadura auxiliar"
-                            style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+                    style="flex: 0 0 calc(60% - 15px); display: flex; flex-direction: column; gap: 5px; height: 100%;">
+                    <!-- Top row -->
+                    <div style="display: flex; width: 100%; height: calc(40% - 2.5px); gap: 10px;">
+                        <!-- Top row, first image (wider) -->
+                        <div class="gallery-item"
+                            style="background-color: #222; border-radius: 20px; overflow: hidden; width: 65%; height: 100%;">
+                            <img src="images/g24.png" alt="Empunhadura auxiliar"
+                                style="object-fit: cover; width: 100%; height: 100%;">
+                        </div>
+
+                        <!-- Top row, second image (smaller) -->
+                        <div class="gallery-item"
+                            style="background-color: #222; border-radius: 20px; overflow: hidden; width: 34%; height: 100%;">
+                            <img src="images/g20.png" alt="Chave de mandril"
+                                style="object-fit: cover; width: 100%; height: 100%;">
+                        </div>
                     </div>
-                    <div class="gallery-item"
-                        style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 2/3; grid-row: 1/2; position: relative;">
-                        <img src="images/g20.png" alt="Chave de mandril"
-                            style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
-                    </div>
-                    <div class="gallery-item"
-                        style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 1/2; grid-row: 2/3; position: relative;">
-                        <img src="images/g21.png" alt="Seletor de velocidade"
-                            style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
-                    </div>
-                    <div class="gallery-item"
-                        style="background-color: #222; border-radius: 8px; overflow: hidden; grid-column: 2/3; grid-row: 2/3; position: relative;">
-                        <img src="images/g25.png" alt="Mandril da furadeira"
-                            style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 20px;">
+
+                    <!-- Bottom row -->
+                    <div style="display: flex; width: 100%; height: calc(60% - 2.5px); gap: 10px;">
+                        <!-- Bottom row, first image (custom width) -->
+                        <div class="gallery-item"
+                            style="background-color: #222; border-radius: 20px; overflow: hidden; width: 30%; height: 100%;">
+                            <img src="images/g21.png" alt="Seletor de velocidade"
+                                style="object-fit: cover; width: 100%; height: 100%;">
+                        </div>
+
+                        <!-- Bottom row, second image (smaller width) -->
+                        <div class="gallery-item"
+                            style="background-color: #222; border-radius: 20px; overflow: hidden; width: 70%; height: 100%;">
+                            <img src="images/g25.png" alt="Mandril da furadeira"
+                                style="object-fit: cover; width: 100%; height: 100%;">
+                        </div>
                     </div>
                 </div>
             </div>

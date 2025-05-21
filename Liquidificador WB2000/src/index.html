@@ -707,9 +707,12 @@
                     style="display: none; padding: 10px 10px; border: 1px solid #000000; border-radius: 12px;">
                     <!-- Text Content -->
                     <div style="width: 100%; text-align: center; margin-bottom: 250px;">
-                        <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; line-height: 1.2;">Força e
+                        <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; 
+                        line-height: 1.2;">Força e
                             estabilidade total</h2>
-                        <p style="font-size: 14px; line-height: 1.4; margin-bottom: 0;">
+                        <p style="font-size: 12px; line-height: 1.6; margin-bottom: 0;
+                        font-weight:200;
+                        ">
                             Perfure com mais facilidade, precisão e conforto! A
                             <strong style="font-weight: 400;">função impacto</strong> adiciona impactos simultâneos,
                             facilitando a perfuração até em materiais rígidos e
@@ -734,7 +737,7 @@
                             <!-- Dot -->
                             <div
                                 style="width: 8px; height: 8px; background-color: #fff; 
-                                border-radius: 50%; margin-right:-10px;">
+                                border-radius: 50%; margin-right:-18px;">
                             </div>
 
                             <!-- Line -->
@@ -1335,142 +1338,117 @@
 
         <!-- Mobile Features Carousel -->
 
-        <section class="feature-slider-section"
-            style="display: none; width: 100%; max-width: 100%; overflow: hidden; padding: 0; margin: 0;
+  <section class="feature-slider-section" style="display: none; width: 100%; max-width: 100%; overflow: hidden; padding: 0; margin: 0;">
+    <style>
+        @media (max-width: 768px) {
+            .feature-slider-section {
+                display: block !important;
+            }
+        }
 
-             ">
-            <!-- Add inline media query to show on mobile -->
-            <style>
-                @media (max-width: 768px) {
-                    .feature-slider-section {
-                        display: block !important;
-                    }
+        .feature-slider-section .feature-image-area {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .feature-slider-section .feature-image-area img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .feature-key {
+            font-weight: 700;
+        }
+    </style>
+
+    <div class="feature-slider-outer-container" style="width: 100%; max-width: 100%; position: relative; box-sizing: border-box; overflow: hidden; padding: 0; margin: 0;">
+        <!-- Feature image container -->
+        <div class="feature-image-area">
+            <!-- Feature image -->
+            <img id="feature-image" src="images/g15.png" alt="Mandril de 3/8 polegadas (10mm)">
+        </div>
+
+        <!-- Feature description container with fixed navigation -->
+        <div class="feature-description-container" style="background-color: #F2F2F2; position: relative; padding: 10px 15px; margin: 15px 40px; border-radius: 10px; margin-top: -60px; height: 100px;">
+            <!-- Feature title with part in bold -->
+            <h3 id="feature-title" style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 200; color: #333; text-align: center; margin: 0; padding: 16px 20px 8px; line-height: 1.2;">
+                O <span class="feature-key">mandril de 3/8" (10mm)</span> suporte brocas e bits de 0,8 a 10mm, oferecendo excelente capacidade de perfuração.
+            </h3>
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="nav-arrow prev" style="position: absolute; bottom: 50px; left: 25px; width: 36px; height: 36px; background-color: #AAAAAA; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #555; cursor: pointer; z-index: 10;" aria-label="Previous feature">&lt;</button>
+        <button class="nav-arrow next" style="position: absolute; bottom: 50px; right: 25px; width: 36px; height: 36px; background-color: #AAAAAA; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #555; cursor: pointer; z-index: 10;" aria-label="Next feature">&gt;</button>
+    </div>
+
+    <!-- JavaScript for navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Slide data with HTML for bold parts
+            const slideData = [
+                {
+                    image: "images/g15.png",
+                    title: "O <span class=\"feature-key\">mandril de 3/8\" (10mm)</span> suporte brocas e bits de 0,8 a 10mm, oferecendo excelente capacidade de perfuração."
+                },
+                {
+                    image: "images/g16.png",
+                    title: "O <span class=\"feature-key\">botão comutador</span> alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto."
+                },
+                {
+                    image: "images/g17.png",
+                    title: "O <span class=\"feature-key\">suporte e a chave de mandril</span> promovem organização e agilidade ao usuário."
+                },
+                {
+                    image: "images/g18.png",
+                    title: "O <span class=\"feature-key\">limitador de profundidade</span> permite regular a profundidade dos furos, evitando acidentes."
+                },
+                {
+                    image: "images/g19.png",
+                    title: "A <span class=\"feature-key\">empunhadura emborrachada ergonômica</span> oferece mais conforto e controle durante o uso."
                 }
+            ];
 
-                .feature-slider-section .feature-image-area {
-                    /* background-color: #f2f2f2; */
-                    border-radius: 16px;
-                    overflow: hidden;
+            // Get DOM elements
+            const featureImage = document.getElementById('feature-image');
+            const featureTitle = document.getElementById('feature-title');
+            const prevButton = document.querySelector('.nav-arrow.prev');
+            const nextButton = document.querySelector('.nav-arrow.next');
 
-                    /* fixed height so all slides match */
-                    height: 480px;
-                    /* ← adjust as needed */
+            // Current slide index
+            let currentIndex = 0;
 
-                    /* center the img inside */
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
+            // Update slide content
+            function updateSlide(index) {
+                // Ensure valid index
+                if (index < 0) index = slideData.length - 1;
+                if (index >= slideData.length) index = 0;
 
-                .feature-slider-section .feature-image-area img {
-                    /* fill the container’s height, auto width to keep ratio */
-                    height: 100%;
-                    width: auto;
-                    object-fit: contain;
-                    display: block;
-                }
-            </style>
+                // Update image
+                featureImage.src = slideData[index].image;
+                
+                // Extract alt text from the title's feature-key span
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = slideData[index].title;
+                const keySpan = tempDiv.querySelector('.feature-key');
+                featureImage.alt = keySpan ? keySpan.textContent : "Feature image";
 
-            <div class="feature-slider-outer-container"
-                style="width: 100%; max-width: 100%; position: relative; box-sizing: border-box; overflow: hidden; padding: 0; margin: 0;">
-                <!-- Feature image container with gray background -->
-                <div class="feature-image-area">
-                    <!-- Feature image -->
-                    <img id="feature-image" src="images/g15.png" alt="Mandril de 3/8 polegadas (10mm)">
-                </div>
+                // Update title with HTML
+                featureTitle.innerHTML = slideData[index].title;
 
-                <!-- Feature description container with fixed navigation -->
-                <div class="feature-description-container" style=" background-color: white; position: relative; padding: 0;    background-color: #F2F2F2;
-                    margin-left: 40px;
-                    margin-right: 40px;
-                    border-radius: 10px;
-                    margin-top: -40px;
-                    height: 120px;
-                    ">
-                    <!-- Feature title -->
-                    <h3 id="feature-title"
-                        style="font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 500; color: #333; text-align: center; margin: 0; padding: 10px 0 10px; line-height: 1.1;">
-                        O mandril de 3/8" (10mm)</h3>
+                // Update current index
+                currentIndex = index;
+            }
 
-
-                    <p id="feature-description" style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 400; color: #333; text-align: center; margin: 0; padding: 0px 50px 20px; line-height: 1.2;
-                     
-                        ">
-                        suporte brocas e bits de 0,8 a 10mm, oferecendo excelente capacidade de perfuração.</p>
-                </div>
-
-                <!-- Navigation buttons (outside of the text container) -->
-                <button class="nav-arrow prev"
-                    style="position: absolute; bottom: 50px; left: 25px; width: 36px; height: 36px; background-color: #AAAAAA; border: none; 
-                    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #555; cursor: pointer; z-index: 10;"
-                    aria-label="Previous feature">&lt;</button>
-                <button class="nav-arrow next"
-                    style="position: absolute; bottom: 50px; right: 25px; width: 36px; height: 36px; background-color: #AAAAAA; 
-                    border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #555; cursor: pointer; z-index: 10;"
-                    aria-label="Next feature">&gt;</button>
-            </div>
-
-            <!-- JavaScript for navigation -->
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    // Slide data
-                    const slideData = [
-                        {
-                            image: "images/g15.png",
-                            title: "O mandril de 3/8\" (10mm)",
-                            description: "suporte brocas e bits de 0,8 a 10mm, oferecendo excelente capacidade de perfuração."
-                        },
-                        {
-                            image: "images/g16.png",
-                            title: "Botão comutador",
-                            description: "Alterne entre diferentes modos de operação, que permite realizar perfurações com ou sem impacto."
-                        },
-                        {
-                            image: "images/g17.png",
-                            title: "O suporte e a chave de mandril",
-                            description: "promovem organização e agilidade ao usuário."
-                        },
-                        {
-                            image: "images/g18.png",
-                            title: "O limitador de profundidade",
-                            description: "permite regular a profundidade dos furos, evitando acidentes."
-                        },
-                        {
-                            image: "images/g19.png",
-                            title: "A empunhadura emborrachada ergonômica",
-                            description: "oferece mais conforto e controle durante o uso."
-                        }
-                    ];
-
-                    // Get DOM elements
-                    const featureImage = document.getElementById('feature-image');
-                    const featureTitle = document.getElementById('feature-title');
-                    const featureDescription = document.getElementById('feature-description');
-                    const prevButton = document.querySelector('.nav-arrow.prev');
-                    const nextButton = document.querySelector('.nav-arrow.next');
-
-                    // Current slide index
-                    let currentIndex = 0;
-
-                    // Update slide content
-                    function updateSlide(index) {
-                        // Ensure valid index
-                        if (index < 0) index = slideData.length - 1;
-                        if (index >= slideData.length) index = 0;
-
-                        // Update image
-                        featureImage.src = slideData[index].image;
-                        featureImage.alt = slideData[index].title;
-
-                        // Update text
-                        featureTitle.textContent = slideData[index].title;
-                        featureDescription.textContent = slideData[index].description;
-
-                        // Update current index
-                        currentIndex = index;
-                    }
-
-                    // Event handlers
+            // Event handlers and swipe functionality
+            // (rest of the code remains the same)\
+              // Event handlers
                     function goToNext() {
                         updateSlide(currentIndex + 1);
                     }
@@ -1512,6 +1490,7 @@
                 });
             </script>
         </section>
+   
 
         <!-- Product Feature Gallery Section -->
         <!-- Product Feature Gallery Section -->
@@ -1533,7 +1512,7 @@
 
             <!-- Desktop Gallery Layout - reduced height -->
             <div class="desktop-gallery"
-                style="display: flex; gap: 15px; padding: 0; max-width: 1200px; margin: 0 auto; height: 600px;">
+                style="display: flex; gap: 15px; padding: 0; max-width: 1200px; height:100%;  margin: 0 auto; height: 600px;">
                 <!-- Left large image -->
                 <div class="gallery-item large"
                     style="flex: 0 0 30%; height: 100%; background-color: #222; border-radius: 20px; overflow: hidden;">
@@ -1544,7 +1523,7 @@
                 <!-- Right grid of smaller images with different sizes -->
                 <!-- Right arrangement of independently sized images -->
                 <div class="gallery-grid"
-                    style="flex: 0 0 calc(60% - 15px); display: flex; flex-direction: column; gap: 5px; height: 100%;">
+                    style="flex: 0 0 calc(70% - 15px); display: flex; flex-direction: column; gap: 5px; height: 100%;">
                     <!-- Top row -->
                     <div style="display: flex; width: 100%; height: calc(40% - 2.5px); gap: 10px;">
                         <!-- Top row, first image (wider) -->
@@ -1660,19 +1639,21 @@
         <!-- Product Feature Section -->
         <!-- Product Feature Section -->
         <section class="product-feature-section"
-            style="max-width: 1200px; margin: 0 auto; padding: 40px 20px; background-color: #fff;">
+            style="max-width: 1200px; margin: 0 auto; padding: 20px 20px; background-color: #fff;">
             <!-- Desktop Layout -->
             <div class="desktop-feature"
-                style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+                style="display: flex; align-items: center; justify-content: center; gap: 20px;">
                 <div class="feature-image" style="align-self: center;">
                     <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img"
                         style="width: 100%; height: auto; display: block;">
                 </div>
-                <div class="feature-content" style="width: 55%;">
+                <div class="feature-content" style="width: 80%; ">
                     <h2 class="feature-title"
-                        style="font-size: 24px; font-weight: 500; margin-bottom: 16px; color: #000; text-align: left;">
+                        style="font-size: 32px; font-weight: 600; margin-bottom: 16px; color: #000; text-align: left;">
                         Controle total nas suas mãos</h2>
-                    <p class="feature-text" style="font-size: 16px; line-height: 1.5; color: #444; text-align: left;">
+                    <p class="feature-text" style="font-size: 16px; line-height: 1.5; color: #444; text-align: left;
+                    line-height: 1.6em;
+                    ">
                         Com a <strong style="font-weight: 600;">Parafusadeira WF 700FE W2</strong> o controle está nas
                         suas mãos! Você controla a
                         velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em
@@ -1682,16 +1663,22 @@
             </div>
 
             <!-- Mobile Layout -->
-            <div class="mobile-feature" style="display: none; flex-direction: column;">
+            <div class="mobile-feature" style="display: none; flex-direction: column;
+
+            
+
+            ">
                 <div class="feature-image-mobile" style="width: 100%; margin-bottom: 20px;">
                     <img src="images/g30.png" alt="Parafusadeira WF 700FE W2" class="product-img-mobile"
-                        style="width: 100%; max-width: 320px; height: auto; display: block; margin: 0 auto;">
+                        style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto;">
                 </div>
                 <div class="feature-content-mobile" style="width: 100%;">
                     <h2 class="feature-title"
                         style="font-size: 24px; font-weight: 500; margin-bottom: 16px; color: #000; text-align: center;">
                         Controle total nas suas mãos</h2>
-                    <p class="feature-text" style="font-size: 16px; line-height: 1.5; color: #444; text-align: center;">
+                    <p class="feature-text" style="font-size: 16px;
+                    font-weight:300;
+                    line-height: 1.5; color: #444; text-align: center;">
                         Com a <strong style="font-weight: 600;">Parafusadeira WF 700FE W2</strong> o controle está nas
                         suas mãos! Você controla a
                         velocidade, sentido de rotação, função com e sem impacto e dispensa o acionamento do gatilho em
@@ -1761,10 +1748,18 @@
             </div>
 
             <!-- Mobile Layout -->
-            <div style="display: none; flex-direction: column; text-align: center;" id="wap-mobile-container">
-                <div style="width: 100%; margin-bottom: 30px;">
+            <div style="display: none; flex-direction: column; text-align: cener;
+
+            "
+             id="wap-mobile-container">
+                <div style="width: 100%; margin-bottom: 10px;;">
                     <img src="images/g31.png" alt="Embalagem Parafusadeira WAP WF 700FE W2"
-                        style="width: 100%; height: auto; display: block;">
+                        style="width:450px; height: auto; display: block;
+
+
+
+
+                        ">
                 </div>
                 <div style="width: 100%;">
                     <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 20px; color: #000; line-height: 1.2;"

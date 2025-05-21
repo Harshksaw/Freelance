@@ -1495,7 +1495,7 @@ ul {
 /* Mobile specific styling */
 .mobile-drill-image {
   text-align: center;
-  margin-bottom: -30px;
+  margin-bottom: -50px;
   position: relative;
   z-index: 2;
 }

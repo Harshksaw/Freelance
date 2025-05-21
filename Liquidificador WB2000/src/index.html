@@ -195,58 +195,139 @@
     </header>
 
     <main class="container">
-        <div class="product-detail">
-            <div class="product-gallery">
-                <div class="video-container">
-                    <div class="video-player">
-                        <video poster="path/to/video-thumbnail.jpg" controls>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+            <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 30px;">
+                <!-- Product Gallery - Left side -->
+                <div style="flex: 1; min-width: 300px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                ">
+                    <div style="position: relative; width: 100%; border-radius: 8px; overflow: hidden; height: 25vh; margin: auto ">
+                        <video poster="path/to/video-thumbnail.jpg" controls style="width: 100%; height: 100%; display: block;">
                             <source src="path/to/product-video.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                        <button class="play-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
-                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        <button style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); border: none; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="5 3 19 12 5 21 5 3" fill="white"></polygon>
                             </svg>
                         </button>
                     </div>
                 </div>
-            </div>
-
-            <div class="product-info">
-                <div class="product-rating">
-                    <div class="rating-stars">
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <a href="#reviews" class="review-count">(6) Clique e veja!</a>
+        
+                <!-- Product Info - Right side -->
+                <div style="flex: 1; min-width: 300px;">
+                    <!-- Rating Stars -->
+                    <div style="margin-bottom: 15px; display: flex; align-items: center;">
+                        <div style="color: #FFC107; font-size: 20px; margin-right: 10px;">
+                            <span>★</span>
+                            <span>★</span>
+                            <span>★</span>
+                            <span>★</span>
+                            <span>★</span>
+                        </div>
+                        <a href="#reviews" style="color: #FF8C00; text-decoration: none; font-size: 14px;">(6) Clique e veja!</a>
                     </div>
-                </div>
-
-                <h1 class="product-title">Otimize o tempo da faxina com o robô aspirador WAP ROBOT W90!</h1>
-                <p class="product-sku">
-                    Ref: <span class="sku-code">FW009026</span>
-                    <a href="#description" class="view-details">Ver descrição completa</a>
-                </p>
-
-                <div class="shipping-calculator">
-                    <h3>Informe seu CEP (obrigatório):</h3>
-                    <div class="shipping-input-wrapper">
-                        <input type="text" placeholder="00.000-000" class="cep-input">
-                        <button class="ok-button">OK</button>
+        
+                    <!-- Product Title -->
+                    <h1 style="font-size: 22px; font-weight: 600; margin: 0 0 15px 0; line-height: 1.3; color: #333;">Otimize o tempo da faxina com o robô aspirador WAP ROBOT W90!</h1>
+                    
+                    <!-- Product SKU -->
+                    <p style="margin: 0 0 20px 0; font-size: 14px; color: #666; display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+                        Ref: <span style="font-weight: 500;">FW009026</span>
+                        <a href="#description" style="color: #FF8C00; text-decoration: none;">Ver descrição completa</a>
+                    </p>
+        
+                    <!-- Shipping Calculator -->
+                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <h3 style="font-size: 16px; margin: 0 0 10px 0; font-weight: 500; color: #333;">Informe seu CEP (obrigatório):</h3>
+                        <div style="display: flex; margin-bottom: 10px;">
+                            <input type="text" placeholder="00.000-000" style="flex: 1; padding: 10px; 
+                            width: 50%; border: 1px solid #ddd; border-radius: 4px 0 0 4px; font-size: 14px;">
+                            <button style="background-color: #4CAF50; color: white; border: none; padding: 0 15px; border-radius: 0 4px 4px 0; cursor: pointer; font-weight: 500;">OK</button>
+                        </div>
+                        <p style="margin: 0; font-size: 12px; color: #666;">
+                            Dúvidas seu CEP <a href="#cep-help" style="color: #FF8C00; text-decoration: none;">Clique Aqui!</a>
+                        </p>
                     </div>
-                    <p class="shipping-note">Dúvidas seu CEP <a href="#cep-help" class="click-here">Clique Aqui!</a></p>
-                </div>
-
-                <div class="product-actions">
-                    <button class="buy-now-button">COMPRAR AGORA</button>
-                    <button class="buy-partner-button">COMPRE EM UMA LOJA PARCEIRA</button>
+        
+                    <!-- Product Actions -->
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button style="background-color: #777; color: white; border: none; padding: 12px 20px;
+                         border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s; text-transform: uppercase; font-size: 14px;">COMPRAR AGORA</button>
+                        <button style="background-color: #FF8C00; color: white; border: none; padding: 12px 20px; border-radius: 5px; font-weight: 600; 
+                        cursor: pointer; transition: background-color 0.3s; text-transform: uppercase; font-size: 14px;">COMPRE EM UMA LOJA PARCEIRA</button>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <script>
+            // Add responsive adjustments for different screen sizes
+            function adjustResponsiveLayout() {
+                const screenWidth = window.innerWidth;
+                const productWrapper = document.querySelector('div[style*="display: flex; flex-direction: row;"]');
+                const buyButtons = document.querySelectorAll('button[style*="background-color: #777"], button[style*="background-color: #FF8C00"]');
+                const productTitle = document.querySelector('h1[style*="font-size: 22px"]');
+                
+                if (screenWidth <= 768) {
+                    // Mobile adjustments
+                    productWrapper.style.flexDirection = 'column';
+                    productWrapper.style.gap = '20px';
+                    productTitle.style.fontSize = '20px';
+                    
+                    // Adjust button size on mobile
+                    buyButtons.forEach(button => {
+                        button.style.padding = '10px 15px';
+                        button.style.fontSize = '13px';
+                    });
+                } else {
+                    // Desktop adjustments
+                    productWrapper.style.flexDirection = 'row';
+                    productWrapper.style.gap = '30px';
+                    productTitle.style.fontSize = '22px';
+                    
+                    // Restore button size on desktop
+                    buyButtons.forEach(button => {
+                        button.style.padding = '12px 20px';
+                        button.style.fontSize = '14px';
+                    });
+                }
+                
+                // Extra small screens
+                if (screenWidth <= 480) {
+                    productTitle.style.fontSize = '18px';
+                }
+            }
+            
+            // Run on page load
+            window.addEventListener('DOMContentLoaded', adjustResponsiveLayout);
+            
+            // Run when window is resized
+            window.addEventListener('resize', adjustResponsiveLayout);
+            
+            // Add click handler for play button
+            document.addEventListener('DOMContentLoaded', function() {
+                const playButton = document.querySelector('button[style*="position: absolute; top: 50%"]');
+                const video = document.querySelector('video');
+                
+                if (playButton && video) {
+                    playButton.addEventListener('click', function() {
+                        video.play();
+                        playButton.style.display = 'none';
+                    });
+                    
+                    video.addEventListener('pause', function() {
+                        playButton.style.display = 'flex';
+                    });
+                    
+                    video.addEventListener('play', function() {
+                        playButton.style.display = 'none';
+                    });
+                }
+            });
+        </script>
 
         <!-- Video section below product info -->
         <div class="product-video-section">
@@ -533,39 +614,92 @@
 
 
         <!-- Product Feature Section with proper image alignment -->
-        <section class="product-features5">
+        <div style="position: relative; max-width: 1200px; margin: 60px auto; padding: 0 20px; overflow: visible;">
+            <!-- Main Feature Panel -->
+            <div id="feature-panel" style="background-color: #222; color: white; border-radius: 12px; position: relative; overflow: visible;">
+                <!-- Desktop Layout -->
+                <div id="desktop-layout" style="background-color: #222; color: white; border-radius: 12px; padding: 60px 40px; position: relative; overflow: visible; height: auto; min-height: 300px;">
+                    <!-- Text Content -->
+                    <div style="width: 50%; position: relative; z-index: 2;">
+                        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 20px; line-height: 1.2;">Força e estabilidade total</h2>
+                        <p style="font-size: 16px; line-height: 1.6; margin-bottom: 0;">
+                            Perfure com mais facilidade, precisão e conforto! A 
+                            <strong style="font-weight: 600;">função impacto</strong> adiciona impactos simultâneos, 
+                            facilitando a perfuração até em materiais rígidos e 
+                            difíceis, como concreto e alvenaria. Para ter ainda mais 
+                            controle, a <strong style="font-weight: 600;">empunhadura auxiliar removível</strong> garante 
+                            estabilidade e proporciona um manuseio mais 
+                            confortável, tornando cada trabalho mais seguro.
+                        </p>
+                    </div>
+                    
+                    <!-- Drill Image that extends outside container -->
+                    <div style="position: absolute; right: -200px; top: 10px; width: 70%;z-index: 100;">
+                        <img src="images/asset2.png" alt="WAP WF 700FE W2 Drill" style="width: 80%; height: auto; display: block; z-index: 3">
+                        
+                        <!-- Feature Labels -->
+                        <div style="position: absolute; top: 5%; right: 40%; background-color: transparent; padding: 0; font-size: 14px; color: rgb(255, 255, 255); z-index: 100;">
 
-
-            <!-- Main feature panel with proper image positioning -->
-            <div class="feature-panel5">
-                <div class="container">
-                    <div class="feature-content5">
-                        <div class="feature-text5">
-                            <h2>Força e estabilidade<br>total</h2>
-                            <p>
-                                Perfure com mais facilidade, precisão e conforto! A <strong>função impacto</strong>
-                                adiciona impactos simultâneos, facilitando a perfuração até em materiais rígidos e
-                                difíceis,
-                                como concreto e alvenaria. Para ter ainda mais controle, a <strong>empunhadura auxiliar
-                                    removível</strong> garante estabilidade e proporciona um manuseio mais confortável,
-                                tornando cada trabalho mais seguro.
-                            </p>
+                            <span style="display: inline-block; white-space: nowrap;">Função impacto</span>
                         </div>
+                        
+                        <div style="position: absolute; bottom: 35%; right: 45%; background-color: transparent; padding: 0; font-size: 12px; color: rgb(5, 5, 5);">
+                            <span style="display: inline-block; white-space: nowrap; color: rgb(255, 255, 255);">Empunhadura auxiliar removível</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Layout -->
+                <div id="mobile-layout" style="display: none; padding: 30px 20px; border: 1px solid #006eff; border-radius: 12px;">
+                    <!-- Text Content -->
+                    <div style="width: 100%; text-align: center; margin-bottom: 250px;">
+                        <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 20px; line-height: 1.2;">Força e estabilidade total</h2>
+                        <p style="font-size: 16px; line-height: 1.6; margin-bottom: 0;">
+                            Perfure com mais facilidade, precisão e conforto! A 
+                            <strong style="font-weight: 600;">função impacto</strong> adiciona impactos simultâneos, 
+                            facilitando a perfuração até em materiais rígidos e 
+                            difíceis, como concreto e alvenaria. Para ter ainda mais 
+                            controle, a <strong style="font-weight: 600;">empunhadura auxiliar removível</strong> garante 
+                            estabilidade e proporciona um manuseio mais 
+                            confortável, tornando cada trabalho mais seguro.
+                        </p>
+                    </div>
+                    
+                    <!-- Drill Image positioned to extend below panel -->
+                    <div style="position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; z-index: 3;">
+                        <div style="position: relative;">
+                            <img src="images/asset2.png" alt="WAP WF 700FE W2 Drill" style="width: 100%; height: auto; display: block;">
+                            
 
-                        <!-- Fixed positioning for the drill image -->
-                        <div class="feature-image-container5">
-                            <div class="drill-image-wrapper5">
-                                <img src="./images/asset2.png" alt="Furadeira de Impacto WF 700FE W2"
-                                    class="drill-image5">
-                                <div class="feature-label5 function-label5">Função impacto</div>
-                                <div class="feature-label5 handle-label5">Empunhadura auxiliar removível</div>
-                            </div>
+                            <div style="position: absolute; top: 5%; right: 20%; background-color: rgba(0,0,0,0.7); padding: 5px 8px; border-radius: 4px; font-size: 8px; color: white;">Função impacto</div>
+                            <div style="position: absolute; bottom: 30%; left: 35%; background-color: rgba(0,0,0,0.7); padding: 5px 8px; border-radius: 4px; font-size: 8px; color: white;">Empunhadura auxiliar removível</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
+            
+            <script>
+                function handleResponsive() {
+                    var desktopLayout = document.getElementById('desktop-layout');
+                    var mobileLayout = document.getElementById('mobile-layout');
+                    var windowWidth = window.innerWidth;
+                    
+                    if (windowWidth <= 768) {
+                        // Mobile Layout
+                        desktopLayout.style.display = 'none';
+                        mobileLayout.style.display = 'block';
+                    } else {
+                        // Desktop Layout
+                        desktopLayout.style.display = 'block';
+                        mobileLayout.style.display = 'none';
+                    }
+                }
+                
+                // Run on page load and window resize
+                window.addEventListener('load', handleResponsive);
+                window.addEventListener('resize', handleResponsive);
+            </script>
+        </div>
 
         <section class="drill-capabilities">
             <div class="container">
@@ -644,8 +778,10 @@
 
                 <!-- Desktop Capacity Panel -->
                 <div class="capacity-panel">
-                    <div class="capacity-header">
-                        <h3>Capacidade<br>de perfuração:</h3>
+                    <div class="capacity-header"
+                    style="overflow: hidden;"
+                    >
+                        <h3        style="overflow: hidden;">Capacidade<br>de perfuração:</h3>
                     </div>
 
                     <div class="materials-grid">
@@ -865,14 +1001,7 @@
                 </div>
 
                 <!-- Tagline at Bottom -->
-                <div class="highlight-tagline" style="margin-top: 30px; position: relative; text-align: left;">
-                    <h2
-                        style="font-size: 38px; font-weight: 300; color: #333; margin: 0 0 10px; text-transform: uppercase;">
-                        DOS PROJETOS MAIS SIMPLES <span style="margin: 0 15px;">AOS</span> <strong
-                            style="font-weight: 900; color: #000;">MAIS DESAFIADORES</strong></h2>
-                    <div class="tagline-line"
-                        style="height: 1px; background-color: #000; width: 100%; margin-top: 10px;"></div>
-                </div>
+              
             </div>
         </section>
 
@@ -1057,17 +1186,17 @@
         <!-- Product Feature Gallery Section -->
         <!-- Product Feature Gallery Section -->
 
-        <section class="product-gallery-section bg-black" style="background-color: #8e0c0c8b;">
+        <section class="product-gallery-section bg-black" style="">
             <!-- Header -->
             <div style="display: flex; width: 100%;">
-                <div style="padding: 20px 15px; background-color: #ffffff; flex-grow: 1;">
+                <div style="padding: 10px 10px; background-color: #ffffff; flex-grow: 1;">
                     <div style="position: relative;">
                         <p
-                            style="font-family: Arial, sans-serif; font-size: 24px; font-weight: 500; margin: 0; line-height: 1.2; padding-bottom: 10px;">
+                        class="highlight-tagline"
+                            style="font-family: Arial, sans-serif;  font-weight: 500; margin: 0; line-height: 1.2; padding-bottom: 10px;">
                             DOS PROJETOS MAIS SIMPLES<br>
                             AOS <span style="font-weight: 700;">MAIS DESAFIADORES</span>
-                            <span
-                                style="display: inline-block; height: 1px; background-color: #333; margin-left: 10px; vertical-align: middle; width: 300px;"></span>
+                      
                         </p>
                     </div>
                 </div>
@@ -1147,6 +1276,10 @@
                     .mobile-gallery {
                         display: block !important;
                     }
+                    .highlight-tagline {
+                        font-size: 16px !important;
+                        text-align: left;
+                    }
                 }
 
                 @media screen and (min-width: 769px) {
@@ -1157,6 +1290,10 @@
                     .mobile-gallery {
                         display: none !important;
                     }
+                    .highlight-tagline {
+                        font-size: 30px !important;
+                    }
+
                 }
 
                 /* Remove relative positioning and padding since we're using fixed heights */

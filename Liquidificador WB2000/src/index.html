@@ -833,6 +833,8 @@
             </script>
         </section>
 
+
+        <!-- //Movile slide -->
         <section class="drill-capabilities">
             <div class="container">
                 <!-- Desktop Layout -->
@@ -944,437 +946,399 @@
 
         <!-- Power Tool Controls Section -->
 
-        <section class="tool-controls-section">
-            <style>
-                @media (max-width: 768px) {
-                    .desktop-controls-wrapper {
-                        display: none !important;
-                    }
+       <section class="tool-controls-section">
+    <style>
+        @media (max-width: 768px) {
+            .desktop-controls-wrapper {
+                display: none !important;
+            }
 
-                    .mobile-controls-wrapper {
-                        display: block !important;
-                    }
-                }
+            .mobile-controls-wrapper {
+                display: block !important;
+            }
+        }
 
-                @media (min-width: 769px) {
-                    .desktop-controls-wrapper {
-                        display: block !important;
-                    }
+        @media (min-width: 769px) {
+            .desktop-controls-wrapper {
+                display: block !important;
+            }
 
-                    .mobile-controls-wrapper {
-                        display: none !important;
-                    }
-                }
-            </style>
-            <div class="container">
-                <!-- Desktop Grid View - All controls displayed in a row -->
-                <div class="desktop-controls-wrapper"
-                    style="position: relative; width: 100%; margin: 0 auto; overflow: hidden; padding: 10px 0;">
-                    <!-- Carousel Slides Container -->
-                    <div class="desktop-controls-grid"
-                        style="display: flex; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; gap: 50px; padding: 0 5%; 
-                    scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; ">
+            .mobile-controls-wrapper {
+                display: none !important;
+            }
+        }
+        
+        /* Hide scrollbars while keeping functionality */
+        .desktop-controls-grid::-webkit-scrollbar, 
+        .carousel-slides-container::-webkit-scrollbar { 
+            display: none; 
+        }
+    </style>
+    
+    <div class="container">
+        <!-- Desktop Grid View - All controls displayed in a row -->
+        <div class="desktop-controls-wrapper"
+            style="position: relative; width: 100%; margin: 0 auto; overflow: hidden; padding: 10px 0;">
+            <!-- Carousel Slides Container -->
+            <div class="desktop-controls-grid"
+                style="display: flex; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; gap: 50px; padding: 0 5%; 
+                scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; cursor: grab;">
 
-                        <!-- Switch Mode Button Control -->
-                        <div class="control-item mode-switch-control carousel-slide"
-                            style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;  display: flex; flex-direction: column; align-items: center; min-width: 0; margin-left:-50px ">
-                            <div class="control-image-wrapper"
-                                style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                                <img src="images/g7.png" alt="Botão comutador" class="control-image"
-                                    style="max-width: 100%; max-height: 100%; object-fit: cover;">
-                            </div>
-                            <h3 class="control-title"
-                                style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão
-                                comutador</h3>
-                            <p class="control-description"
-                                style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Alterne entre
-                                diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
-                        </div>
-
-                        <!-- Speed Selector Control -->
-                        <div class="control-item speed-selector-control carousel-slide"
-                            style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;  display: flex; flex-direction: column; align-items: center; min-width: 0; ">
-                            <div class="control-image-wrapper"
-                                style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                                <img src="images/g8.png" alt="Seletor de velocidade" class="control-image"
-                                    style="max-width: 100%; max-height: 100%; object-fit: cover;">
-                            </div>
-                            <h3 class="control-title"
-                                style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">
-                                Seletor de velocidade</h3>
-                            <p class="control-description"
-                                style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Oferece uma
-                                nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
-                        </div>
-
-                        <!-- Lock Button Control -->
-                        <div class="control-item lock-button-control carousel-slide" style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;
-                         display: flex; flex-direction: column; align-items: center; min-width: 0; ">
-                            <div class="control-image-wrapper"
-                                style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                                <img src="images/g9.png" alt="Botão trava" class="control-image"
-                                    style="max-width: 100%; max-height: 100%; object-fit: cover;">
-                            </div>
-                            <h3 class="control-title"
-                                style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão
-                                trava</h3>
-                            <p class="control-description"
-                                style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Mantenha a
-                                ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
-                        </div>
-
-                        <!-- Rotation Direction Selector -->
-                        <div class="control-item rotation-selector-control carousel-slide"
-                            style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;  display: flex; flex-direction: column; align-items: center; min-width: 0; ">
-                            <div class="control-image-wrapper"
-                                style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                                <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image"
-                                    style="max-width: 100%; max-height: 100%; object-fit: cover;">
-                            </div>
-                            <h3 class="control-title"
-                                style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">
-                                Seletor de sentido de rotação</h3>
-                            <p class="control-description"
-                                style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Permite
-                                alternar entre dois modos principais: sentido horário e anti-horário.</p>
-                        </div>
+                <!-- Switch Mode Button Control -->
+                <div class="control-item mode-switch-control carousel-slide"
+                    style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px; display: flex; flex-direction: column; align-items: center; min-width: 0; margin-left:-50px">
+                    <div class="control-image-wrapper"
+                        style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <img src="images/g7.png" alt="Botão comutador" class="control-image"
+                            style="max-width: 100%; max-height: 100%; object-fit: cover;">
                     </div>
-
-                    <!-- Navigation Arrows (hidden but kept for functionality) -->
-                    <button class="prev-btn-desktop"
-                        style="display: none; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">←</button>
-                    <button class="next-btn-desktop"
-                        style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">→</button>
+                    <h3 class="control-title"
+                        style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão
+                        comutador</h3>
+                    <p class="control-description"
+                        style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Alterne entre
+                        diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
                 </div>
 
-            </div>
-            <div class="mobile-controls-wrapper"
-                style="position: relative; width: 100%; max-width: 500px; margin: 0 auto; overflow: hidden; padding: 20px 0;">
-                <!-- Carousel Slides Container with wider view to show adjacent slides -->
-                <div class="carousel-slides-container"
-                    style="display: flex; width: 100%; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 10px; padding: 0 15%; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
-                    <!-- Switch Mode Button Control -->
-                    <div class="control-item mode-switch-control carousel-slide"
-                        style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent;  display: flex; flex-direction: column; align-items: center; min-width: 0;">
-                        <div class="control-image-container"
-                            style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                            <img src="images/g7.png" alt="Botão comutador" class="control-image"
-                                style="max-width: 100%; max-height: 100%; object-fit: cover;">
-                        </div>
-                        <h3 class="control-title"
-                            style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão
-                            comutador</h3>
-                        <p class="control-description"
-                            style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Alterne entre
-                            diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
+                <!-- Speed Selector Control -->
+                <div class="control-item speed-selector-control carousel-slide"
+                    style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px; display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                    <div class="control-image-wrapper"
+                        style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <img src="images/g8.png" alt="Seletor de velocidade" class="control-image"
+                            style="max-width: 100%; max-height: 100%; object-fit: cover;">
                     </div>
-
-                    <!-- Speed Selector Control -->
-                    <div class="control-item speed-selector-control carousel-slide"
-                        style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent;  display: flex; flex-direction: column; align-items: center; min-width: 0;">
-                        <div class="control-image-container"
-                            style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                            <img src="images/g8.png" alt="Seletor de velocidade" class="control-image"
-                                style="max-width: 100%; max-height: 100%; object-fit: cover;">
-                        </div>
-                        <h3 class="control-title"
-                            style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Seletor
-                            de velocidade</h3>
-                        <p class="control-description"
-                            style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Oferece uma nova
-                            experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
-                    </div>
-
-                    <!-- Lock Button Control -->
-                    <div class="control-item lock-button-control carousel-slide"
-                        style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px;background-color: transparent;  display: flex; flex-direction: column; align-items: center; min-width: 0;">
-                        <div class="control-image-container"
-                            style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                            <img src="images/g9.png" alt="Botão trava" class="control-image"
-                                style="max-width: 100%; max-height: 100%;object-fit: cover;">
-                        </div>
-                        <h3 class="control-title"
-                            style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão
-                            trava</h3>
-                        <p class="control-description"
-                            style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Mantenha a
-                            ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
-                    </div>
-
-                    <!-- Rotation Direction Selector -->
-                    <div class="control-item rotation-selector-control carousel-slide"
-                        style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent;  display: flex; flex-direction: column; align-items: center; min-width: 0;">
-                        <div class="control-image-container"
-                            style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-                            <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image"
-                                style="max-width: 100%; max-height: 100%; object-fit: cover;">
-                        </div>
-                        <h3 class="control-title"
-                            style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Seletor
-                            de sentido de rotação</h3>
-                        <p class="control-description"
-                            style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Permite alternar
-                            entre dois modos principais: sentido horário e anti-horário.</p>
-                    </div>
+                    <h3 class="control-title"
+                        style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">
+                        Seletor de velocidade</h3>
+                    <p class="control-description"
+                        style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Oferece uma
+                        nova experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
                 </div>
 
-                <!-- Navigation Arrows -->
-                <button class="prev-btn"
-                    style="  display: hidden; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent;   border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"></button>
-                <button class="next-btn"
-                    style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: transparent;  border: none; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;"></button>
+                <!-- Lock Button Control -->
+                <div class="control-item lock-button-control carousel-slide" 
+                    style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px;
+                    display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                    <div class="control-image-wrapper"
+                        style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <img src="images/g9.png" alt="Botão trava" class="control-image"
+                            style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 class="control-title"
+                        style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão
+                        trava</h3>
+                    <p class="control-description"
+                        style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Mantenha a
+                        ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
+                </div>
+
+                <!-- Rotation Direction Selector -->
+                <div class="control-item rotation-selector-control carousel-slide"
+                    style="flex: 0 0 300px; scroll-snap-align: center; border-radius: 8px; padding: 0px; display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                    <div class="control-image-wrapper"
+                        style="width: 100%; height: 350px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                        <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image"
+                            style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 class="control-title"
+                        style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">
+                        Seletor de sentido de rotação</h3>
+                    <p class="control-description"
+                        style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Permite
+                        alternar entre dois modos principais: sentido horário e anti-horário.</p>
+                </div>
             </div>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    // Get desktop carousel elements
-                    const desktopSlidesContainer = document.querySelector('.desktop-controls-grid');
-                    const desktopSlides = desktopSlidesContainer.querySelectorAll('.carousel-slide');
+            <!-- Navigation Arrows (hidden but kept for functionality) -->
+            <button class="prev-btn-desktop"
+                style="display: none; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">←</button>
+            <button class="next-btn-desktop"
+                style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">→</button>
+        </div>
+    </div>
+    
+    <!-- Mobile Carousel View -->
+    <div class="mobile-controls-wrapper"
+        style="position: relative; width: 100%; max-width: 500px; margin: 0 auto; overflow: hidden; padding: 20px 0; display: none;">
+        <!-- Carousel Slides Container with wider view to show adjacent slides -->
+        <div class="carousel-slides-container"
+            style="display: flex; width: 100%; overflow-x: scroll; scroll-snap-type: x mandatory; gap: 10px; padding: 0 15%; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;">
+            <!-- Switch Mode Button Control -->
+            <div class="control-item mode-switch-control carousel-slide"
+                style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent; display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                <div class="control-image-container"
+                    style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                    <img src="images/g7.png" alt="Botão comutador" class="control-image"
+                        style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                </div>
+                <h3 class="control-title"
+                    style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão
+                    comutador</h3>
+                <p class="control-description"
+                    style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Alterne entre
+                    diferentes modos de operação, que permite realizar perfurações com ou sem impacto.</p>
+            </div>
 
-                    // Hide scrollbar but keep functionality for desktop
-                    desktopSlidesContainer.style.scrollbarWidth = 'none';
-                    desktopSlidesContainer.style.msOverflowStyle = 'none';
-                    desktopSlidesContainer.style.webkitOverflowScrolling = 'touch';
+            <!-- Speed Selector Control -->
+            <div class="control-item speed-selector-control carousel-slide"
+                style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent; display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                <div class="control-image-container"
+                    style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                    <img src="images/g8.png" alt="Seletor de velocidade" class="control-image"
+                        style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                </div>
+                <h3 class="control-title"
+                    style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Seletor
+                    de velocidade</h3>
+                <p class="control-description"
+                    style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Oferece uma nova
+                    experiência com diferentes níveis de potência, proporcionando força e precisão.</p>
+            </div>
 
-                    // Mouse drag scrolling for desktop
-                    let isDown = false;
-                    let startX;
-                    let scrollLeft;
+            <!-- Lock Button Control -->
+            <div class="control-item lock-button-control carousel-slide"
+                style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent; display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                <div class="control-image-container"
+                    style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                    <img src="images/g9.png" alt="Botão trava" class="control-image"
+                        style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                </div>
+                <h3 class="control-title"
+                    style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Botão
+                    trava</h3>
+                <p class="control-description"
+                    style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Mantenha a
+                    ferramenta acionada de forma contínua, sem a necessidade de pressionar o gatilho.</p>
+            </div>
 
-                    desktopSlidesContainer.addEventListener('mousedown', (e) => {
-                        isDown = true;
-                        desktopSlidesContainer.style.cursor = 'grabbing';
-                        startX = e.pageX - desktopSlidesContainer.offsetLeft;
-                        scrollLeft = desktopSlidesContainer.scrollLeft;
-                        e.preventDefault();
-                    });
+            <!-- Rotation Direction Selector -->
+            <div class="control-item rotation-selector-control carousel-slide"
+                style="flex: 0 0 80%; scroll-snap-align: center; border-radius: 8px; padding: 0px; background-color: transparent; display: flex; flex-direction: column; align-items: center; min-width: 0;">
+                <div class="control-image-container"
+                    style="width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                    <img src="images/g10.png" alt="Seletor de sentido de rotação" class="control-image"
+                        style="max-width: 100%; max-height: 100%; object-fit: cover;">
+                </div>
+                <h3 class="control-title"
+                    style="font-size: 18px; font-weight: 600; margin: 0 0 10px 0; text-align: center;">Seletor
+                    de sentido de rotação</h3>
+                <p class="control-description"
+                    style="font-size: 14px; line-height: 1.4; margin: 0; text-align: center;">Permite alternar
+                    entre dois modos principais: sentido horário e anti-horário.</p>
+            </div>
+        </div>
 
-                    desktopSlidesContainer.addEventListener('mouseleave', () => {
-                        isDown = false;
-                        desktopSlidesContainer.style.cursor = 'grab';
-                    });
+        <!-- Navigation Arrows -->
+        <button class="prev-btn"
+            style="display: none; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">←</button>
+        <button class="next-btn"
+            style="display: none; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10;">→</button>
+    </div>
 
-                    desktopSlidesContainer.addEventListener('mouseup', () => {
-                        isDown = false;
-                        desktopSlidesContainer.style.cursor = 'grab';
-                        snapToNearestSlide();
-                    });
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // === DESKTOP CAROUSEL FUNCTIONALITY ===
+            const desktopSlidesContainer = document.querySelector('.desktop-controls-grid');
+            const desktopSlides = desktopSlidesContainer.querySelectorAll('.carousel-slide');
 
-                    desktopSlidesContainer.addEventListener('mousemove', (e) => {
-                        if (!isDown) return;
-                        e.preventDefault();
-                        const x = e.pageX - desktopSlidesContainer.offsetLeft;
-                        const walk = (x - startX) * 2; // Scroll speed multiplier
-                        desktopSlidesContainer.scrollLeft = scrollLeft - walk;
-                    });
+            // Mouse drag scrolling for desktop
+            let isDown = false;
+            let startX;
+            let scrollLeft;
 
-                    // Snap to nearest slide when scrolling stops
-                    function snapToNearestSlide() {
-                        const slideWidth = getSlideWidth();
-                        const index = Math.round(desktopSlidesContainer.scrollLeft / slideWidth);
+            desktopSlidesContainer.addEventListener('mousedown', (e) => {
+                isDown = true;
+                desktopSlidesContainer.style.cursor = 'grabbing';
+                startX = e.pageX - desktopSlidesContainer.offsetLeft;
+                scrollLeft = desktopSlidesContainer.scrollLeft;
+                e.preventDefault();
+            });
 
-                        desktopSlidesContainer.scrollTo({
-                            left: slideWidth * index,
-                            behavior: 'smooth'
-                        });
-                    }
+            desktopSlidesContainer.addEventListener('mouseleave', () => {
+                isDown = false;
+                desktopSlidesContainer.style.cursor = 'grab';
+            });
 
-                    // Calculate slide width (including gap)
-                    function getSlideWidth() {
-                        const slide = desktopSlides[0];
-                        const style = window.getComputedStyle(slide);
-                        const marginRight = parseFloat(style.marginRight) || 0;
-                        const marginLeft = parseFloat(style.marginLeft) || 0;
-                        return slide.offsetWidth + marginRight + marginLeft + 20; // Adding gap size
-                    }
+            desktopSlidesContainer.addEventListener('mouseup', () => {
+                isDown = false;
+                desktopSlidesContainer.style.cursor = 'grab';
+                snapToNearestSlide(desktopSlidesContainer, desktopSlides);
+            });
 
-                    // Snap to nearest slide when scrolling ends
-                    desktopSlidesContainer.addEventListener('scroll', function () {
-                        clearTimeout(desktopSlidesContainer.scrollEndTimer);
-                        desktopSlidesContainer.scrollEndTimer = setTimeout(function () {
-                            snapToNearestSlide();
-                        }, 150);
-                    });
+            desktopSlidesContainer.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - desktopSlidesContainer.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll speed multiplier
+                desktopSlidesContainer.scrollLeft = scrollLeft - walk;
+            });
 
-                    // Add this to hide scrollbar in WebKit browsers
-                    const style = document.createElement('style');
-                    style.textContent = '.desktop-controls-grid::-webkit-scrollbar, .carousel-slides-container::-webkit-scrollbar { display: none; }';
-                    document.head.appendChild(style);
+            // Snap to nearest slide when scrolling stops
+            function snapToNearestSlide(container, slides) {
+                const slideWidth = getSlideWidth(slides[0]);
+                const index = Math.round(container.scrollLeft / slideWidth);
+
+                container.scrollTo({
+                    left: slideWidth * index,
+                    behavior: 'smooth'
                 });
-                er('DOMContentLoaded', function () {
-                    // Get carousel elements
-                    const slidesContainer = document.querySelector('.carousel-slides-container');
-                    const slides = slidesContainer.querySelectorAll('.carousel-slide');
-                    const prevBtn = document.querySelector('.prev-btn');
-                    const nextBtn = document.querySelector('.next-btn');
+            }
 
-                    // Hide scrollbar but keep functionality
-                    slidesContainer.style.scrollbarWidth = 'none';
-                    slidesContainer.style.msOverflowStyle = 'none';
-                    slidesContainer.style.webkitOverflowScrolling = 'touch';
-                    slidesContainer.style.scrollBehavior = 'smooth';
+            // Calculate slide width (including gap)
+            function getSlideWidth(slide) {
+                const style = window.getComputedStyle(slide);
+                const marginRight = parseFloat(style.marginRight) || 0;
+                const marginLeft = parseFloat(style.marginLeft) || 0;
+                return slide.offsetWidth + marginRight + marginLeft + 20; // Adding gap size
+            }
 
-                    // Add this to hide scrollbar in WebKit browsers
-                    const style = document.createElement('style');
-                    style.textContent = '.carousel-slides-container::-webkit-scrollbar { display: none; }';
-                    document.head.appendChild(style);
+            // Snap to nearest slide when scrolling ends
+            desktopSlidesContainer.addEventListener('scroll', function () {
+                clearTimeout(desktopSlidesContainer.scrollEndTimer);
+                desktopSlidesContainer.scrollEndTimer = setTimeout(function () {
+                    snapToNearestSlide(desktopSlidesContainer, desktopSlides);
+                }, 150);
+            });
 
-                    // Calculate slide width (including gap)
-                    function getSlideWidth() {
-                        const slide = slides[0];
-                        const style = window.getComputedStyle(slide);
-                        return slide.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-                    }
+            // === MOBILE CAROUSEL FUNCTIONALITY ===
+            const mobileSlidesContainer = document.querySelector('.carousel-slides-container');
+            const mobileSlides = mobileSlidesContainer.querySelectorAll('.carousel-slide');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
 
-                    // Set current slide index (start from second slide)
-                    let currentIndex = 1;
+            // Set current slide index to start at the SECOND slide (index 1)
+            let currentIndex = 1;
 
-                    // Initialize: scroll to the second slide (index 1)
-                    function initCarousel() {
-                        setTimeout(() => {
-                            const slideWidth = getSlideWidth();
-                            slidesContainer.scrollTo({
-                                left: slideWidth * currentIndex,
-                                behavior: 'smooth'
-                            });
-                        }, 100); // Small delay to ensure DOM is ready
-                    }
-
-                    // Scroll to a specific slide
-                    function scrollToSlide(index) {
-                        if (index < 0) index = slides.length - 1;
-                        if (index >= slides.length) index = 0;
-
-                        currentIndex = index;
-                        const slideWidth = getSlideWidth();
-
-                        slidesContainer.scrollTo({
-                            left: slideWidth * index,
-                            behavior: 'smooth'
-                        });
-                    }
-
-                    // Event listeners for buttons
-                    prevBtn.addEventListener('click', () => scrollToSlide(currentIndex - 1));
-                    nextBtn.addEventListener('click', () => scrollToSlide(currentIndex + 1));
-
-                    // Update current slide index when scrolling ends
-                    slidesContainer.addEventListener('scroll', function () {
-                        clearTimeout(slidesContainer.scrollEndTimer);
-                        slidesContainer.scrollEndTimer = setTimeout(function () {
-                            const slideWidth = getSlideWidth();
-                            currentIndex = Math.round(slidesContainer.scrollLeft / slideWidth);
-                        }, 100);
+            // Initialize mobile carousel: scroll to the second slide
+            function initMobileCarousel() {
+                setTimeout(() => {
+                    const slideWidth = getSlideWidth(mobileSlides[0]);
+                    mobileSlidesContainer.scrollTo({
+                        left: slideWidth * currentIndex,
+                        behavior: 'auto' // Use 'auto' initially for immediate positioning
                     });
+                }, 100); // Small delay to ensure DOM is ready
+            }
 
-                    // Initialize the carousel
-                    initCarousel();
+            // Scroll to a specific slide
+            function scrollToSlide(index) {
+                if (index < 0) index = mobileSlides.length - 1;
+                if (index >= mobileSlides.length) index = 0;
+
+                currentIndex = index;
+                const slideWidth = getSlideWidth(mobileSlides[0]);
+
+                mobileSlidesContainer.scrollTo({
+                    left: slideWidth * index,
+                    behavior: 'smooth'
                 });
+            }
 
+            // Event listeners for navigation buttons
+            if (prevBtn) prevBtn.addEventListener('click', () => scrollToSlide(currentIndex - 1));
+            if (nextBtn) nextBtn.addEventListener('click', () => scrollToSlide(currentIndex + 1));
 
-            </script>
-        </section>
+            // Update current slide index when scrolling ends
+            mobileSlidesContainer.addEventListener('scroll', function () {
+                clearTimeout(mobileSlidesContainer.scrollEndTimer);
+                mobileSlidesContainer.scrollEndTimer = setTimeout(function () {
+                    const slideWidth = getSlideWidth(mobileSlides[0]);
+                    currentIndex = Math.round(mobileSlidesContainer.scrollLeft / slideWidth);
+                }, 100);
+            });
+
+            // Initialize the mobile carousel to start at second slide
+            initMobileCarousel();
+        });
+    </script>
+</section>
 
 
 
         <!-- Product Feature Highlights - Desktop Only -->
         <!-- Product Feature Highlights - Desktop Only -->
-        <section class="product-highlights-section desktop-only"
-            style="margin: 80px 0; position: relative; font-family: 'Poppins', sans-serif;">
-            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-                <div class="highlights-container" style="position: relative; margin: 0 auto;">
-                    <!-- Main Drill Image -->
-                    <div class="drill-main-image"
-                        style="position: relative; width: 100%; height: 600px; display: flex; justify-content: center;">
-                        <img src="images/g11.png" alt="Furadeira de Impacto WAP" class="drill-image-500"
-                            style="max-height: 100%; max-width: 100%; object-fit: contain; z-index: 1;">
+<section class="product-highlights-section desktop-only"
+    style="margin: 80px 0; position: relative; font-family: 'Poppins', sans-serif;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="highlights-container" style="position: relative; margin: 0 auto;">
+            <!-- Main Drill Image -->
+            <div class="drill-main-image"
+                style="position: relative; width: 100%; height: 600px; display: flex; justify-content: center;">
+                <img src="images/g11.png" alt="Furadeira de Impacto WAP" class="drill-image-500"
+                    style="max-height: 100%; max-width: 100%; object-fit: contain; z-index: 1;">
 
-                        <!-- Depth Limiter Callout - Top Right -->
-                        <div class="feature-callout depth-limiter"
-                            style="position: absolute; top: 70px; right: 0; display: flex; align-items: center; width: 400px; z-index: 10;">
-                            <div class="callout-line"
-                                style="width: 200px; height: 1px; background-color: #000; position: relative; z-index: 100;">
-                                <span class="dot"
-                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; right: 0;"></span>
-                            </div>
-                            <div class="callout-text" style="text-align: left; padding-left: 15px;">
-                                <p style="margin: 0; font-size: 14px; line-height: 1.4;">Regule a profundidade dos
-                                    furos, evitando acidentes, com o <strong>limitador de profundidade.</strong></p>
-                            </div>
-                        </div>
-
-                        <!-- Chuck Callout - Top Left -->
-                        <div class="feature-callout chuck"
-                            style="position: absolute; top: 160px; left: 0; display: flex; align-items: center; width: 400px; z-index: 10;">
-                            <div class="callout-text" style="text-align: right; padding-right: 15px;">
-                                <p style="margin: 0; font-size: 14px; line-height: 1.4;">O <strong>mandril de 3/8"
-                                        (10mm)</strong> suporte brocas e bits de 0,8 a 10mm, oferecendo excelente
-                                    capacidade de perfuração.</p>
-                            </div>
-                            <div class="callout-line"
-                                style="width: 180px; height: 1px; background-color: #000; position: relative; z-index: 100;">
-                                <span class="dot"
-                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; left: 0;"></span>
-                            </div>
-                        </div>
-
-                        <!-- Auxiliary Handle Callout - Bottom Left -->
-                        <div class="feature-callout aux-handle"
-                            style="position: absolute; top: 370px; left: 0; display: flex; align-items: center; width: 400px; z-index: 10;">
-                            <div class="callout-text" style="text-align: right; padding-right: 15px;">
-                                <p style="margin: 0; font-size: 14px; line-height: 1.4;">A <strong>empunhadura auxiliar
-                                        removível</strong> torna os trabalhos mais estáveis e seguros, para maior
-                                    confiança durante perfurações.</p>
-                            </div>
-                            <div class="callout-line"
-                                style="width: 200px; height: 1px; background-color: #000; position: relative; z-index: 100;">
-                                <span class="dot"
-                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; left: 0;"></span>
-                            </div>
-                        </div>
-
-                        <!-- Ergonomic Grip Callout - Middle Right -->
-                        <div class="feature-callout ergonomic-grip"
-                            style="position: absolute; top: 240px; right: 0; display: flex; align-items: center; width: 350px; z-index: 10;">
-                            <div class="callout-line"
-                                style="width: 180px; height: 1px; background-color: #000; position: relative; z-index: 100;">
-                                <span class="dot"
-                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; right: 0;"></span>
-                            </div>
-                            <div class="callout-text" style="text-align: left; padding-left: 15px;">
-                                <p style="margin: 0; font-size: 14px; line-height: 1.4;">A <strong>empunhadura
-                                        emborrachada ergonômica</strong> oferece mais conforto e controle durante o uso.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Chuck Key Callout - Bottom Right -->
-                        <div class="feature-callout chuck-key"
-                            style="position: absolute; top: 420px; right: 0; display: flex; align-items: center; width: 350px; z-index: 10;">
-                            <div class="callout-line"
-                                style="width: 180px; height: 1px; background-color: #000; position: relative; z-index: 100;">
-                                <span class="dot"
-                                    style="position: absolute; width: 6px; height: 6px; background-color: #000; border-radius: 50%; top: -2.5px; right: 0;"></span>
-                            </div>
-                            <div class="callout-text" style="text-align: left; padding-left: 15px;">
-                                <p style="margin: 0; font-size: 14px; line-height: 1.4;">Durante as atividades, o
-                                    <strong>suporte e a chave de mandril</strong> promovem organização e agilidade ao
-                                    usuário.
-                                </p>
-                            </div>
+                <!-- Depth Limiter Callout - Top Right -->
+                <div class="feature-callout depth-limiter"
+                    style="position: absolute; top: 70px; right: 0; display: flex; flex-direction: column;
+                     align-items: flex-end;  z-index: 10;">
+                    <div style="display: flex; align-items: center;width: 350px; margin-bottom: 4px;">
+                        <div style="flex-grow: 1; text-align: right; padding-right: 15px;">
+                            <p style="margin: 0; font-size: 16px; line-height: 1.4;">Regule a profundidade dos furos, evitando acidentes, com o <strong>limitador de profundidade.</strong></p>
                         </div>
                     </div>
+                    <div style=" width: 500px; height: 1px; margin-right:10px;  background-color: #ABABAB; position: relative;"></div>
                 </div>
 
-                <!-- Tagline at Bottom -->
+                <!-- Chuck Callout - Top Left -->
+                <div class="feature-callout chuck"
+                    style="position: absolute; top: 150px; left: 0; display: flex; flex-direction: column; align-items: flex-start;  z-index: 10;">
+                                    <div style="width: 550px; height: 1px; background-color: #ABABAB; position: relative;"></div>
+                    <div style="display: flex; align-items: center; width: 250px; margin-bottom: 8px;">
+                        <div style="flex-grow: 1;">
+                            <p style="margin: 0; font-size: 16px; line-height: 1.4;"><strong>O mandril de 3/8" (10mm)</strong> suporte brocas e bits de 0,8 a 10mm, oferecendo excelente capacidade de perfuração.</p>
+                        </div>
+                    </div>
+  
+                </div>
 
+                <!-- Auxiliary Handle Callout - Bottom Left -->
+                <div class="feature-callout aux-handle"
+                    style="position: absolute; top: 350px; left: 0; display: flex; flex-direction: column;
+                     align-items: flex-start;  z-index: 10;">
+                    
+                               <div style="width:500px; height: 1px; background-color: #ABABAB; position: relative;"></div>
+                     <div style="display: flex; align-items: center; width: 250px; margin-bottom: 8px;">
+                        <div style="flex-grow: 1;">
+                            <p style="margin: 0; font-size: 16px; line-height: 1.4;">A <strong>empunhadura auxiliar removível</strong> torna os trabalhos mais estáveis e seguros, para maior confiança durante perfurações.</p>
+                        </div>
+                    </div>
+         
+                </div>
+
+                <!-- Ergonomic Grip Callout - Middle Right -->
+                <div class="feature-callout ergonomic-grip"
+                    style="position: absolute; top: 240px; right: 0; display: flex; flex-direction: column; align-items: flex-end;
+                      z-index: 10;">
+                    <div style="display: flex; align-items: center;width: 300px; margin-bottom: 8px;">
+                        <div style="flex-grow: 1; text-align: right; padding-right: 15px;">
+                            <p style="margin: 0; font-size: 16px; line-height: 1.4;">A <strong>empunhadura emborrachada ergonômica</strong> oferece mais conforto e controle durante o uso.</p>
+                        </div>
+                    </div>
+                    <div style="width: 380px; height: 1px; background-color: #ABABAB; position: relative;"></div>
+                </div>
+
+                <!-- Chuck Key Callout - Bottom Right -->
+                <div class="feature-callout chuck-key"
+                    style="position: absolute; top: 350px; right: 0; display: flex; flex-direction: column; align-items: flex-end; width: 400px; z-index: 10;">
+                    <div style="display: flex; align-items: center; width: 250px; margin-bottom: 8px;">
+                        <div style="flex-grow: 1; text-align: right; padding-right: 15px;">
+                            <p style="margin: 0; font-size: 16px; line-height: 1.4;">Durante as atividades, o <strong>suporte e a chave de mandril</strong> promovem organização e agilidade ao usuário.</p>
+                        </div>
+                    </div>
+                    <div style="width: 100%; height: 1px; background-color: #ABABAB; position: relative;"></div>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <!-- Mobile Features Carousel -->
 
         <section class="feature-slider-section"
-            style="display: none; width: 100%; max-width: 100%; overflow: hidden; padding: 0; margin: 0;">
+            style="display: none; width: 100%; max-width: 100%; overflow: hidden; padding: 0; margin: 0;
+
+             ">
             <!-- Add inline media query to show on mobile -->
             <style>
                 @media (max-width: 768px) {

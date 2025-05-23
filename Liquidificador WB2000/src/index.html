@@ -645,7 +645,7 @@
                      min-height: 300px;">
                     <!-- Text Content -->
                     <div style="width: 50%; position: relative; z-index: 2;">
-                        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 20px; line-height: 1.2;">Força e
+                        <h2 style="font-size: 28px; font-weight: 600; margin-bottom: 20px; line-height: 1.2;">Força e
                             estabilidade total</h2>
                         <p style="font-size: 16px; line-height: 1.6; margin-bottom: 0;
                         font-weight: 400;
@@ -707,10 +707,11 @@
                     style="display: none; padding: 10px 10px; border: 1px solid #000000; border-radius: 12px;">
                     <!-- Text Content -->
                     <div style="width: 100%; text-align: center; margin-bottom: 250px;">
-                        <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 20px; 
+                        <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; 
                         line-height: 1.2;">Força e
                             estabilidade total</h2>
-                        <p style="font-size: 12px; line-height: 1.6; margin-bottom: 0;
+                        <p style="font-size: 12px; line-height: 1.6; margin-bottom: 0; margin-right: 20px;
+                        margin-left: 20px;
                         font-weight:200;
                         ">
                             Perfure com mais facilidade, precisão e conforto! A
@@ -741,7 +742,7 @@
                             </div>
 
                             <!-- Line -->
-                            <div style="width: 50px; height: 1px; background-color: #fff; margin-right: 5px;"></div>
+                            <div style="width: 10vw; height: 1px; background-color: #f9f9f9; margin-right: 2px;"></div>
 
                             <!-- Label Text -->
                             <span style="color: #fff; font-size: 14px; white-space: nowrap;">Função impacto</span>
@@ -754,7 +755,7 @@
                             </div>
 
                             <!-- Line -->
-                            <div style="width: 55px; height: 1px; background-color: #fff; margin-right: 5px;"></div>
+                            <div style="width: 10vw; height: 1px; background-color: #fff; margin-right: 2px;"></div>
 
                             <!-- Label Text -->
                             <spa style="color: #f4f0f0; font-size: 12px; white-space: nowrap;">Empunhadura
@@ -1495,20 +1496,65 @@
         <!-- Product Feature Gallery Section -->
         <!-- Product Feature Gallery Section -->
 
-         <section class="product-gallery-section bg-black" style="">
-            <!-- Header -->
-            <div style="display: flex; width: 100%;">
-                <div style="padding: 10px 10px; background-color: #ffffff; flex-grow: 1;">
-                    <div style="position: relative;">
-                        <p class="highlight-tagline"
-                            style="font-family: Arial, sans-serif;  font-weight: 500; margin: 0; line-height: 1.2; padding-bottom: 10px;">
-                            DOS PROJETOS MAIS SIMPLES<br>
-                            AOS <span style="font-weight: 700;">MAIS DESAFIADORES</span>
+         <section class="product-gallery-section bg-black" >
+     <style>
+    /* full-width grey background and center content */
+    .tagline-wrapper {
+      display: flex;
+      justify-content: center;
 
-                        </p>
-                    </div>
-                </div>
-            </div>
+      padding: clamp(0.75rem, 5vw, 2rem) 1rem;
+
+    }
+
+    /* inner container */
+    .tagline {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* base styles for both lines */
+    .tagline p {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #000000;
+      line-height: 1.2;
+      /* responsive font from 1.25rem up to 2rem */
+      font-size: clamp(1.25rem, 4vw, 2rem);
+    }
+
+    /* second line: flex container so we can stretch the bar */
+    .tagline .line2 {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+        gap:5px;
+    }
+
+    /* bold part */
+    .tagline .line2 strong {
+      font-weight: 700;
+    }
+
+    /* the extending bar */
+    .tagline .line2::after {
+      content: '';
+      flex: 1;                 /* fill remaining space */
+      height: 2px;             /* thickness */
+      background: #000000;
+      margin-left: 0rem;       /* gap from the text */
+    }
+  </style>
+            <!-- Header -->
+
+  <div class="tagline-wrapper">
+    <div class="tagline">
+      <p class="line1">DOS PROJETOS MAIS SIMPLES</p>
+      <p class="line2">AOS  <strong>MAIS DESAFIADORES</strong></p>
+    </div>
+  </div>
+
+
 
             <!-- Desktop Gallery Layout - reduced height -->
             <div class="desktop-gallery"

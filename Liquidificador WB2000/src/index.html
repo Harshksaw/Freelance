@@ -360,6 +360,148 @@
             </div>
         </div>
         <section class="product-hero">
+
+                <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-image {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 12px;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .feature h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .feature p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+            font-weight: 400;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Desktop Styles - 3 Column Layout */
+        @media (min-width: 768px) {
+            body {
+                padding: 60px 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 60px;
+                align-items: start;
+            }
+
+            .feature-image {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 25px;
+            }
+
+            .feature h2 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .feature p {
+                font-size: 17px;
+                max-width: none;
+            }
+        }
+
+        /* Large Desktop */
+        @media (min-width: 1200px) {
+            body {
+                padding: 80px 60px;
+            }
+
+            .features-grid {
+                gap: 80px;
+            }
+
+            .feature-image {
+                width: 90px;
+                height: 90px;
+                margin-bottom: 30px;
+            }
+
+            .feature h2 {
+                font-size: 22px;
+                margin-bottom: 18px;
+            }
+
+            .feature p {
+                font-size: 18px;
+            }
+        }
+
+        /* Small mobile */
+        @media (max-width: 480px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            .features-grid {
+                gap: 40px;
+            }
+
+            .feature-image {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 15px;
+            }
+
+            .feature h2 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .feature p {
+                font-size: 15px;
+            }
+        }
+    </style>
+
             <div class="container">
                 <div class="product-hero-content">
                     <!-- Product Image Container -->
@@ -382,6 +524,32 @@
                         </div>
                     </div>
                 </div>
+
+                   <div class="features-grid">
+            <div class="feature">
+                <div class="feature-image">
+                    <img src="images/g4.png" alt="Função impacto">
+                </div>
+                <h2>Função impacto</h2>
+                <p>Garanta mais facilidade ao perfurar superfícies duras e materiais rígidos.  </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-image">
+                    <img src="images/g5.png" alt="Controle de velocidade">
+                </div>
+                <h2>Controle de velocidade</h2>
+                <p>Alterne entre os níveis de velocidade para maior controle, precisão e força para os trabalhos.  </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-image">
+                    <img src="images/g6.png" alt="Empunhadura auxiliar removível">
+                </div>
+                <h2>Empunhadura auxiliar removível</h2>
+                <p>Permite mais estabilidade e segurança ao perfurar materiais mais exigentes. </p>
+            </div>
+        </div>
             </div>
         </section>
 

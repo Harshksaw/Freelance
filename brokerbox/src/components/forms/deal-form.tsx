@@ -35,12 +35,22 @@ export function DealForm({ onSuccess }: DealFormProps) {
 
   const router = useRouter();
 
+  const fundingTypeOptions = [
+    { value: 'Loans', label: 'Loans' },
+    { value: 'Invoice Finance', label: 'Invoice Finance' },
+    { value: 'Asset Finance', label: 'Asset Finance' },
+    { value: 'Overdraft', label: 'Overdraft' },
+    { value: 'Other', label: 'Other' }
+  ];
+  
+
   const {
     register,
     handleSubmit,
     setValue,
     watch,
     reset,
+    trigger,
     formState: { errors }
   } = useForm<DealFormData>({
     resolver: zodResolver(dealFormSchema),
@@ -54,15 +64,27 @@ export function DealForm({ onSuccess }: DealFormProps) {
   // Watch company name to keep it in sync
   const watchedCompanyName = watch('companyName');
 
-  // Handle company selection
   const handleCompanySelect = (company: MockCompany | null) => {
-    console.log('Company selected:', company); // Debug log
+    console.log('📝 11. DealForm handleCompanySelect called with:', company);
+    
     setSelectedCompany(company);
+    
     if (company) {
+      console.log('📝 12. Setting form values:', {
+        companyName: company.title,
+        companyNumber: company.company_number
+      });
+      
       setValue('companyName', company.title, { shouldValidate: true });
       setValue('companyNumber', company.company_number, { shouldValidate: true });
+      
+      // Trigger validation to clear any errors
+      trigger(['companyName', 'companyNumber']).then(result => {
+        console.log('📝 13. Validation result:', result);
+      });
     } else {
-      setValue('companyName', '', { shouldValidate: true });
+      console.log('📝 12. Clearing company selection');
+      setValue('companyName', watchedCompanyName || '', { shouldValidate: true });
       setValue('companyNumber', '', { shouldValidate: true });
     }
   };
@@ -165,11 +187,6 @@ export function DealForm({ onSuccess }: DealFormProps) {
           )}
         </div>
 
-        {/* Debug info - remove this after testing */}
-        <div className="text-xs text-gray-500 bg-gray-50 p-2 rounded">
-          Debug: Company Name = "{watchedCompanyName}", Selected = {selectedCompany?.title || 'None'}
-        </div>
-
         {/* Business Turnover */}
         <div>
           <Input
@@ -190,16 +207,18 @@ export function DealForm({ onSuccess }: DealFormProps) {
 
         {/* Funding Type */}
         <div>
-          <Input
-            label="Funding Type"
-            value="Loans"
-            disabled
-            {...register('fundingType')}
-          />
-          <p className="text-xs text-gray-500 mt-1">
-            Currently only loan products are available
-          </p>
-        </div>
+  <Select
+    label="Funding Type"
+    placeholder="Select funding type..."
+    options={fundingTypeOptions}
+    {...register('fundingType')}
+    error={errors.fundingType?.message}
+    required
+  />
+  <p className="text-xs text-gray-500 mt-1">
+    Choose the type of funding required
+  </p>
+</div>
 
         {/* Purpose */}
         <div>

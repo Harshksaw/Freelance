@@ -33,7 +33,7 @@ const DealSchema = new Schema<IDeal>({
     type: String,
     required: true,
     default: 'Loans',
-    enum: ['Loans']
+    enum: ['Loans', 'Invoice Finance', 'Asset Finance', 'Overdraft', 'Other']
   },
   purpose: {
     type: String,

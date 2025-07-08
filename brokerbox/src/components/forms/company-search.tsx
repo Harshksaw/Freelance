@@ -32,16 +32,24 @@ export function CompanySearch({
   
   const { companies, loading, error: searchError, searchCompanies, clearResults } = useCompanies();
   const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLUListElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Sync internal inputValue with external value prop
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
   // Handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
+    console.log('🔍 1. User typed:', query);
+    
     setInputValue(query);
     setSelectedCompany(null);
     setHighlightedIndex(-1);
     
     if (query.length >= 2) {
+      console.log('🔍 2. Calling searchCompanies with:', query);
       searchCompanies(query);
       setIsOpen(true);
     } else {
@@ -49,16 +57,26 @@ export function CompanySearch({
       setIsOpen(false);
     }
     
-    onCompanySelect(null);
+    // Only call onCompanySelect(null) if we had a selected company
+    if (selectedCompany) {
+      console.log('🔍 3. Calling onCompanySelect(null) - clearing selection');
+      onCompanySelect(null);
+    }
   };
 
   // Handle company selection
   const handleCompanySelect = (company: MockCompany) => {
+    console.log('🔍 ✅ COMPANY SELECT TRIGGERED:', company.title);
+    
     setInputValue(company.title);
     setSelectedCompany(company);
     setIsOpen(false);
     setHighlightedIndex(-1);
+    clearResults();
+    
+    console.log('🔍 ✅ About to call onCompanySelect with:', company);
     onCompanySelect(company);
+    console.log('🔍 ✅ onCompanySelect called successfully');
   };
 
   // Handle keyboard navigation
@@ -81,6 +99,7 @@ export function CompanySearch({
       case 'Enter':
         e.preventDefault();
         if (highlightedIndex >= 0 && companies[highlightedIndex]) {
+          console.log('🔍 Enter key pressed, selecting:', companies[highlightedIndex]);
           handleCompanySelect(companies[highlightedIndex]);
         }
         break;
@@ -95,10 +114,19 @@ export function CompanySearch({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-        setHighlightedIndex(-1);
+      const target = event.target as Node;
+      
+      // Don't close if clicking inside the dropdown
+      if (
+        dropdownRef.current?.contains(target) ||
+        inputRef.current?.contains(target)
+      ) {
+        return;
       }
+      
+      console.log('🔍 Clicking outside, closing dropdown');
+      setIsOpen(false);
+      setHighlightedIndex(-1);
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -134,7 +162,10 @@ export function CompanySearch({
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-hidden">
+        <div 
+          ref={dropdownRef}
+          className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-hidden"
+        >
           {loading && (
             <div className="p-4">
               <Loading size="sm" text="Searching companies..." />
@@ -143,24 +174,31 @@ export function CompanySearch({
           
           {!loading && companies.length === 0 && inputValue.length >= 2 && (
             <div className="p-4 text-sm text-gray-500 text-center">
-              No companies found for "{inputValue}"
+              No companies found for &quot {inputValue} &quot
             </div>
           )}
           
           {!loading && companies.length > 0 && (
-            <ul ref={listRef} className="max-h-60 overflow-auto">
+            <ul className="max-h-60 overflow-auto">
               {companies.map((company, index) => (
                 <li
                   key={company.company_number}
                   className={cn(
                     'px-4 py-3 cursor-pointer border-b border-gray-100 last:border-b-0',
-                    'hover:bg-gray-50 transition-colors',
+                    'hover:bg-gray-50 transition-colors select-none',
                     highlightedIndex === index && 'bg-blue-50',
                     company.company_status !== 'active' && 'opacity-60'
                   )}
-                  onClick={() => handleCompanySelect(company)}
+                  onMouseDown={(e) => {
+                    // Use onMouseDown instead of onClick to prevent input blur
+                    console.log('🔍 ⚡ MOUSE DOWN on company:', company.title);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleCompanySelect(company);
+                  }}
+                  onMouseEnter={() => setHighlightedIndex(index)}
                 >
-                  <div className="flex items-start space-x-3">
+                  <div className="flex items-start space-x-3 pointer-events-none">
                     <div className="flex-shrink-0 mt-0.5">
                       <Building2 className="h-4 w-4 text-gray-400" />
                     </div>

@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
+import { QuoteDetailModal } from './quote-detail-modal';
 import { LenderQuote, QuoteFormData } from '../../app/quotes/page';
 import { 
   Star, 
@@ -26,6 +27,7 @@ interface QuoteResultsProps {
 export function QuoteResults({ quotes, businessData, onClear }: QuoteResultsProps) {
   const [selectedQuotes, setSelectedQuotes] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<'rate' | 'payment' | 'total'>('rate');
+  const [detailModalQuote, setDetailModalQuote] = useState<LenderQuote | null>(null);
 
   const formatCurrency = (amount: number): string => {
     return new Intl.NumberFormat('en-GB', {
@@ -240,7 +242,7 @@ export function QuoteResults({ quotes, businessData, onClear }: QuoteResultsProp
                     </>
                   )}
                 </Button>
-                <Button variant="outline" size="sm" className="w-full">
+                <Button variant="outline" size="sm" className="w-full" onClick={() => setDetailModalQuote(quote)}>
                   View Details
                 </Button>
               </div>

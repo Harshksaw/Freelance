@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '../../lib/utils/cn';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Building2 } from 'lucide-react';
 
 const navigation = [
   { name: 'New Deal', href: '/new-deal' },
@@ -17,29 +17,29 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo with Animation */}
+          {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="group flex items-center space-x-2">
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300 group-hover:animate-pulse"></div>
-                <div className="relative bg-white px-3 py-2 rounded-lg">
-                  <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                    Broker
-                  </span>
-                  <span className="text-xl font-bold text-gray-800 ml-1">
-                    Box
-                  </span>
-                </div>
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="flex items-center justify-center w-10 h-10 bg-blue-600 rounded-lg group-hover:bg-blue-700 transition-colors">
+                <Building2 className="h-6 w-6 text-white" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold text-gray-900 leading-none">
+                  Broker Box
+                </span>
+                <span className="text-xs text-gray-500 leading-none">
+                  Deal Management
+                </span>
               </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation - Floating Tabs */}
+          {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="flex items-center space-x-1 bg-gray-100/50 backdrop-blur-sm rounded-full p-1 border border-gray-200/50">
+            <div className="flex items-center space-x-8">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -47,16 +47,16 @@ export function Header() {
                     key={item.name}
                     href={item.href}
                     className={cn(
-                      'relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ease-in-out',
+                      'text-sm font-medium transition-colors duration-200 relative',
                       isActive
-                        ? 'text-white shadow-lg transform scale-105'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-white/50'
+                        ? 'text-blue-600'
+                        : 'text-gray-700 hover:text-blue-600'
                     )}
                   >
+                    {item.name}
                     {isActive && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-lg animate-pulse"></div>
+                      <div className="absolute -bottom-4 left-0 right-0 h-0.5 bg-blue-600"></div>
                     )}
-                    <span className="relative z-10">{item.name}</span>
                   </Link>
                 );
               })}
@@ -67,7 +67,7 @@ export function Header() {
           <div className="md:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
@@ -82,7 +82,7 @@ export function Header() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2 bg-white/90 backdrop-blur-sm rounded-lg mt-2 border border-gray-200/50 shadow-lg">
+            <div className="space-y-1 px-2 pb-3 pt-2 border-t border-gray-200">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -90,10 +90,10 @@ export function Header() {
                     key={item.name}
                     href={item.href}
                     className={cn(
-                      'block px-3 py-2 rounded-md text-base font-medium transition-all duration-200',
+                      'block px-3 py-2 rounded-md text-base font-medium',
                       isActive
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
                     )}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -107,4 +107,4 @@ export function Header() {
       </nav>
     </header>
   );
-} 
+}

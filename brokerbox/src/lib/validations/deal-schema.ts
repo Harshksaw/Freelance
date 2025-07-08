@@ -19,8 +19,13 @@ export const dealFormSchema = z.object({
     .max(1000000000, 'Business turnover must be less than £1 billion'),
   
   fundingType: z
-    .literal('Loans')
+    .enum(['Loans', 'Invoice Finance', 'Asset Finance', 'Overdraft', 'Other'], {
+      required_error: 'Funding type is required'
+    })
     .default('Loans'),
+  
+
+
   
   purpose: z
     .enum(['Cash Flow Boost', 'New Equipment', 'Expansion', 'Refinance', 'Other'], {

@@ -34,7 +34,7 @@ export async function DELETE(
       success: true,
       message: 'Deal deleted successfully',
       deal: {
-        id: deletedDeal._id,
+        id: deletedDeal._id.toString(),
         companyName: deletedDeal.companyName
       }
     });
@@ -65,8 +65,8 @@ export async function GET(
       );
     }
 
-    // Find the deal
-    const deal = await Deal.findById(id).lean();
+    // Find the deal - Remove .lean() to get proper Mongoose document
+    const deal = await Deal.findById(id);
 
     if (!deal) {
       return NextResponse.json(
@@ -78,7 +78,7 @@ export async function GET(
     return NextResponse.json({
       success: true,
       deal: {
-        id: deal._id,
+        id: deal._id.toString(),
         companyName: deal.companyName,
         companyNumber: deal.companyNumber,
         businessTurnover: deal.businessTurnover,

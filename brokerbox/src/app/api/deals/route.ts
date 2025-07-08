@@ -59,50 +59,31 @@ export async function POST(request: NextRequest) {
       }, { status: 201 });
 
     } catch (mongooseError) {
-      console.error('🔧 Mongoose error details:', mongooseError);
-      console.error('🔧 Mongoose error name:', mongooseError.name);
-      console.error('🔧 Mongoose error message:', mongooseError.message);
-      
-      if (mongooseError.name === 'ValidationError') {
-        console.error('🔧 Validation errors:', mongooseError.errors);
-        return NextResponse.json(
-          { 
-            success: false, 
-            error: 'Database validation error',
-            details: Object.keys(mongooseError.errors).map(key => ({
-              field: key,
-              message: mongooseError.errors[key].message
-            }))
-          },
-          { status: 400 }
-        );
-      }
-      
+
+
       throw mongooseError; // Re-throw non-validation errors
     }
 
   } catch (error) {
-    console.error('🔧 General error:', error);
-    console.error('🔧 Error stack:', error.stack);
 
-    // Zod validation error
-    if (error?.name === 'ZodError') {
-      return NextResponse.json(
-        { success: false, error: 'Validation error', details: error.errors },
-        { status: 400 }
-      );
-    }
 
-    // MongoDB/Mongoose error
-    if (error?.name === 'ValidationError') {
-      return NextResponse.json(
-        { success: false, error: 'Database validation error', details: error.message },
-        { status: 400 }
-      );
+  
+
+
+
+   const errorMessage = 'Failed to create deal';
+    let errorDetails: string | undefined = undefined;
+
+    if (error instanceof Error) {
+      errorDetails = error.message;
+    } else if (typeof error === 'string') {
+      errorDetails = error;
+    } else {
+      errorDetails = JSON.stringify(error);
     }
 
     return NextResponse.json(
-      { success: false, error: 'Failed to create deal', details: error.message },
+      { success: false, error: errorMessage, details: errorDetails },
       { status: 500 }
     );
   }

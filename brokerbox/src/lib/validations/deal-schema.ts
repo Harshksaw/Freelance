@@ -46,4 +46,4 @@ export const dealFormSchema = z.object({
     .optional()
 });
 
-export type DealFormData = z.infer<typeof dealFormSchema>;
+export type DealFormData = z.input<typeof dealFormSchema>;

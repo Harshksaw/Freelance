@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Loading } from '../ui/loading';
 import { useDeals } from '../../hooks/use-deals';
-import { cn } from '../../lib/utils/cn';
+
 import { 
   Search, 
   ArrowUpDown, 
@@ -18,7 +18,7 @@ import {
   FileText
 } from 'lucide-react';
 
-interface Deal {
+export interface Deal {
   id: string;
   companyName: string;
   companyNumber?: string;

@@ -174,7 +174,7 @@ export function CompanySearch({
           
           {!loading && companies.length === 0 && inputValue.length >= 2 && (
             <div className="p-4 text-sm text-gray-500 text-center">
-              No companies found for "{inputValue}"
+              No companies found for &quot {inputValue} &quot
             </div>
           )}
           

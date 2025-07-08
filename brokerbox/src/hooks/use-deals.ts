@@ -53,7 +53,7 @@ export function useDeals(): UseDealsReturn {
     total: 0,
     pages: 0
   });
-  const [lastParams, setLastParams] = useState<any>({});
+  const [lastParams, setLastParams] = useState({});
 
   const fetchDeals = useCallback(async (params: {
     search?: string;

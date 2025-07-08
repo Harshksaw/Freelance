@@ -10,7 +10,7 @@ import { ArrowLeft, CheckCircle, Info, AlertTriangle } from 'lucide-react';
 
 export default function NewDealPage() {
   const [isSuccess, setIsSuccess] = useState(false);
-  const [createdDealId, setCreatedDealId] = useState<string | null>(null);
+  // const [ setCreatedDealId] = useState<string | null>(null);
   const router = useRouter();
 
   const handleSuccess = () => {
@@ -51,7 +51,7 @@ export default function NewDealPage() {
                   size="lg" 
                   onClick={() => {
                     setIsSuccess(false);
-                    setCreatedDealId(null);
+                    // setCreatedDealId(null);
                   }}
                   className="w-full sm:w-auto"
                 >

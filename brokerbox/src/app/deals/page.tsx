@@ -1,19 +1,27 @@
-import { Card } from '../../components/ui/card';
+import Link from 'next/link';
+import { Button } from '../../components/ui/button';
+import { DealsTable } from '../../components/tables/deals-table';
+import { Plus } from 'lucide-react';
 
 export default function DealsPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">All Deals</h1>
-        <p className="text-gray-600 mt-2">View and manage your funding deals</p>
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">All Deals</h1>
+          <p className="text-gray-600 mt-2">
+            View and manage your funding deals
+          </p>
+        </div>
+        <Link href="/new-deal">
+          <Button>
+            <Plus className="h-4 w-4 mr-2" />
+            New Deal
+          </Button>
+        </Link>
       </div>
       
-      <Card title="Deals Table" description="This will show all submitted deals">
-        <div className="py-12 text-center text-gray-500">
-          <h3 className="text-lg font-medium mb-2">Coming Soon</h3>
-          <p>Deals table will be implemented in Phase 2</p>
-        </div>
-      </Card>
+      <DealsTable />
     </div>
   );
-} 
+}

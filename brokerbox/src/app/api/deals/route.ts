@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '../../../lib/database/mongodb';
 import Deal from '../../../lib/database/models/deal';
-import { dealFormSchema } from '../../../lib/validation/deal-schema';
+import { dealFormSchema } from '../../../lib/validations/deal-schema';
 
 
 export async function POST(request: NextRequest) {

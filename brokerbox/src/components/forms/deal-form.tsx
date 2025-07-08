@@ -39,24 +39,31 @@ export function DealForm({ onSuccess }: DealFormProps) {
     register,
     handleSubmit,
     setValue,
+    watch,
     reset,
     formState: { errors }
   } = useForm<DealFormData>({
     resolver: zodResolver(dealFormSchema),
     defaultValues: {
-      fundingType: 'Loans'
+      fundingType: 'Loans',
+      companyName: '',
+      companyNumber: ''
     }
   });
 
+  // Watch company name to keep it in sync
+  const watchedCompanyName = watch('companyName');
+
   // Handle company selection
   const handleCompanySelect = (company: MockCompany | null) => {
+    console.log('Company selected:', company); // Debug log
     setSelectedCompany(company);
     if (company) {
-      setValue('companyName', company.title);
-      setValue('companyNumber', company.company_number);
+      setValue('companyName', company.title, { shouldValidate: true });
+      setValue('companyNumber', company.company_number, { shouldValidate: true });
     } else {
-      setValue('companyName', '');
-      setValue('companyNumber', '');
+      setValue('companyName', '', { shouldValidate: true });
+      setValue('companyNumber', '', { shouldValidate: true });
     }
   };
 
@@ -68,6 +75,7 @@ export function DealForm({ onSuccess }: DealFormProps) {
 
   // Handle form submission
   const onSubmit = async (data: DealFormData) => {
+    console.log('Form data being submitted:', data); // Debug log
     setIsSubmitting(true);
     setSubmitMessage(null);
 
@@ -79,8 +87,12 @@ export function DealForm({ onSuccess }: DealFormProps) {
         },
         body: JSON.stringify({
           ...data,
-          businessTurnover: formatCurrency(data.businessTurnover.toString()),
-          loanAmount: formatCurrency(data.loanAmount.toString()),
+          businessTurnover: typeof data.businessTurnover === 'string' 
+            ? formatCurrency(data.businessTurnover) 
+            : data.businessTurnover,
+          loanAmount: typeof data.loanAmount === 'string' 
+            ? formatCurrency(data.loanAmount) 
+            : data.loanAmount,
         }),
       });
 
@@ -93,7 +105,11 @@ export function DealForm({ onSuccess }: DealFormProps) {
         });
         
         // Reset form after successful submission
-        reset();
+        reset({
+          fundingType: 'Loans',
+          companyName: '',
+          companyNumber: ''
+        });
         setSelectedCompany(null);
         
         // Call success callback if provided
@@ -126,7 +142,7 @@ export function DealForm({ onSuccess }: DealFormProps) {
           <CompanySearch
             label="Company Name"
             placeholder="Search for a UK company..."
-            value={selectedCompany?.title || ''}
+            value={watchedCompanyName || ''}
             onCompanySelect={handleCompanySelect}
             error={errors.companyName?.message}
             required
@@ -149,6 +165,11 @@ export function DealForm({ onSuccess }: DealFormProps) {
           )}
         </div>
 
+        {/* Debug info - remove this after testing */}
+        <div className="text-xs text-gray-500 bg-gray-50 p-2 rounded">
+          Debug: Company Name = "{watchedCompanyName}", Selected = {selectedCompany?.title || 'None'}
+        </div>
+
         {/* Business Turnover */}
         <div>
           <Input
@@ -163,7 +184,7 @@ export function DealForm({ onSuccess }: DealFormProps) {
             required
           />
           <p className="text-xs text-gray-500 mt-1">
-            Enter the company's annual turnover in pounds
+            Enter the company&apos;s annual turnover in pounds
           </p>
         </div>
 
@@ -272,7 +293,11 @@ export function DealForm({ onSuccess }: DealFormProps) {
             type="button"
             variant="outline"
             onClick={() => {
-              reset();
+              reset({
+                fundingType: 'Loans',
+                companyName: '',
+                companyNumber: ''
+              });
               setSelectedCompany(null);
               setSubmitMessage(null);
             }}

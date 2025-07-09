@@ -125,7 +125,8 @@ function generateQuote(lender: LenderData, formData: QuoteFormData, riskCategory
     processingFee: lender.processingFee,
     approvalTime: lender.approvalTime,
     features: lender.features,
-    riskCategory
+    riskCategory,
+    recommended: false
   };
 }
 
@@ -149,10 +150,7 @@ export async function POST(request: NextRequest) {
     
     // Sort quotes by interest rate and mark best as recommended
     quotes.sort((a, b) => a.interestRate - b.interestRate);
-    if (quotes.length > 0) {
-
-      quotes[0].recommended = true;
-    }
+    quotes.forEach((q, i) => { q.recommended = i === 0; });
     
     return NextResponse.json({
       success: true,

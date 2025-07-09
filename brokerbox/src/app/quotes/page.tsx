@@ -7,34 +7,7 @@ import { QuoteResults } from '../../components/quotes/quote-results';
 import { Button } from '../../components/ui/button';
 import { Card } from '../../components/ui/card';
 import { ArrowLeft, Calculator, TrendingUp, Shield, Clock } from 'lucide-react';
-
-export interface QuoteFormData {
-  companyName: string;
-  companyNumber?: string;
-  directorName: string;
-  turnover: number;
-  fundingType: string;
-  purpose: string;
-  loanAmount: number;
-  repaymentTerm: number;
-}
-
-export interface LenderQuote {
-  id: string;
-  lenderName: string;
-
-
-  lenderLogo?: string;
-  interestRate: number;
-  monthlyPayment: number;
-  totalRepayment: number;
-  processingFee: number;
-  approvalTime: string;
-  loanToValue?: number;
-  features: string[];
-  riskCategory: 'low' | 'medium' | 'high';
-  recommended?: boolean;
-}
+import { QuoteFormData, LenderQuote } from '../../types/lender-quote';
 
 export default function QuotesPage() {
   const [quotes, setQuotes] = useState<LenderQuote[]>([]);

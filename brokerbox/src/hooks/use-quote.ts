@@ -1,6 +1,6 @@
 // src/hooks/use-quotes.ts
 import { useState, useCallback } from 'react';
-import { LenderQuote, QuoteFormData } from '../app/quotes/page';
+import { LenderQuote, QuoteFormData } from '../types/lender-quote';
 
 interface QuoteResponse {
   success: boolean;

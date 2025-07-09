@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
-import { LenderQuote } from '../../app/quotes/page';
+import { LenderQuote } from '../../types/lender-quote';
 import { CheckCircle, X } from 'lucide-react';
 
 interface QuoteComparisonProps {

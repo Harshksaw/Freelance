@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
-import { LenderQuote, QuoteFormData } from '../../app/quotes/page';
+
 import { 
   X, 
   Star, 
@@ -22,6 +22,7 @@ import {
   TrendingUp,
   FileText
 } from 'lucide-react';
+import { LenderQuote, QuoteFormData } from '@/types/lender-quote';
 
 interface QuoteDetailModalProps {
   quote: LenderQuote;

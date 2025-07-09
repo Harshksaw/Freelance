@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { QuoteDetailModal } from './quote-detail-modal';
-import { LenderQuote, QuoteFormData } from '../../app/quotes/page';
+import { LenderQuote, QuoteFormData } from '../../types/lender-quote';
 import { 
   Star, 
   Clock, 
@@ -148,6 +148,7 @@ export function QuoteResults({ quotes, businessData, onClear }: QuoteResultsProp
             value={filterRisk}
             onChange={(e) => setFilterRisk(e.target.value as 'all' | 'low' | 'medium' | 'high')}
             className="text-sm border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label="Filter by risk level"
           >
             <option value="all">All Risk Levels</option>
             <option value="low">Low Risk Only</option>
@@ -160,6 +161,7 @@ export function QuoteResults({ quotes, businessData, onClear }: QuoteResultsProp
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as 'rate' | 'payment' | 'total' | 'approval')}
             className="text-sm border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label="Sort quotes by"
           >
             <option value="rate">Sort by Interest Rate</option>
             <option value="payment">Sort by Monthly Payment</option>

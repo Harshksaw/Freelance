@@ -1,9 +1,29 @@
-
 // src/app/api/quotes/generate/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
+interface LenderData {
+  id: string;
+  name: string;
+  baseRate: number;
+  riskMultiplier: { low: number; medium: number; high: number };
+  processingFee: number;
+  approvalTime: string;
+  features: string[];
+}
+
+interface QuoteFormData {
+  companyName: string;
+  companyNumber?: string;
+  directorName: string;
+  turnover: number;
+  fundingType: string;
+  purpose: string;
+  loanAmount: number;
+  repaymentTerm: number;
+}
+
 // Mock lender data for quote generation
-const mockLenders = [
+const mockLenders: LenderData[] = [
   {
     id: 'lender_1',
     name: 'Premier Business Finance',
@@ -84,7 +104,7 @@ function calculateRiskCategory(turnover: number, loanAmount: number): 'low' | 'm
   return 'high';
 }
 
-function generateQuote(lender: any, formData: any, riskCategory: 'low' | 'medium' | 'high') {
+function generateQuote(lender: LenderData, formData: QuoteFormData, riskCategory: 'low' | 'medium' | 'high') {
   const interestRate = lender.baseRate * lender.riskMultiplier[riskCategory];
   const monthlyRate = interestRate / 100 / 12;
   const numPayments = formData.repaymentTerm;
@@ -109,44 +129,43 @@ function generateQuote(lender: any, formData: any, riskCategory: 'low' | 'medium
   };
 }
 
-
 export async function POST(request: NextRequest) {
-    try {
-      const formData = await request.json();
-      
-      // Simulate processing delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      const riskCategory = calculateRiskCategory(formData.turnover, formData.loanAmount);
-      
-      // Generate quotes from random subset of lenders (3-5 lenders)
-      const selectedLenders = mockLenders
-        .sort(() => Math.random() - 0.5)
-        .slice(0, Math.floor(Math.random() * 3) + 3);
-      
-      const quotes = selectedLenders.map(lender => 
-        generateQuote(lender, formData, riskCategory)
-      );
-      
-      // Sort quotes by interest rate and mark best as recommended
-      quotes.sort((a, b) => a.interestRate - b.interestRate);
-      if (quotes.length > 0) {
-        quotes[0].recommended = true;
-      }
-      
-      return NextResponse.json({
-        success: true,
-        quotes,
-        riskCategory,
-        message: `Generated ${quotes.length} quotes successfully`
-      });
-      
-    } catch (error) {
-      console.error('Quote generation error:', error);
-      return NextResponse.json(
-        { success: false, error: 'Failed to generate quotes' },
-        { status: 500 }
-      );
+  try {
+    const formData: QuoteFormData = await request.json();
+    
+    // Simulate processing delay
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    const riskCategory = calculateRiskCategory(formData.turnover, formData.loanAmount);
+    
+    // Generate quotes from random subset of lenders (3-5 lenders)
+    const selectedLenders = mockLenders
+      .sort(() => Math.random() - 0.5)
+      .slice(0, Math.floor(Math.random() * 3) + 3);
+    
+    const quotes = selectedLenders.map(lender => 
+      generateQuote(lender, formData, riskCategory)
+    );
+    
+    // Sort quotes by interest rate and mark best as recommended
+    quotes.sort((a, b) => a.interestRate - b.interestRate);
+    if (quotes.length > 0) {
+
+      quotes[0].recommended = true;
     }
+    
+    return NextResponse.json({
+      success: true,
+      quotes,
+      riskCategory,
+      message: `Generated ${quotes.length} quotes successfully`
+    });
+    
+  } catch (error) {
+    console.error('Quote generation error:', error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to generate quotes' },
+      { status: 500 }
+    );
   }
-  
+}

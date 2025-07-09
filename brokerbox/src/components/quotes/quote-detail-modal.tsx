@@ -1,4 +1,3 @@
-// src/components/quotes/quote-detail-modal.tsx
 'use client';
 
 import { useState } from 'react';
@@ -9,7 +8,6 @@ import {
   X, 
   Star, 
   Clock, 
-  PoundSterling, 
   Calculator, 
   Shield, 
   CheckCircle,
@@ -20,7 +18,7 @@ import {
   Globe,
   Download,
   ArrowRight,
-  Calendar,
+
   TrendingUp,
   FileText
 } from 'lucide-react';
@@ -32,6 +30,14 @@ interface QuoteDetailModalProps {
   onClose: () => void;
   onSelect: (quoteId: string) => void;
   isSelected: boolean;
+}
+
+interface PaymentScheduleItem {
+  month: number;
+  payment: number;
+  principal: number;
+  interest: number;
+  balance: number;
 }
 
 export function QuoteDetailModal({ 
@@ -68,10 +74,10 @@ export function QuoteDetailModal({
     return potentialSavings > 0 ? potentialSavings : 0;
   };
 
-  const getRepaymentSchedule = () => {
+  const getRepaymentSchedule = (): PaymentScheduleItem[] => {
     if (!businessData) return [];
     
-    const schedule = [];
+    const schedule: PaymentScheduleItem[] = [];
     let remainingBalance = businessData.loanAmount;
     const monthlyInterest = quote.interestRate / 100 / 12;
     
@@ -152,7 +158,7 @@ export function QuoteDetailModal({
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id as 'overview' | 'breakdown' | 'terms' | 'lender')}
                 className={`flex items-center space-x-2 px-6 py-3 text-sm font-medium transition-colors ${
                   activeTab === tab.id
                     ? 'border-b-2 border-blue-500 text-blue-600'
@@ -267,49 +273,58 @@ export function QuoteDetailModal({
                     <span className="text-gray-600">Monthly Payment</span>
                     <span className="font-medium">{formatCurrency(quote.monthlyPayment)}</span>
                   </div>
-                  {quote.processingFee > 0 && (
-                    <div className="flex justify-between items-center py-2 border-b">
-                      <span className="text-gray-600">Processing Fee</span>
-                      <span className="font-medium">{formatCurrency(quote.processingFee)}</span>
-                    </div>
-                  )}
-                  <div className="flex justify-between items-center py-2 border-b border-gray-300 font-semibold">
-                    <span className="text-gray-900">Total Amount Payable</span>
-                    <span className="text-lg">{formatCurrency(quote.totalRepayment)}</span>
+                  <div className="flex justify-between items-center py-2 border-b">
+                    <span className="text-gray-600">Total Interest</span>
+                    <span className="font-medium">{formatCurrency(quote.totalRepayment - (businessData?.loanAmount || 0))}</span>
                   </div>
-                  <div className="flex justify-between items-center py-2 text-green-600">
-                    <span>Total Interest</span>
-                    <span className="font-medium">
-                      {formatCurrency(quote.totalRepayment - (businessData?.loanAmount || 0) - quote.processingFee)}
-                    </span>
+                  <div className="flex justify-between items-center py-3 border-b-2 border-gray-300 font-semibold">
+                    <span className="text-gray-900">Total Repayment</span>
+                    <span className="text-lg">{formatCurrency(quote.totalRepayment)}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Sample Repayment Schedule */}
+              {/* Fees */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Sample Repayment Schedule (First 12 Months)
-                </h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Fees & Charges</h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center py-2 border-b">
+                    <span className="text-gray-600">Arrangement Fee</span>
+                    <span className="font-medium">{formatCurrency(quote.arrangementFee || 0)}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b">
+                    <span className="text-gray-600">Early Repayment Fee</span>
+                    <span className="font-medium">{quote.earlyRepaymentFee || 'None'}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b">
+                    <span className="text-gray-600">Late Payment Fee</span>
+                    <span className="font-medium">{formatCurrency(quote.latePaymentFee || 25)}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Payment Schedule Preview */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Payment Schedule (First 12 Months)</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b bg-gray-50">
-                        <th className="text-left p-3">Month</th>
-                        <th className="text-right p-3">Payment</th>
-                        <th className="text-right p-3">Principal</th>
-                        <th className="text-right p-3">Interest</th>
-                        <th className="text-right p-3">Balance</th>
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-3 py-2 text-left">Month</th>
+                        <th className="px-3 py-2 text-right">Payment</th>
+                        <th className="px-3 py-2 text-right">Principal</th>
+                        <th className="px-3 py-2 text-right">Interest</th>
+                        <th className="px-3 py-2 text-right">Balance</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {getRepaymentSchedule().map((payment) => (
-                        <tr key={payment.month} className="border-b">
-                          <td className="p-3">{payment.month}</td>
-                          <td className="text-right p-3">{formatCurrency(payment.payment)}</td>
-                          <td className="text-right p-3">{formatCurrency(payment.principal)}</td>
-                          <td className="text-right p-3">{formatCurrency(payment.interest)}</td>
-                          <td className="text-right p-3">{formatCurrency(payment.balance)}</td>
+                      {getRepaymentSchedule().map((item) => (
+                        <tr key={item.month} className="border-b">
+                          <td className="px-3 py-2">{item.month}</td>
+                          <td className="px-3 py-2 text-right">{formatCurrency(item.payment)}</td>
+                          <td className="px-3 py-2 text-right">{formatCurrency(item.principal)}</td>
+                          <td className="px-3 py-2 text-right">{formatCurrency(item.interest)}</td>
+                          <td className="px-3 py-2 text-right">{formatCurrency(item.balance)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -317,7 +332,7 @@ export function QuoteDetailModal({
                 </div>
                 {businessData && businessData.repaymentTerm > 12 && (
                   <p className="text-sm text-gray-500 mt-2">
-                    * Showing first 12 months only. Full schedule available upon application.
+                    Showing first 12 months of {businessData.repaymentTerm} month term
                   </p>
                 )}
               </div>
@@ -332,41 +347,43 @@ export function QuoteDetailModal({
                 <div className="space-y-4">
                   <Card>
                     <h4 className="font-medium text-gray-900 mb-2">Loan Terms</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Fixed interest rate for the entire term</li>
-                      <li>• Monthly repayments on the same date each month</li>
-                      <li>• Direct debit collection recommended</li>
-                      <li>• Loan secured against business assets</li>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Fixed interest rate for the duration of the loan</li>
+                      <li>• Monthly payments due on the same date each month</li>
+                      <li>• Minimum loan term: 12 months</li>
+                      <li>• Maximum loan term: 60 months</li>
+                      <li>• Personal guarantee required from directors</li>
                     </ul>
                   </Card>
 
                   <Card>
-                    <h4 className="font-medium text-gray-900 mb-2">Early Repayment</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Early repayment allowed with 30 days notice</li>
-                      <li>• No early repayment charges for this product</li>
-                      <li>• Partial overpayments accepted</li>
-                      <li>• Interest charged daily basis</li>
-                    </ul>
-                  </Card>
-
-                  <Card>
-                    <h4 className="font-medium text-gray-900 mb-2">Default & Late Payment</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Late payment fee: £25 per missed payment</li>
-                      <li>• Default interest rate: {formatPercentage(quote.interestRate + 3)}</li>
-                      <li>• Grace period: 14 days after due date</li>
-                      <li>• Recovery costs may be charged</li>
+                    <h4 className="font-medium text-gray-900 mb-2">Eligibility Requirements</h4>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Business must be trading for at least 12 months</li>
+                      <li>• Minimum annual turnover of £100,000</li>
+                      <li>• No CCJs or defaults in the last 12 months</li>
+                      <li>• Business bank account required</li>
+                      <li>• UK registered company</li>
                     </ul>
                   </Card>
 
                   <Card>
                     <h4 className="font-medium text-gray-900 mb-2">Security & Guarantees</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Personal guarantee required from directors</li>
-                      <li>• Business assets as primary security</li>
-                      <li>• Property charge may be required for larger amounts</li>
-                      <li>• Insurance requirements apply</li>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Personal guarantee from company directors</li>
+                      <li>• Debenture over company assets</li>
+                      <li>• Monthly monitoring of business performance</li>
+                      <li>• Right to request updated financial information</li>
+                    </ul>
+                  </Card>
+
+                  <Card>
+                    <h4 className="font-medium text-gray-900 mb-2">Early Repayment</h4>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      <li>• Early repayment allowed after 6 months</li>
+                      <li>• {quote.earlyRepaymentFee || 'No early repayment fees'}</li>
+                      <li>• 30 days notice required for early settlement</li>
+                      <li>• Partial prepayments may be available</li>
                     </ul>
                   </Card>
                 </div>
@@ -381,73 +398,90 @@ export function QuoteDetailModal({
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card>
-                    <h4 className="font-medium text-gray-900 mb-3">Lender Profile</h4>
-                    <div className="space-y-3 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Founded</span>
-                        <span>2015</span>
+                    <h4 className="font-medium text-gray-900 mb-3">Lender Information</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-3">
+                        <Globe className="h-5 w-5 text-gray-400" />
+                        <div>
+                          <p className="text-sm font-medium">Website</p>
+                          <p className="text-sm text-blue-600">www.{quote.lenderName.toLowerCase().replace(/\s+/g, '')}.com</p>
+                        </div>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Loans Provided</span>
-                        <span>£500M+</span>
+                      <div className="flex items-center space-x-3">
+                        <Phone className="h-5 w-5 text-gray-400" />
+                        <div>
+                          <p className="text-sm font-medium">Phone</p>
+                          <p className="text-sm text-gray-600">0800 123 4567</p>
+                        </div>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Customer Rating</span>
-                        <span className="flex items-center">
-                          4.8/5 <Star className="h-3 w-3 text-yellow-400 ml-1" />
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">FCA Regulated</span>
-                        <span className="text-green-600">✓ Yes</span>
+                      <div className="flex items-center space-x-3">
+                        <Mail className="h-5 w-5 text-gray-400" />
+                        <div>
+                          <p className="text-sm font-medium">Email</p>
+                          <p className="text-sm text-gray-600">info@{quote.lenderName.toLowerCase().replace(/\s+/g, '')}.com</p>
+                        </div>
                       </div>
                     </div>
                   </Card>
 
                   <Card>
-                    <h4 className="font-medium text-gray-900 mb-3">Contact Information</h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3">
-                        <Phone className="h-4 w-4 text-gray-400" />
-                        <span className="text-sm">0800 123 4567</span>
+                    <h4 className="font-medium text-gray-900 mb-3">Credentials</h4>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <span className="text-sm">FCA Authorized</span>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <Mail className="h-4 w-4 text-gray-400" />
-                        <span className="text-sm">info@{quote.lenderName.toLowerCase().replace(/\s+/g, '')}.co.uk</span>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <span className="text-sm">Asset Finance Association Member</span>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <Globe className="h-4 w-4 text-gray-400" />
-                        <span className="text-sm">www.{quote.lenderName.toLowerCase().replace(/\s+/g, '')}.co.uk</span>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <span className="text-sm">NACFB Member</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <span className="text-sm">ISO 27001 Certified</span>
                       </div>
                     </div>
                   </Card>
                 </div>
 
                 <Card>
-                  <h4 className="font-medium text-gray-900 mb-3">Specializations</h4>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    <div className="text-sm text-gray-600">• SME Lending</div>
-                    <div className="text-sm text-gray-600">• Asset Finance</div>
-                    <div className="text-sm text-gray-600">• Working Capital</div>
-                    <div className="text-sm text-gray-600">• Property Finance</div>
-                    <div className="text-sm text-gray-600">• Invoice Finance</div>
-                    <div className="text-sm text-gray-600">• Growth Capital</div>
+                  <h4 className="font-medium text-gray-900 mb-3">About This Lender</h4>
+                  <p className="text-sm text-gray-700 mb-3">
+                    {quote.lenderName} is a leading UK business finance provider with over 10 years of experience 
+                    helping businesses access the funding they need to grow. They specialize in flexible lending 
+                    solutions and pride themselves on fast decision-making and excellent customer service.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="font-medium text-gray-900">Founded</p>
+                      <p className="text-gray-600">2013</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">Loans Issued</p>
+                      <p className="text-gray-600">10,000+</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">Average Decision Time</p>
+                      <p className="text-gray-600">{quote.approvalTime}</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">Customer Rating</p>
+                      <p className="text-gray-600">4.7/5 ⭐</p>
+                    </div>
                   </div>
                 </Card>
 
-                <Card className="border-blue-200 bg-blue-50">
-                  <div className="flex items-start space-x-3">
-                    <Info className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-medium text-blue-900 mb-2">Why Choose This Lender?</h4>
-                      <ul className="text-sm text-blue-800 space-y-1">
-                        <li>• Established track record in SME lending</li>
-                        <li>• Quick decision making process</li>
-                        <li>• Flexible repayment options</li>
-                        <li>• Dedicated relationship manager</li>
-                        <li>• Competitive rates for your risk profile</li>
-                      </ul>
-                    </div>
+                <Card>
+                  <h4 className="font-medium text-gray-900 mb-3">Specializations</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Business Loans</span>
+                    <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Asset Finance</span>
+                    <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Invoice Finance</span>
+                    <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">Equipment Finance</span>
+                    <span className="px-3 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Working Capital</span>
                   </div>
                 </Card>
               </div>
@@ -455,44 +489,41 @@ export function QuoteDetailModal({
           )}
         </div>
 
-        {/* Footer Actions */}
-        <div className="border-t border-gray-200 p-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">
-                <Download className="h-4 w-4 mr-2" />
-                Download Quote
-              </Button>
-              <Button variant="outline" size="sm">
-                <Calendar className="h-4 w-4 mr-2" />
-                Schedule Call
-              </Button>
-            </div>
-            
-            <div className="flex items-center space-x-3">
-              <Button 
-                variant="outline" 
-                onClick={onClose}
-              >
-                Close
-              </Button>
-              <Button 
-                onClick={() => onSelect(quote.id)}
-                variant={isSelected ? "outline" : "primary"}
-              >
-                {isSelected ? (
-                  <>
-                    <CheckCircle className="h-4 w-4 mr-2" />
-                    Selected
-                  </>
-                ) : (
-                  <>
-                    Select This Quote
-                    <ArrowRight className="h-4 w-4 ml-2" />
-                  </>
-                )}
-              </Button>
-            </div>
+        {/* Footer */}
+        <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
+          <div className="flex items-center space-x-4">
+            <Button 
+              variant="outline" 
+              onClick={() => window.open(`mailto:broker@brokerbox.com?subject=Quote Inquiry - ${quote.lenderName}`, '_blank')}
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Contact Broker
+            </Button>
+            <Button variant="outline">
+              <Download className="h-4 w-4 mr-2" />
+              Download Quote
+            </Button>
+          </div>
+          <div className="flex items-center space-x-3">
+            <Button variant="outline" onClick={onClose}>
+              Close
+            </Button>
+            <Button 
+              onClick={() => onSelect(quote.id)}
+              className={isSelected ? 'bg-green-600 hover:bg-green-700' : ''}
+            >
+              {isSelected ? (
+                <>
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  Selected
+                </>
+              ) : (
+                <>
+                  <ArrowRight className="h-4 w-4 mr-2" />
+                  Select Quote
+                </>
+              )}
+            </Button>
           </div>
         </div>
       </div>

@@ -1,5 +1,3 @@
-
-// src/components/forms/quote-form.tsx
 'use client';
 
 import { useState } from 'react';
@@ -61,6 +59,9 @@ const repaymentTermOptions = [
 
 export function QuoteForm({ onSubmit, loading }: QuoteFormProps) {
   const [selectedCompany, setSelectedCompany] = useState<MockCompany | null>(null);
+
+  console.log('🚀 ~ :63 ~ QuoteForm ~ selectedCompany::==', selectedCompany)
+
 
   const {
     register,

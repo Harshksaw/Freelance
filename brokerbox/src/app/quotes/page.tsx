@@ -22,6 +22,8 @@ export interface QuoteFormData {
 export interface LenderQuote {
   id: string;
   lenderName: string;
+
+
   lenderLogo?: string;
   interestRate: number;
   monthlyPayment: number;

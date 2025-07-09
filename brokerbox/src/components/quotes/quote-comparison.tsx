@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { LenderQuote } from '../../app/quotes/page';
-import { CheckCircle, X, TrendingUp, Clock, PoundSterling } from 'lucide-react';
+import { CheckCircle, X } from 'lucide-react';
 
 interface QuoteComparisonProps {
   quotes: LenderQuote[];
@@ -12,7 +12,7 @@ interface QuoteComparisonProps {
 }
 
 export function QuoteComparison({ quotes, onClose }: QuoteComparisonProps) {
-  const [selectedQuotes, setSelectedQuotes] = useState<LenderQuote[]>(quotes.slice(0, 3));
+  const [selectedQuotes] = useState<LenderQuote[]>(quotes.slice(0, 3));
 
   const formatCurrency = (amount: number): string => {
     return new Intl.NumberFormat('en-GB', {

@@ -8,6 +8,8 @@ export const productSchema = z.object({
   stock: z.number().int().min(0, 'Stock cannot be negative'),
   brand: z.string().min(1, 'Brand is required'),
   category: z.string().min(1, 'Category is required'),
+  thumbnail: z.string().url('Please enter a valid image URL').optional().or(z.literal('')),
+  images: z.string().optional(),
 });
 
 export type ProductFormData = z.infer<typeof productSchema>;

@@ -42,10 +42,13 @@ export function ProductForm({
       stock: 0,
       brand: '',
       category: '',
+      thumbnail: '',
+      images: '',
     },
   });
 
   const selectedCategory = watch('category');
+  const thumbnailUrl = watch('thumbnail');
 
   useEffect(() => {
     if (product) {
@@ -57,6 +60,7 @@ export function ProductForm({
         stock: product.stock,
         brand: product.brand,
         category: product.category,
+        thumbnail: product.thumbnail || '',
       });
     } else {
       reset({
@@ -67,6 +71,7 @@ export function ProductForm({
         stock: 0,
         brand: '',
         category: '',
+        thumbnail: '',
       });
     }
   }, [product, reset]);
@@ -120,6 +125,45 @@ export function ProductForm({
         />
         {errors.description && (
           <p className="text-sm text-red-500">{errors.description.message}</p>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="thumbnail">Image URL</Label>
+        <Input
+          id="thumbnail"
+          {...register('thumbnail')}
+          placeholder="https://example.com/image.jpg"
+          className={errors.thumbnail ? 'border-red-500' : ''}
+        />
+        {errors.thumbnail && (
+          <p className="text-sm text-red-500">{errors.thumbnail.message}</p>
+        )}
+        {thumbnailUrl && (
+          <div className="mt-2">
+            <p className="text-sm text-gray-600 mb-2">Image Preview:</p>
+            <div className="relative w-32 h-32 border rounded-lg overflow-hidden bg-gray-50">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={thumbnailUrl}
+                alt="Product preview"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.nextElementSibling?.classList.remove('invisible');
+                }}
+                onLoad={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'block';
+                  target.nextElementSibling?.classList.add('invisible');
+                }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-500 bg-gray-100 invisible">
+                Invalid URL
+              </div>
+            </div>
+          </div>
         )}
       </div>
 

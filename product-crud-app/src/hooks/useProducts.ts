@@ -4,6 +4,7 @@ import { Product, Category } from '@/types/product';
 import { ProductFormData } from '@/lib/validations';
 import { api } from '@/lib/api';
 
+
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -30,11 +31,29 @@ export function useProducts() {
   const fetchCategories = async () => {
     try {
       const data = await api.getCategories();
-      setCategories(data);
+
+      const customCats  = JSON.parse(localStorage.getItem('custom_categories') || '[]');
+
+      const allCategories = [...data, ...customCats]
+
+      setCategories(allCategories);
     } catch (err) {
       console.error('Failed to fetch categories:', err);
     }
   };
+
+  const createNewCategory = (category: string) => {
+
+    const existingCategory = JSON.parse(localStorage.getItem('custom_categories') || '[]')
+    if(existingCategory.some((c: Category) => c.slug === category.slug)) {
+      console.warn('Category already exists:', category);
+      return;
+    }
+    const updateCategories = [...existingCategory, category];
+
+    localStorage.setItem('custom_categories',JSON.stringify(updateCategories));
+    setCategories(prev => [...prev, category]);
+  }
 
   const createProduct = async (productData: ProductFormData) => {
     try {
@@ -81,5 +100,6 @@ export function useProducts() {
     createProduct,
     updateProduct,
     deleteProduct,
+createNewCategory
   };
 }

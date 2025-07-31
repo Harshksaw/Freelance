@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Plus, AlertCircle } from 'lucide-react';
 
+
 export default function Home() {
   const {
     products,
@@ -21,13 +22,19 @@ export default function Home() {
     createProduct,
     updateProduct,
     deleteProduct,
+    createNewCategory
   } = useProducts();
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [addCategory, setAddCategory] = useState(false);
+  const [newCategory, setNewCategory] = useState('');
 
-  const handleCreateProduct = async (data: ProductFormData) => {
+  const [sortProducts, setSortProducts] = useState('null')
+  //low high
+
+  const handleCreateProduct = async () => {
     setIsSubmitting(true);
     try {
       await createProduct(data);
@@ -39,10 +46,22 @@ export default function Home() {
       setIsSubmitting(false);
     }
   };
+  const handleCreateCategory = async () => {
+    setIsSubmitting(true);
+    try {
+      await createNewCategory(newCategory);
+      setIsFormOpen(false);
+      setEditingProduct(null);
+    } catch (error) {
+      console.error('Failed to create product:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleUpdateProduct = async (data: ProductFormData) => {
     if (!editingProduct) return;
-    
+
     setIsSubmitting(true);
     try {
       await updateProduct(editingProduct.id, data);
@@ -83,6 +102,11 @@ export default function Home() {
     setIsFormOpen(false);
     setEditingProduct(null);
   };
+  const handleAddCategory = () => {
+    setAddCategory(true);
+  }
+
+
 
   const handleFormSubmit = editingProduct ? handleUpdateProduct : handleCreateProduct;
 
@@ -97,7 +121,35 @@ export default function Home() {
           <Plus className="w-4 h-4 mr-2" />
           Add Product
         </Button>
+        <Button onClick={handleAddCategory}>
+          <Plus className="w-4 h-4 mr-2" />
+          Add Category
+        </Button>
       </div>
+
+      {
+        addCategory && (
+          <div className='w-24 h-20 '>
+            <form className='flex flex-col gap-2' onSubmit={handleCreateCategory}>
+              <input
+                type="text"
+                placeholder="Category Name"
+                className="border p-2 rounded"
+                onChange={(e) => setNewCategory(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+              >
+                Add Category
+              </button>
+            </form>
+
+
+          </div>
+
+        )
+      }
 
       {error && (
         <Alert variant="destructive" className="mb-6">
@@ -115,6 +167,17 @@ export default function Home() {
           </AlertDescription>
         </Alert>
       )}
+      <Button
+        onClick={() => setSortProducts('low')}
+      >
+        Low to high
+
+      </Button>
+      <Button
+        onClick={() => setSortProducts('high')}
+      >
+        High to low
+      </Button>
 
       <SearchAndFilter
         categories={categories}
@@ -127,6 +190,7 @@ export default function Home() {
         loading={loading}
         onEdit={handleEditProduct}
         onDelete={handleDeleteProduct}
+      sortProducts={sortProducts}
       />
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
